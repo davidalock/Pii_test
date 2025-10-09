@@ -1,0 +1,228 @@
+{
+  "metadata": {
+    "timestamp": "20250831_130937",
+    "processing_mode": "multithreaded",
+    "max_workers": 4,
+    "records_processed": 5,
+    "total_entities_found": 5,
+    "processing_time_seconds": 0.3238198757171631,
+    "total_time_seconds": 4.5224668979644775,
+    "initialization_time_seconds": 4.198608160018921,
+    "use_ollama": false,
+    "resolve_overlaps": true,
+    "min_confidence": 0.0,
+    "entity_sources": {
+      "transformer-dslim/bert-base-NER": 3,
+      "presidio": 2
+    },
+    "ground_truth_total": 9,
+    "configuration": {
+      "input_file": "",
+      "output_file": "pii_analysis_results.json",
+      "max_records": 1000,
+      "num_threads": 4,
+      "use_threading": true,
+      "target_field": "source",
+      "fields_to_process": [],
+      "pii_entities": [
+        "PERSON",
+        "EMAIL_ADDRESS",
+        "PHONE_NUMBER",
+        "CREDIT_CARD",
+        "IBAN_CODE",
+        "IP_ADDRESS",
+        "DATE_TIME",
+        "LOCATION",
+        "UK_POSTCODE",
+        "UK_SORT_CODE",
+        "UK_NI_NUMBER",
+        "UK_BANK_ACCOUNT",
+        "UK_MONETARY_VALUE",
+        "CUSTOMER_ID"
+      ],
+      "perform_anonymization": true,
+      "verify_anonymization": true,
+      "single_type_anonymization": true,
+      "export_format": "json",
+      "include_summary": true,
+      "include_detailed_results": true
+    }
+  },
+  "results": [
+    {
+      "record_id": "record_0",
+      "record_index": 0,
+      "conversation_id": "TEST_00001",
+      "customer_id": "CUS671412",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Jack",
+          "Abbott",
+          "£55,087.00"
+        ],
+        "count": 3
+      },
+      "fields": {
+        "customer_message": {
+          "original_text": "Hi, I need to check my account balance please. My name is Jack Abbott.",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Jack Abbott",
+              "start": 58,
+              "end": 69,
+              "confidence": "0.9986887",
+              "source": "transformer-dslim/bert-base-NER"
+            }
+          ],
+          "anonymized_text": "Hi, I need to check my account balance please. My name is [PERSON].",
+          "entity_count": 1
+        }
+      }
+    },
+    {
+      "record_id": "record_1",
+      "record_index": 1,
+      "conversation_id": "TEST_00002",
+      "customer_id": "CUS662275",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "account_number",
+          "account_balance"
+        ],
+        "raw_values": [
+          "22981052",
+          "£16,461.00"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "customer_message": {
+          "original_text": "What's my current balance? Account number 22981052",
+          "entities": [
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "22981052",
+              "start": 42,
+              "end": 50,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "What's my current balance? Account number [UK_BANK_ACCOUNT]",
+          "entity_count": 1
+        }
+      }
+    },
+    {
+      "record_id": "record_2",
+      "record_index": 2,
+      "conversation_id": "TEST_00003",
+      "customer_id": "CUS802729",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "customer_message": {
+          "original_text": "Can you tell me how much money I have in my account?",
+          "entities": [],
+          "anonymized_text": "Can you tell me how much money I have in my account?",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_3",
+      "record_index": 3,
+      "conversation_id": "TEST_00004",
+      "customer_id": "CUS852787",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "address_town_city"
+        ],
+        "raw_values": [
+          "Shockat",
+          "Unknown"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "customer_message": {
+          "original_text": "My balance seems wrong. I'm Shockat and I live in Unknown.",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Shock",
+              "start": 28,
+              "end": 33,
+              "confidence": "0.9404875",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Unknown",
+              "start": 50,
+              "end": 57,
+              "confidence": "0.9894945",
+              "source": "transformer-dslim/bert-base-NER"
+            }
+          ],
+          "anonymized_text": "My balance seems wrong. I'm [PERSON]at and I live in [LOCATION].",
+          "entity_count": 2
+        }
+      }
+    },
+    {
+      "record_id": "record_4",
+      "record_index": 4,
+      "conversation_id": "TEST_00005",
+      "customer_id": "CUS260265",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "CUS260265",
+          "£82,340.00"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "customer_message": {
+          "original_text": "Quick balance check please - customer CUS260265",
+          "entities": [
+            {
+              "entity_type": "CUSTOMER_ID",
+              "text": "CUS260265",
+              "start": 38,
+              "end": 47,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "Quick balance check please - customer [CUSTOMER_ID]",
+          "entity_count": 1
+        }
+      }
+    }
+  ]
+}

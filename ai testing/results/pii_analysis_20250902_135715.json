@@ -1,0 +1,132 @@
+{
+  "analysis_metadata": {
+    "timestamp": "2025-09-02T13:57:15.080252",
+    "file_analyzed": "test_datetime.csv",
+    "records_processed": 1,
+    "fields_analyzed": [
+      "source"
+    ],
+    "total_presidio_entities": 3,
+    "total_uk_patterns": 0,
+    "total_missed_entities": 0,
+    "total_transformer_entities": 0,
+    "total_all_entities": 4,
+    "analysis_options": {
+      "use_threading": true,
+      "num_threads": 4,
+      "perform_anonymization": true,
+      "verify_anonymization": true,
+      "use_transformers": true,
+      "transformer_model": ""
+    }
+  },
+  "detailed_results": [
+    {
+      "record_id": "record_0",
+      "record_index": 0,
+      "columns_analyzed": {
+        "source": {
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "PERSON",
+                "start": 11,
+                "end": 25,
+                "text": "John yesterday",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 44,
+                "end": 52,
+                "text": "tomorrow",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 53,
+                "end": 60,
+                "text": "morning",
+                "confidence": 0.85,
+                "source": "Presidio"
+              }
+            ],
+            "transformer_findings": [
+              {
+                "entity_type": "PERSON",
+                "start": 11,
+                "end": 15,
+                "text": "John",
+                "confidence": "0.9982414",
+                "source": "transformer-dslim/bert-base-NER"
+              }
+            ],
+            "ollama_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [
+              {
+                "entity_type": "PERSON",
+                "start": 11,
+                "end": 25,
+                "text": "John yesterday",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 44,
+                "end": 52,
+                "text": "tomorrow",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 53,
+                "end": 60,
+                "text": "morning",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PERSON",
+                "start": 11,
+                "end": 15,
+                "text": "John",
+                "confidence": "0.9982414",
+                "source": "transformer-dslim/bert-base-NER"
+              }
+            ],
+            "summary": {
+              "total_presidio": 3,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_transformer": 1,
+              "total_all": 4
+            },
+            "original_text": "I met with John yesterday and will call him tomorrow morning"
+          },
+          "anonymization": {
+            "anonymized_content": "I met with [PERSON] yesterday and will call him tomorrow morning"
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'source' was not properly anonymized"
+            ]
+          }
+        }
+      },
+      "summary": {
+        "total_presidio": 3,
+        "total_uk_patterns": 0,
+        "total_missed": 0,
+        "total_all": 4
+      }
+    }
+  ]
+}

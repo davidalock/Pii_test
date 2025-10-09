@@ -1,0 +1,24 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+**/.venv/
+**/venv/
+
+# macOS clutter
+.DS_Store
+
+# Streamlit artifacts
+.streamlit/
+
+# Logs
+*.log
+
+# Local data caches
+.cache/
+ai testing/backup_non_ui/

@@ -1,0 +1,459 @@
+# Presidio "No Code" Recognizers Configuration
+# This file contains all custom recognizers translated from Python code to YAML format
+# Use with: analyzer.add_recognizers_from_yaml(file_path="presidio_recognizers_config.yaml")
+
+recognizers:
+  # Custom DATE_TIME recognizer that excludes common false positives
+  - name: "CUSTOM_DATE_TIME_RECOGNIZER"
+    supported_entity: "DATE_TIME"
+    supported_language: "en"
+    patterns:
+      # Only match specific date formats, avoid common words
+      - name: "date_dd_mm_yyyy"
+        regex: "\\b\\d{1,2}[/.-]\\d{1,2}[/.-]\\d{4}\\b"
+        score: 0.9
+      - name: "date_yyyy_mm_dd"
+        regex: "\\b\\d{4}[/.-]\\d{1,2}[/.-]\\d{1,2}\\b"
+        score: 0.9
+      - name: "month_year"
+        regex: "\\b(January|February|March|April|May|June|July|August|September|October|November|December)\\s+\\d{4}\\b"
+        score: 0.8
+      - name: "specific_times"
+        regex: "\\b\\d{1,2}:\\d{2}(:\\d{2})?\\s*(AM|PM|am|pm)?\\b"
+        score: 0.85
+    context:
+      - "date"
+      - "time"
+      - "born"
+      - "created"
+      - "updated"
+      - "scheduled"
+    # This replaces the built-in DateRecognizer to avoid false positives
+    
+  # UK Postcode Recognizer
+  - name: "UK_POSTCODE_RECOGNIZER"
+    supported_entity: "UK_POSTCODE"
+    supported_language: "en"
+    patterns:
+      - name: "uk_postcode_standard"
+        regex: "\\b[A-Z]{1,2}\\d{1,2}[A-Z]?\\s\\d[A-Z]{2}\\b"
+        score: 0.9
+      - name: "uk_postcode_no_space"
+        regex: "\\b[A-Z]{1,2}\\d{1,2}[A-Z]?\\d[A-Z]{2}\\b"
+        score: 0.85
+    context:
+      - "post"
+      - "code"
+      - "postcode"
+      - "address"
+      - "mail"
+      - "zip"
+      - "postal"
+
+  # UK Sort Code Recognizer
+  - name: "UK_SORT_CODE_RECOGNIZER"
+    supported_entity: "UK_SORT_CODE"
+    supported_language: "en"
+    patterns:
+      - name: "uk_sort_code_standard"
+        regex: "\\b\\d{2}-\\d{2}-\\d{2}\\b"
+        score: 0.9
+      - name: "uk_sort_code_no_hyphens"
+        regex: "\\b\\d{6}\\b"
+        score: 0.7
+    context:
+      - "sort"
+      - "code"
+      - "bank"
+      - "account"
+      - "routing"
+
+  # UK NHS Number Recognizer
+  - name: "UK_NHS_NUMBER_RECOGNIZER"
+    supported_entity: "UK_NHS_NUMBER"
+    supported_language: "en"
+    patterns:
+      - name: "uk_nhs_standard"
+        regex: "\\b\\d{3}\\s\\d{3}\\s\\d{4}\\b"
+        score: 0.9
+      - name: "uk_nhs_no_spaces"
+        regex: "\\b\\d{10}\\b"
+        score: 0.7
+    context:
+      - "nhs"
+      - "health"
+      - "service"
+      - "medical"
+      - "patient"
+
+  # UK National Insurance Number Recognizer
+  - name: "UK_NI_NUMBER_RECOGNIZER"
+    supported_entity: "UK_NI_NUMBER"
+    supported_language: "en"
+    patterns:
+      - name: "uk_ni_standard"
+        regex: "\\b[A-Z]{2}\\s?\\d{2}\\s?\\d{2}\\s?\\d{2}\\s?[A-Z]\\b"
+        score: 0.9
+      - name: "uk_ni_no_spaces"
+        regex: "\\b[A-Z]{2}\\d{6}[A-Z]\\b"
+        score: 0.85
+    context:
+      - "national"
+      - "insurance"
+      - "ni"
+      - "number"
+      - "social"
+
+  # UK Bank Account Number Recognizer
+  - name: "UK_BANK_ACCOUNT_RECOGNIZER"
+    supported_entity: "UK_BANK_ACCOUNT"
+    supported_language: "en"
+    patterns:
+      - name: "uk_bank_account_standard"
+        regex: "\\b\\d{8}\\b"
+        score: 0.7
+      - name: "uk_bank_account_with_spaces"
+        regex: "\\b\\d{2}\\s?\\d{2}\\s?\\d{2}\\s?\\d{2}\\b"
+        score: 0.7
+    context:
+      - "bank"
+      - "account"
+      - "number"
+      - "banking"
+      - "current"
+      - "savings"
+
+  # UK Monetary Value Recognizer
+  - name: "UK_MONETARY_VALUE_RECOGNIZER"
+    supported_entity: "UK_MONETARY_VALUE"
+    supported_language: "en"
+    patterns:
+      - name: "uk_monetary_standard"
+        regex: "£\\d{1,3}(?:,\\d{3})*(?:\\.\\d{2})?"
+        score: 0.9
+      - name: "uk_monetary_gbp"
+        regex: "GBP\\s?\\d{1,3}(?:,\\d{3})*(?:\\.\\d{2})?"
+        score: 0.85
+    context:
+      - "pounds"
+      - "sterling"
+      - "gbp"
+      - "£"
+      - "price"
+      - "cost"
+      - "payment"
+
+  # UK Passport Number Recognizer
+  - name: "UK_PASSPORT_RECOGNIZER"
+    supported_entity: "UK_PASSPORT"
+    supported_language: "en"
+    patterns:
+      - name: "uk_passport_standard"
+        regex: "\\b\\d{9}\\b"
+        score: 0.7
+      - name: "uk_passport_with_prefix"
+        regex: "\\b[Pp]assport\\s+[Nn]o\\.?\\s*\\d{9}\\b"
+        score: 0.9
+    context:
+      - "passport"
+      - "travel"
+      - "document"
+      - "id"
+      - "identification"
+
+  # Customer ID Recognizer
+  - name: "CUSTOMER_ID_RECOGNIZER"
+    supported_entity: "CUSTOMER_ID"
+    supported_language: "en"
+    patterns:
+      - name: "customer_id_standard"
+        regex: "\\bCUS\\d{6,8}\\b"
+        score: 0.9
+      - name: "customer_id_generic"
+        regex: "\\b[A-Z]{2,4}\\d{6,10}\\b"
+        score: 0.7
+    context:
+      - "customer"
+      - "client"
+      - "id"
+      - "number"
+      - "account"
+      - "reference"
+
+  # UK Phone Number Recognizer (Enhanced)
+  - name: "UK_PHONE_NUMBER_RECOGNIZER"
+    supported_entity: "PHONE_NUMBER"
+    supported_language: "en"
+    patterns:
+      - name: "uk_phone_mobile"
+        regex: "\\b07\\d{3}\\s?\\d{3}\\s?\\d{3}\\b"
+        score: 0.9
+      - name: "uk_phone_landline"
+        regex: "\\b0[1-9]\\d{2,4}\\s?\\d{3,7}\\b"
+        score: 0.85
+      - name: "uk_phone_international"
+        regex: "\\+44\\s?[1-9]\\d{8,9}"
+        score: 0.95
+    context:
+      - "phone"
+      - "tel"
+      - "mobile"
+      - "call"
+      - "number"
+      - "contact"
+
+  # Enhanced Email Recognizer (to supplement built-in)
+  - name: "ENHANCED_EMAIL_RECOGNIZER"
+    supported_entity: "EMAIL_ADDRESS"
+    supported_language: "en"
+    patterns:
+      - name: "standard_email"
+        regex: "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b"
+        score: 0.9
+      - name: "uk_gov_email"
+        regex: "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]*\\.gov\\.uk\\b"
+        score: 0.95
+      - name: "nhs_email"
+        regex: "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]*\\.nhs\\.(uk|net)\\b"
+        score: 0.95
+    context:
+      - "email"
+      - "mail"
+      - "contact"
+      - "address"
+      - "@"
+
+  # Enhanced Credit Card Recognizer
+  - name: "ENHANCED_CREDIT_CARD_RECOGNIZER"
+    supported_entity: "CREDIT_CARD"
+    supported_language: "en"
+    patterns:
+      - name: "visa_card"
+        regex: "\\b4\\d{3}[\\s-]?\\d{4}[\\s-]?\\d{4}[\\s-]?\\d{4}\\b"
+        score: 0.9
+      - name: "mastercard"
+        regex: "\\b5[1-5]\\d{2}[\\s-]?\\d{4}[\\s-]?\\d{4}[\\s-]?\\d{4}\\b"
+        score: 0.9
+      - name: "amex_card"
+        regex: "\\b3[47]\\d{2}[\\s-]?\\d{6}[\\s-]?\\d{5}\\b"
+        score: 0.9
+    context:
+      - "card"
+      - "credit"
+      - "payment"
+      - "visa"
+      - "mastercard"
+      - "amex"
+
+  # IBAN Recognizer (Enhanced)
+  - name: "ENHANCED_IBAN_RECOGNIZER"
+    supported_entity: "IBAN_CODE"
+    supported_language: "en"
+    patterns:
+      - name: "uk_iban"
+        regex: "\\bGB\\d{2}[A-Z]{4}\\d{6}\\d{8}\\b"
+        score: 0.95
+      - name: "general_iban"
+        regex: "\\b[A-Z]{2}\\d{2}[A-Z0-9]{4}\\d{7}([A-Z0-9]?){0,16}\\b"
+        score: 0.9
+    context:
+      - "iban"
+      - "international"
+      - "bank"
+      - "account"
+      - "number"
+
+  # VAT Number Recognizer
+  - name: "UK_VAT_NUMBER_RECOGNIZER"
+    supported_entity: "UK_VAT_NUMBER"
+    supported_language: "en"
+    patterns:
+      - name: "uk_vat_standard"
+        regex: "\\bGB\\d{9}\\b"
+        score: 0.9
+      - name: "uk_vat_with_prefix"
+        regex: "\\b(?:VAT|vat)\\s?(?:no|number)?[:\\s]*GB\\d{9}\\b"
+        score: 0.95
+      - name: "uk_vat_digits_only"
+        regex: "\\b\\d{9}\\b(?=.*(?:VAT|vat|tax))"
+        score: 0.8
+    context:
+      - "vat"
+      - "tax"
+      - "registration"
+      - "number"
+      - "gb"
+
+  # Company Registration Number
+  - name: "UK_COMPANY_NUMBER_RECOGNIZER"
+    supported_entity: "UK_COMPANY_NUMBER"
+    supported_language: "en"
+    patterns:
+      - name: "uk_company_standard"
+        regex: "\\b\\d{8}\\b"
+        score: 0.7
+      - name: "uk_company_with_prefix"
+        regex: "\\b(?:company|registration)\\s+(?:no|number)[:\\s]*\\d{8}\\b"
+        score: 0.9
+    context:
+      - "company"
+      - "registration"
+      - "number"
+      - "incorporated"
+      - "ltd"
+      - "limited"
+
+  # Vehicle Registration (UK)
+  - name: "UK_VEHICLE_REG_RECOGNIZER"
+    supported_entity: "UK_VEHICLE_REG"
+    supported_language: "en"
+    patterns:
+      - name: "uk_reg_new_format"
+        regex: "\\b[A-Z]{2}\\d{2}\\s?[A-Z]{3}\\b"
+        score: 0.9
+      - name: "uk_reg_old_format"
+        regex: "\\b[A-Z]{1,3}\\s?\\d{1,4}\\s?[A-Z]{1,3}\\b"
+        score: 0.85
+    context:
+      - "registration"
+      - "vehicle"
+      - "car"
+      - "number"
+      - "plate"
+      - "reg"
+
+  # Driving License Number (UK)
+  - name: "UK_DRIVING_LICENSE_RECOGNIZER"
+    supported_entity: "UK_DRIVING_LICENSE"
+    supported_language: "en"
+    patterns:
+      - name: "uk_license_standard"
+        regex: "\\b[A-Z0-9]{5}\\s?\\d{6}\\s?[A-Z0-9]{2}\\s?\\d{3}\\b"
+        score: 0.9
+    context:
+      - "driving"
+      - "license"
+      - "licence"
+      - "dvla"
+      - "driver"
+
+  # URL Recognizer
+  - name: "URL_RECOGNIZER"
+    supported_entity: "URL"
+    supported_language: "en"
+    patterns:
+      - name: "http_url"
+        regex: "https?://(?:[-\\w.])+(?:[:\\d]+)?(?:/(?:[\\w/_.])*(?:\\?(?:[\\w&=%.])*)?(?:\\#(?:[\\w.])*)?)?"
+        score: 0.95
+      - name: "www_url"
+        regex: "www\\.(?:[a-zA-Z]|[0-9]|[$-_@.&+]|[!*\\(\\),]|(?:%[0-9a-fA-F][0-9a-fA-F]))+"
+        score: 0.9
+      - name: "domain_url"
+        regex: "\\b[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\\.[a-zA-Z]{2,}\\b"
+        score: 0.85
+    context:
+      - "url"
+      - "website"
+      - "link"
+      - "http"
+      - "https"
+      - "www"
+      - "domain"
+
+  # IP Address Recognizer
+  - name: "IP_ADDRESS_RECOGNIZER"
+    supported_entity: "IP_ADDRESS"
+    supported_language: "en"
+    patterns:
+      - name: "ipv4_address"
+        regex: "\\b(?:(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\.){3}(?:25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\\b"
+        score: 0.95
+      - name: "ipv6_address"
+        regex: "\\b(?:[0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}\\b|\\b(?:[0-9a-fA-F]{1,4}:){1,7}:|\\b(?:[0-9a-fA-F]{1,4}:){1,6}:[0-9a-fA-F]{1,4}\\b|\\b(?:[0-9a-fA-F]{1,4}:){1,5}(?::[0-9a-fA-F]{1,4}){1,2}\\b"
+        score: 0.9
+    context:
+      - "ip"
+      - "address"
+      - "server"
+      - "network"
+      - "internet"
+      - "host"
+
+  # US SSN Recognizer
+  - name: "US_SSN_RECOGNIZER"
+    supported_entity: "US_SSN"
+    supported_language: "en"
+    patterns:
+      - name: "ssn_with_dashes"
+        regex: "\\b\\d{3}-\\d{2}-\\d{4}\\b"
+        score: 0.95
+      - name: "ssn_with_spaces"
+        regex: "\\b\\d{3}\\s\\d{2}\\s\\d{4}\\b"
+        score: 0.9
+      - name: "ssn_no_separators"
+        regex: "\\b\\d{9}\\b"
+        score: 0.7
+    context:
+      - "ssn"
+      - "social"
+      - "security"
+      - "number"
+      - "tax"
+      - "identification"
+
+  # US Passport Recognizer
+  - name: "US_PASSPORT_RECOGNIZER"
+    supported_entity: "US_PASSPORT"
+    supported_language: "en"
+    patterns:
+      - name: "us_passport_standard"
+        regex: "\\b[0-9]{9}\\b"
+        score: 0.8
+      - name: "us_passport_with_prefix"
+        regex: "\\b[Pp]assport\\s+[Nn]o\\.?\\s*[0-9]{9}\\b"
+        score: 0.95
+      - name: "us_passport_book"
+        regex: "\\b[A-Z]{2}[0-9]{7}\\b"
+        score: 0.85
+    context:
+      - "passport"
+      - "travel"
+      - "document"
+      - "usa"
+      - "united states"
+      - "identification"
+
+  # Organization/Company Name Recognizer
+  # - name: "ORGANIZATION_RECOGNIZER"
+  #   supported_entity: "ORGANIZATION"
+  #   supported_language: "en"
+  #   patterns:
+  #     - name: "company_suffixes"
+  #       regex: "\\b[A-Z][\\w\\s&-]*\\s(?:Inc|LLC|Ltd|Corp|Corporation|Company|Co|LP|LLP|Limited|PLC)\\b\\.?"
+  #       score: 0.85
+  #     - name: "government_agencies"
+  #       regex: "\\b(?:Department of|Ministry of|Agency|Bureau|Commission|Office of)\\s[A-Z][\\w\\s&-]*\\b"
+  #       score: 0.9
+  #     - name: "university_institutions"
+  #       regex: "\\b(?:University of|College of|Institute of)\\s[A-Z][\\w\\s&-]*\\b|\\b[A-Z][\\w\\s&-]*\\s(?:University|College|Institute)\\b"
+  #       score: 0.85
+  #     - name: "healthcare_orgs"
+  #       regex: "\\b[A-Z][\\w\\s&-]*\\s(?:Hospital|Medical Center|Health System|Clinic)\\b"
+  #       score: 0.85
+  #   context:
+  #     - "company"
+  #     - "organization"
+  #     - "corporation"
+  #     - "business"
+  #     - "firm"
+  #     - "enterprise"
+  #     - "agency"
+  #     - "institution"
+  #     - "inc"
+  #     - "ltd"
+  #     - "corp"
+
+# Global settings for all recognizers
+global_regex_flags: 2  # re.IGNORECASE
+version: "1.0.0"
+description: "UK-specific PII recognizers converted from Python to YAML configuration"

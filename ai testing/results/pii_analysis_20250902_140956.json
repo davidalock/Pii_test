@@ -1,0 +1,99 @@
+{
+  "analysis_metadata": {
+    "timestamp": "2025-09-02T14:09:56.209930",
+    "file_analyzed": "test_simple_datetime.csv",
+    "records_processed": 1,
+    "fields_analyzed": [
+      "source"
+    ],
+    "total_presidio_entities": 2,
+    "total_uk_patterns": 0,
+    "total_missed_entities": 0,
+    "total_transformer_entities": 0,
+    "total_all_entities": 2,
+    "analysis_options": {
+      "use_threading": true,
+      "num_threads": 4,
+      "perform_anonymization": true,
+      "verify_anonymization": true,
+      "use_transformers": true,
+      "transformer_model": ""
+    }
+  },
+  "detailed_results": [
+    {
+      "record_id": "record_0",
+      "record_index": 0,
+      "columns_analyzed": {
+        "source": {
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "DATE_TIME",
+                "start": 0,
+                "end": 10,
+                "text": "15/08/2024",
+                "confidence": 0.9,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 11,
+                "end": 18,
+                "text": "2:30 PM",
+                "confidence": 0.85,
+                "source": "Presidio"
+              }
+            ],
+            "transformer_findings": [],
+            "ollama_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [
+              {
+                "entity_type": "DATE_TIME",
+                "start": 0,
+                "end": 10,
+                "text": "15/08/2024",
+                "confidence": 0.9,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 11,
+                "end": 18,
+                "text": "2:30 PM",
+                "confidence": 0.85,
+                "source": "Presidio"
+              }
+            ],
+            "summary": {
+              "total_presidio": 2,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_transformer": 0,
+              "total_all": 2
+            },
+            "original_text": "15/08/2024 2:30 PM"
+          },
+          "anonymization": {
+            "anonymized_content": "[DATE] 2:30 PM"
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'source' was not properly anonymized"
+            ]
+          }
+        }
+      },
+      "summary": {
+        "total_presidio": 2,
+        "total_uk_patterns": 0,
+        "total_missed": 0,
+        "total_all": 2
+      }
+    }
+  ]
+}

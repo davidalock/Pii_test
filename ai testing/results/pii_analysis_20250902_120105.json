@@ -1,0 +1,181 @@
+{
+  "analysis_metadata": {
+    "timestamp": "2025-09-02T12:01:05.272295",
+    "file_analyzed": "test_allow_list_header.csv",
+    "records_processed": 1,
+    "fields_analyzed": [
+      "source"
+    ],
+    "total_presidio_entities": 5,
+    "total_uk_patterns": 0,
+    "total_missed_entities": 1,
+    "total_transformer_entities": 0,
+    "total_all_entities": 7,
+    "analysis_options": {
+      "use_threading": true,
+      "num_threads": 4,
+      "perform_anonymization": true,
+      "verify_anonymization": true,
+      "use_transformers": true,
+      "transformer_model": ""
+    }
+  },
+  "detailed_results": [
+    {
+      "record_id": "record_0",
+      "record_index": 0,
+      "columns_analyzed": {
+        "source": {
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "EMAIL_ADDRESS",
+                "start": 69,
+                "end": 82,
+                "text": "john@test.com",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 20,
+                "end": 29,
+                "text": "yesterday",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 130,
+                "end": 138,
+                "text": "tomorrow",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 100,
+                "end": 112,
+                "text": "555-123-4567",
+                "confidence": 0.75,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "URL",
+                "start": 74,
+                "end": 82,
+                "text": "test.com",
+                "confidence": 0.5,
+                "source": "Presidio"
+              }
+            ],
+            "transformer_findings": [
+              {
+                "entity_type": "PERSON",
+                "start": 38,
+                "end": 48,
+                "text": "John Smith",
+                "confidence": "0.998989",
+                "source": "transformer-dslim/bert-base-NER"
+              }
+            ],
+            "ollama_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 43,
+                "end": 48,
+                "text": "Smith",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "all_findings": [
+              {
+                "entity_type": "EMAIL_ADDRESS",
+                "start": 69,
+                "end": 82,
+                "text": "john@test.com",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 20,
+                "end": 29,
+                "text": "yesterday",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 130,
+                "end": 138,
+                "text": "tomorrow",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 100,
+                "end": 112,
+                "text": "555-123-4567",
+                "confidence": 0.75,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "URL",
+                "start": 74,
+                "end": 82,
+                "text": "test.com",
+                "confidence": 0.5,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 43,
+                "end": 48,
+                "text": "Smith",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "PERSON",
+                "start": 38,
+                "end": 48,
+                "text": "John Smith",
+                "confidence": "0.998989",
+                "source": "transformer-dslim/bert-base-NER"
+              }
+            ],
+            "summary": {
+              "total_presidio": 5,
+              "total_uk_patterns": 0,
+              "total_missed": 1,
+              "total_transformer": 1,
+              "total_all": 7
+            },
+            "original_text": "I went to the store yesterday and met John Smith there. His email is john@test.com and his phone is 555-123-4567. We talked about tomorrow's meeting."
+          },
+          "anonymization": {
+            "anonymized_content": "I went to the store yesterday and met John Smith there. His email is [EMAIL] and his phone is 555-123-4567. We talked about tomorrow's meeting."
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'source' was not properly anonymized"
+            ]
+          }
+        }
+      },
+      "summary": {
+        "total_presidio": 5,
+        "total_uk_patterns": 0,
+        "total_missed": 1,
+        "total_all": 7
+      }
+    }
+  ]
+}

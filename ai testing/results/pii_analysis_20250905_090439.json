@@ -1,0 +1,341 @@
+{
+  "analysis_metadata": {
+    "timestamp": "2025-09-05T09:04:39.444541",
+    "file_analyzed": "test_data.csv",
+    "records_processed": 2,
+    "fields_analyzed": [
+      "text"
+    ],
+    "total_presidio_entities": 6,
+    "total_uk_patterns": 3,
+    "total_missed_entities": 3,
+    "total_transformer_entities": 0,
+    "total_all_entities": 14,
+    "analysis_options": {
+      "use_threading": true,
+      "num_threads": 4,
+      "perform_anonymization": true,
+      "verify_anonymization": true,
+      "use_transformers": true,
+      "transformer_model": ""
+    }
+  },
+  "detailed_results": [
+    {
+      "record_id": "record_0",
+      "record_index": 0,
+      "columns_analyzed": {
+        "text": {
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "UK_COMPANY_NUMBER",
+                "start": 54,
+                "end": 62,
+                "text": "12345678",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_BANK_ACCOUNT",
+                "start": 54,
+                "end": 62,
+                "text": "12345678",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 54,
+                "end": 62,
+                "text": "12345678",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "US_BANK_NUMBER",
+                "start": 54,
+                "end": 62,
+                "text": "12345678",
+                "confidence": 0.4,
+                "source": "Presidio"
+              }
+            ],
+            "transformer_findings": [
+              {
+                "entity_type": "PERSON",
+                "start": 18,
+                "end": 28,
+                "text": "John Smith",
+                "confidence": "0.999243",
+                "source": "transformer-dslim/bert-base-NER"
+              }
+            ],
+            "uk_pattern_findings": [
+              {
+                "entity_type": "UK_BANK_ACCOUNT",
+                "start": 54,
+                "end": 62,
+                "text": "12345678",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              }
+            ],
+            "missed_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 0,
+                "end": 5,
+                "text": "Hello",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 23,
+                "end": 28,
+                "text": "Smith",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "ollama_findings": [],
+            "all_findings": [
+              {
+                "entity_type": "UK_COMPANY_NUMBER",
+                "start": 54,
+                "end": 62,
+                "text": "12345678",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_BANK_ACCOUNT",
+                "start": 54,
+                "end": 62,
+                "text": "12345678",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 54,
+                "end": 62,
+                "text": "12345678",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "US_BANK_NUMBER",
+                "start": 54,
+                "end": 62,
+                "text": "12345678",
+                "confidence": 0.4,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PERSON",
+                "start": 18,
+                "end": 28,
+                "text": "John Smith",
+                "confidence": "0.999243",
+                "source": "transformer-dslim/bert-base-NER"
+              },
+              {
+                "entity_type": "UK_BANK_ACCOUNT",
+                "start": 54,
+                "end": 62,
+                "text": "12345678",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 0,
+                "end": 5,
+                "text": "Hello",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 23,
+                "end": 28,
+                "text": "Smith",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "summary": {
+              "total_presidio": 4,
+              "total_uk_patterns": 1,
+              "total_missed": 2,
+              "total_transformer": 1,
+              "total_ollama": 0,
+              "total_all": 8
+            },
+            "original_text": "Hello, my name is John Smith and my account number is 12345678"
+          },
+          "anonymization": {
+            "anonymized_content": "Hello, my name is John Smith and my account number is [UK_COMPANY_NUMBER]"
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'text' was not properly anonymized"
+            ]
+          }
+        }
+      },
+      "summary": {
+        "total_presidio": 4,
+        "total_uk_patterns": 1,
+        "total_missed": 2,
+        "total_all": 8
+      }
+    },
+    {
+      "record_id": "record_1",
+      "record_index": 1,
+      "columns_analyzed": {
+        "text": {
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 16,
+                "end": 24,
+                "text": "21-37-39",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 50,
+                "end": 57,
+                "text": "AB1 2CD",
+                "confidence": 1.0,
+                "source": "Presidio"
+              }
+            ],
+            "transformer_findings": [
+              {
+                "entity_type": "LOCATION",
+                "start": 32,
+                "end": 34,
+                "text": "UK",
+                "confidence": "0.9995266",
+                "source": "transformer-dslim/bert-base-NER"
+              }
+            ],
+            "uk_pattern_findings": [
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 50,
+                "end": 57,
+                "text": "AB1 2CD",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 16,
+                "end": 24,
+                "text": "21-37-39",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              }
+            ],
+            "missed_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 8,
+                "end": 24,
+                "text": "code is 21-37-39",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "ollama_findings": [],
+            "all_findings": [
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 16,
+                "end": 24,
+                "text": "21-37-39",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 50,
+                "end": 57,
+                "text": "AB1 2CD",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "LOCATION",
+                "start": 32,
+                "end": 34,
+                "text": "UK",
+                "confidence": "0.9995266",
+                "source": "transformer-dslim/bert-base-NER"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 50,
+                "end": 57,
+                "text": "AB1 2CD",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 16,
+                "end": 24,
+                "text": "21-37-39",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 8,
+                "end": 24,
+                "text": "code is 21-37-39",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "summary": {
+              "total_presidio": 2,
+              "total_uk_patterns": 2,
+              "total_missed": 1,
+              "total_transformer": 1,
+              "total_ollama": 0,
+              "total_all": 6
+            },
+            "original_text": "My sort code is 21-37-39 and my UK postal code is AB1 2CD"
+          },
+          "anonymization": {
+            "anonymized_content": "My sort code is [SORT_CODE] and my UK postal code is AB1 2CD"
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'text' was not properly anonymized"
+            ]
+          }
+        }
+      },
+      "summary": {
+        "total_presidio": 2,
+        "total_uk_patterns": 2,
+        "total_missed": 1,
+        "total_all": 6
+      }
+    }
+  ]
+}

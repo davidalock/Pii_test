@@ -1,0 +1,4583 @@
+{
+  "metadata": {
+    "timestamp": "20250830_201116",
+    "processing_mode": "multithreaded",
+    "max_workers": 4,
+    "records_processed": 25,
+    "total_entities_found": 395,
+    "processing_time_seconds": 1.668271780014038,
+    "total_time_seconds": 5.415154933929443,
+    "initialization_time_seconds": 3.7468509674072266,
+    "use_ollama": false,
+    "resolve_overlaps": true,
+    "min_confidence": 0.0,
+    "entity_sources": {
+      "transformer-dslim/bert-base-NER": 111,
+      "presidio": 258,
+      "pattern-matching": 26
+    },
+    "ground_truth_total": 400
+  },
+  "results": [
+    {
+      "record_id": "record_0",
+      "record_index": 0,
+      "conversation_id": "",
+      "customer_id": "CUS671412",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Jack",
+          "Abbott",
+          "jack.abbott@gmail.com",
+          "01256 884140",
+          "08/03/1966",
+          "174 London Rd, Southend-on-Sea SS1 1PH",
+          "174 London Rd",
+          "Southend-on-Sea",
+          "SS1 1PH",
+          "BR 85 64 14 A",
+          "21-37-39",
+          "77827638",
+          "GB87ZAYL8532903736687537",
+          "52889623938667401",
+          "CUS671412",
+          "£55,087.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Jack Abbott jack.abbott@gmail.com 01256 884140 08/03/1966 174 London Rd, Southend-on-Sea SS1 1PH 174 London Rd Southend-on-Sea SS1 1PH BR 85 64 14 A 21-37-39 77827638 GB87ZAYL8532903736687537 52889623938667401 CUS671412 £55,087.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Jack Abbott",
+              "start": 0,
+              "end": 11,
+              "confidence": "0.9975115",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "jack.abbott@gmail.com",
+              "start": 12,
+              "end": 33,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "01256 884140",
+              "start": 34,
+              "end": 46,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "08/03/1966",
+              "start": 47,
+              "end": 57,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "London Rd",
+              "start": 62,
+              "end": 71,
+              "confidence": "0.98122954",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Southend-on-Sea",
+              "start": 73,
+              "end": 88,
+              "confidence": "0.9955773",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "SS1 1PH",
+              "start": 89,
+              "end": 96,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "London Rd",
+              "start": 101,
+              "end": 110,
+              "confidence": "0.967221",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Southend-on-Sea",
+              "start": 111,
+              "end": 126,
+              "confidence": "0.99398303",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "SS1 1PH",
+              "start": 127,
+              "end": 134,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "BR",
+              "start": 135,
+              "end": 137,
+              "confidence": "0.9527513",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "64 14",
+              "start": 141,
+              "end": 146,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "21-37-39",
+              "start": 149,
+              "end": 157,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "77827638",
+              "start": 158,
+              "end": 166,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£55,087.00",
+              "start": 220,
+              "end": 230,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] 174 [LOCATION], [LOCATION] [UK_POSTCODE] 174 [LOCATION] [LOCATION] [UK_POSTCODE] [ORGANIZATION] 85 [DATE_TIME] A [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB87ZAYL8532903736687537 52889623938667401 CUS671412 [UK_MONETARY_VALUE]",
+          "entity_count": 15
+        }
+      }
+    },
+    {
+      "record_id": "record_1",
+      "record_index": 1,
+      "conversation_id": "",
+      "customer_id": "CUS662275",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Diane",
+          "Abbott",
+          "diane.abbott@uk-consulting.com",
+          "07702 202 319",
+          "25/03/1987",
+          "19 High St, Crickhowell NP8 1BD",
+          "19 High St",
+          "Crickhowell",
+          "NP8 1BD",
+          "PG 45 29 37 B",
+          "23-21-58",
+          "22981052",
+          "GB55ZAYZ9103073645503389",
+          "4617267520467920",
+          "CUS662275",
+          "£16,461.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Diane Abbott diane.abbott@uk-consulting.com 07702 202 319 25/03/1987 19 High St, Crickhowell NP8 1BD 19 High St Crickhowell NP8 1BD PG 45 29 37 B 23-21-58 22981052 GB55ZAYZ9103073645503389 4617267520467920 CUS662275 £16,461.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Diane Abbott",
+              "start": 0,
+              "end": 12,
+              "confidence": "0.996917",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "diane.abbott@uk-consulting.com",
+              "start": 13,
+              "end": 43,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "25/03/1987",
+              "start": 58,
+              "end": 68,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "High St",
+              "start": 72,
+              "end": 79,
+              "confidence": "0.90027463",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "C",
+              "start": 81,
+              "end": 82,
+              "confidence": "0.99215114",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "rickhowell",
+              "start": 82,
+              "end": 92,
+              "confidence": "0.91837484",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "NP8 1BD",
+              "start": 93,
+              "end": 100,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ADDRESS",
+              "text": "19 High St",
+              "start": 101,
+              "end": 111,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "NP8 1BD",
+              "start": 124,
+              "end": 131,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "PG 45 29 37 B",
+              "start": 132,
+              "end": 145,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "23-21-58",
+              "start": 146,
+              "end": 154,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "22981052",
+              "start": 155,
+              "end": 163,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "CREDIT_CARD",
+              "text": "4617267520467920",
+              "start": 189,
+              "end": 205,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£16,461.00",
+              "start": 216,
+              "end": 226,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] 07702 202 319 [DATE_TIME] 19 [LOCATION], [LOCATION][LOCATION] [UK_POSTCODE] [ADDRESS] Crickhowell [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB55ZAYZ9103073645503389 [CREDIT_CARD] CUS662275 [UK_MONETARY_VALUE]",
+          "entity_count": 14
+        }
+      }
+    },
+    {
+      "record_id": "record_2",
+      "record_index": 2,
+      "conversation_id": "",
+      "customer_id": "CUS802729",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Debbie",
+          "Abrahams",
+          "debbie.abrahams@hotmail.com",
+          "0207 920 1852",
+          "19/04/1964",
+          "30A London Rd, Tetbury GL8 8JL",
+          "30A London Rd",
+          "Tetbury",
+          "GL8 8JL",
+          "BR 94 39 47 A",
+          "39-22-58",
+          "47308985",
+          "GB68LLGV5896694631831063",
+          "51335885424739667",
+          "CUS802729",
+          "£35,093.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Debbie Abrahams debbie.abrahams@hotmail.com 0207 920 1852 19/04/1964 30A London Rd, Tetbury GL8 8JL 30A London Rd Tetbury GL8 8JL BR 94 39 47 A 39-22-58 47308985 GB68LLGV5896694631831063 51335885424739667 CUS802729 £35,093.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Debbie Abraham",
+              "start": 0,
+              "end": 14,
+              "confidence": "0.9991865",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "debbie.abrahams@hotmail.com",
+              "start": 16,
+              "end": 43,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "0207 920 1852",
+              "start": 44,
+              "end": 57,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "19/04/1964",
+              "start": 58,
+              "end": 68,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "London Rd",
+              "start": 73,
+              "end": 82,
+              "confidence": "0.93984807",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Tetbury",
+              "start": 84,
+              "end": 91,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "GL8 8JL",
+              "start": 92,
+              "end": 99,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "London Rd",
+              "start": 104,
+              "end": 113,
+              "confidence": "0.85319257",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Tetbury",
+              "start": 114,
+              "end": 121,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "GL8 8JL",
+              "start": 122,
+              "end": 129,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "BR",
+              "start": 130,
+              "end": 132,
+              "confidence": "0.95679605",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "94 39",
+              "start": 133,
+              "end": 138,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "39-22-58",
+              "start": 144,
+              "end": 152,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "47308985",
+              "start": 153,
+              "end": 161,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "51335885424739667",
+              "start": 187,
+              "end": 204,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£35,093.00",
+              "start": 215,
+              "end": 225,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON]s [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] 30A [LOCATION], [ORGANIZATION] [UK_POSTCODE] 30A [LOCATION] [ORGANIZATION] [UK_POSTCODE] [ORGANIZATION] [DATE_TIME] 47 A [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB68LLGV5896694631831063 [DATE_TIME] CUS802729 [UK_MONETARY_VALUE]",
+          "entity_count": 16
+        }
+      }
+    },
+    {
+      "record_id": "record_3",
+      "record_index": 3,
+      "conversation_id": "",
+      "customer_id": "CUS852787",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Shockat",
+          "Adam",
+          "shockat.adam@sky.com",
+          "07700 923 193",
+          "06/08/1984",
+          "116 High St, Maidenhead SL6 1PT",
+          "116 High St",
+          "Maidenhead",
+          "SL6 1PT",
+          "PG 91 98 81 A",
+          "97-51-17",
+          "40742311",
+          "GB14ZAYZ6384342645935572",
+          "4738588377270244",
+          "CUS852787",
+          "£41,345.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Shockat Adam shockat.adam@sky.com 07700 923 193 06/08/1984 116 High St, Maidenhead SL6 1PT 116 High St Maidenhead SL6 1PT PG 91 98 81 A 97-51-17 40742311 GB14ZAYZ6384342645935572 4738588377270244 CUS852787 £41,345.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Shockat Adam",
+              "start": 0,
+              "end": 12,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "shockat.adam@sky.com",
+              "start": 13,
+              "end": 33,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "07700 923",
+              "start": 34,
+              "end": 43,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "06/08/1984",
+              "start": 48,
+              "end": 58,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "High St",
+              "start": 63,
+              "end": 70,
+              "confidence": "0.9089496",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Maidenhead",
+              "start": 72,
+              "end": 82,
+              "confidence": "0.9028816",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "SL6 1PT",
+              "start": 83,
+              "end": 90,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "High St Maidenhead",
+              "start": 95,
+              "end": 113,
+              "confidence": "0.87282693",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "SL6 1PT",
+              "start": 114,
+              "end": 121,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "PG 91 98 81 A",
+              "start": 122,
+              "end": 135,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "97-51-17",
+              "start": 136,
+              "end": 144,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "40742311",
+              "start": 145,
+              "end": 153,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "CREDIT_CARD",
+              "text": "4738588377270244",
+              "start": 179,
+              "end": 195,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£41,345.00",
+              "start": 206,
+              "end": 216,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] 193 [DATE_TIME] 116 [LOCATION], [LOCATION] [UK_POSTCODE] 116 [LOCATION] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB14ZAYZ6384342645935572 [CREDIT_CARD] CUS852787 [UK_MONETARY_VALUE]",
+          "entity_count": 14
+        }
+      }
+    },
+    {
+      "record_id": "record_4",
+      "record_index": 4,
+      "conversation_id": "",
+      "customer_id": "CUS260265",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Zubir",
+          "Ahmed",
+          "zubir.ahmed@manchester-group.co.uk",
+          "01273 714 8133",
+          "05/05/1968",
+          "655 Arena Shopping Park, London N4 1ED",
+          "655 Arena Shopping Park",
+          "London",
+          "N4 1ED",
+          "BG 81 78 43 B",
+          "84-61-56",
+          "39436733",
+          "GB27LLGV7623857422201654",
+          "4223453943397782",
+          "CUS260265",
+          "£82,340.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Zubir Ahmed zubir.ahmed@manchester-group.co.uk 01273 714 8133 05/05/1968 655 Arena Shopping Park, London N4 1ED 655 Arena Shopping Park London N4 1ED BG 81 78 43 B 84-61-56 39436733 GB27LLGV7623857422201654 4223453943397782 CUS260265 £82,340.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Zubir Ahmed",
+              "start": 0,
+              "end": 11,
+              "confidence": "0.9097777",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "zubir.ahmed@manchester-group.co.uk",
+              "start": 12,
+              "end": 46,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "01273 714 8133",
+              "start": 47,
+              "end": 61,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "05/05/1968",
+              "start": 62,
+              "end": 72,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Arena Shopping Park",
+              "start": 77,
+              "end": 96,
+              "confidence": "0.9582043",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "London",
+              "start": 98,
+              "end": 104,
+              "confidence": "0.99890804",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "N4 1ED",
+              "start": 105,
+              "end": 111,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Arena Shopping Park",
+              "start": 116,
+              "end": 135,
+              "confidence": "0.9557268",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "London",
+              "start": 136,
+              "end": 142,
+              "confidence": "0.59861416",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "N4 1ED",
+              "start": 143,
+              "end": 149,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "BG",
+              "start": 150,
+              "end": 152,
+              "confidence": "0.9639182",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "78 43",
+              "start": 156,
+              "end": 161,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "84-61-56",
+              "start": 164,
+              "end": 172,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "39436733",
+              "start": 173,
+              "end": 181,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "4223453943397782",
+              "start": 207,
+              "end": 223,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£82,340.00",
+              "start": 234,
+              "end": 244,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] 655 [LOCATION], [LOCATION] [UK_POSTCODE] 655 [LOCATION] [LOCATION] [UK_POSTCODE] [ORGANIZATION] 81 [DATE_TIME] B [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB27LLGV7623857422201654 [DATE_TIME] CUS260265 [UK_MONETARY_VALUE]",
+          "entity_count": 16
+        }
+      }
+    },
+    {
+      "record_id": "record_5",
+      "record_index": 5,
+      "conversation_id": "",
+      "customer_id": "CUS857168",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Luke",
+          "Akehurst",
+          "luke.akehurst@london-financial.co.uk",
+          "07704 327 479",
+          "13/10/1989",
+          "115 London Southend Airport, Southend-on-Sea SS2 6YF",
+          "115 London Southend Airport",
+          "Southend-on-Sea",
+          "SS2 6YF",
+          "PG 80 11 97 A",
+          "97-78-44",
+          "96028436",
+          "GB53ZAYL4939292068353204",
+          "4103652670930083",
+          "CUS857168",
+          "£94,429.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Luke Akehurst luke.akehurst@london-financial.co.uk 07704 327 479 13/10/1989 115 London Southend Airport, Southend-on-Sea SS2 6YF 115 London Southend Airport Southend-on-Sea SS2 6YF PG 80 11 97 A 97-78-44 96028436 GB53ZAYL4939292068353204 4103652670930083 CUS857168 £94,429.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Luke Akehurst",
+              "start": 0,
+              "end": 13,
+              "confidence": "0.9925958",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "luke.akehurst@london-financial.co.uk",
+              "start": 14,
+              "end": 50,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "07704 327",
+              "start": 51,
+              "end": 60,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "13/10/1989",
+              "start": 65,
+              "end": 75,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "London Southend Airport",
+              "start": 80,
+              "end": 103,
+              "confidence": "0.9620863",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Southend-on-Sea",
+              "start": 105,
+              "end": 120,
+              "confidence": "0.9949293",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "SS2 6YF",
+              "start": 121,
+              "end": 128,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "London Southend Airport",
+              "start": 133,
+              "end": 156,
+              "confidence": "0.8957256",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Southend-on-Sea",
+              "start": 157,
+              "end": 172,
+              "confidence": "0.9932831",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "SS2 6YF",
+              "start": 173,
+              "end": 180,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "PG 80 11 97 A",
+              "start": 181,
+              "end": 194,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "97-78-44",
+              "start": 195,
+              "end": 203,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "96028436",
+              "start": 204,
+              "end": 212,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "CREDIT_CARD",
+              "text": "4103652670930083",
+              "start": 238,
+              "end": 254,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£94,429.00",
+              "start": 265,
+              "end": 275,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] 479 [DATE_TIME] 115 [LOCATION], [LOCATION] [UK_POSTCODE] 115 [LOCATION] [LOCATION] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB53ZAYL4939292068353204 [CREDIT_CARD] CUS857168 [UK_MONETARY_VALUE]",
+          "entity_count": 15
+        }
+      }
+    },
+    {
+      "record_id": "record_6",
+      "record_index": 6,
+      "conversation_id": "",
+      "customer_id": "CUS867460",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Bayo",
+          "Alaba",
+          "bayo.alaba@birmingham-ltd.com",
+          "07700 841 493",
+          "04/11/1979",
+          "48 Church St, Abertillery NP13 1DB",
+          "48 Church St",
+          "Abertillery",
+          "NP13 1DB",
+          "BG 29 57 30 A",
+          "86-51-72",
+          "12614124",
+          "GB24ZAYZ5127384742138745",
+          "4196435238956039",
+          "CUS867460",
+          "£63,799.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Bayo Alaba bayo.alaba@birmingham-ltd.com 07700 841 493 04/11/1979 48 Church St, Abertillery NP13 1DB 48 Church St Abertillery NP13 1DB BG 29 57 30 A 86-51-72 12614124 GB24ZAYZ5127384742138745 4196435238956039 CUS867460 £63,799.00",
+          "entities": [
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Bayo Alaba",
+              "start": 0,
+              "end": 10,
+              "confidence": "0.98430914",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "bayo.alaba@birmingham-ltd.com",
+              "start": 11,
+              "end": 40,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "07700",
+              "start": 41,
+              "end": 46,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "04/11/1979",
+              "start": 55,
+              "end": 65,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ADDRESS",
+              "text": "48 Church St",
+              "start": 66,
+              "end": 78,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Abertillery",
+              "start": 80,
+              "end": 91,
+              "confidence": "0.94332004",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "NP13 1DB",
+              "start": 92,
+              "end": 100,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ADDRESS",
+              "text": "48 Church St",
+              "start": 101,
+              "end": 113,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "D",
+              "start": 132,
+              "end": 133,
+              "confidence": "0.9357936",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "BG 29 57 30 A",
+              "start": 135,
+              "end": 148,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "86-51-72",
+              "start": 149,
+              "end": 157,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "12614124",
+              "start": 158,
+              "end": 166,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "4196435238956039",
+              "start": 192,
+              "end": 208,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "CUS867460",
+              "start": 209,
+              "end": 218,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£63,799.00",
+              "start": 219,
+              "end": 229,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[ORGANIZATION] [EMAIL_ADDRESS] [DATE_TIME] 841 493 [DATE_TIME] [ADDRESS], [LOCATION] [UK_POSTCODE] [ADDRESS] Abertillery NP13 1[ORGANIZATION]B [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB24ZAYZ5127384742138745 [DATE_TIME] [ORGANIZATION] [UK_MONETARY_VALUE]",
+          "entity_count": 15
+        }
+      }
+    },
+    {
+      "record_id": "record_7",
+      "record_index": 7,
+      "conversation_id": "",
+      "customer_id": "CUS573417",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Dan",
+          "Aldridge",
+          "dan.aldridge@scotland-enterprises.co.uk",
+          "01395 743789",
+          "22/08/1995",
+          "26 Stane St, Billingshurst RH14 9AE",
+          "26 Stane St",
+          "Billingshurst",
+          "RH14 9AE",
+          "BG 43 77 87 B",
+          "37-79-98",
+          "36998038",
+          "GB49ZAYZ9722515660119651",
+          "51682740731567051",
+          "CUS573417",
+          "£15,960.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Dan Aldridge dan.aldridge@scotland-enterprises.co.uk 01395 743789 22/08/1995 26 Stane St, Billingshurst RH14 9AE 26 Stane St Billingshurst RH14 9AE BG 43 77 87 B 37-79-98 36998038 GB49ZAYZ9722515660119651 51682740731567051 CUS573417 £15,960.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Dan Aldridge",
+              "start": 0,
+              "end": 12,
+              "confidence": "0.9986925",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "dan.aldridge@scotland-enterprises.co.uk",
+              "start": 13,
+              "end": 52,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "01395 743789",
+              "start": 53,
+              "end": 65,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "22/08/1995 26",
+              "start": 66,
+              "end": 79,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Stane St",
+              "start": 80,
+              "end": 88,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Billingshurst",
+              "start": 90,
+              "end": 103,
+              "confidence": "0.9708264",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "RH14 9AE",
+              "start": 104,
+              "end": 112,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ADDRESS",
+              "text": "26 Stane St",
+              "start": 113,
+              "end": 124,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "ingshurst",
+              "start": 129,
+              "end": 138,
+              "confidence": "0.6539154",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "A",
+              "start": 145,
+              "end": 146,
+              "confidence": "0.9663789",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "BG",
+              "start": 148,
+              "end": 150,
+              "confidence": "0.968449",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "77 87",
+              "start": 154,
+              "end": 159,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "37-79-98",
+              "start": 162,
+              "end": 170,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "36998038",
+              "start": 171,
+              "end": 179,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£15,960.00",
+              "start": 233,
+              "end": 243,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] [PERSON], [LOCATION] [UK_POSTCODE] [ADDRESS] Bill[LOCATION] RH14 9[ORGANIZATION]E [ORGANIZATION] 43 [DATE_TIME] B [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB49ZAYZ9722515660119651 51682740731567051 CUS573417 [UK_MONETARY_VALUE]",
+          "entity_count": 15
+        }
+      }
+    },
+    {
+      "record_id": "record_8",
+      "record_index": 8,
+      "conversation_id": "",
+      "customer_id": "CUS665427",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Heidi",
+          "Alexander",
+          "heidi.alexander@blueyonder.co.uk",
+          "0161 828 1941",
+          "19/09/1974",
+          "32 Durlston Dr, Bognor Regis PO22 9TD",
+          "32 Durlston Dr",
+          "Bognor Regis",
+          "PO22 9TD",
+          "BG 10 19 90 A",
+          "39-18-14",
+          "54349361",
+          "GB19LLGV4194444147376585",
+          "52341207448182759",
+          "CUS665427",
+          "£17,442.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Heidi Alexander heidi.alexander@blueyonder.co.uk 0161 828 1941 19/09/1974 32 Durlston Dr, Bognor Regis PO22 9TD 32 Durlston Dr Bognor Regis PO22 9TD BG 10 19 90 A 39-18-14 54349361 GB19LLGV4194444147376585 52341207448182759 CUS665427 £17,442.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Heidi Alexander",
+              "start": 0,
+              "end": 15,
+              "confidence": "0.9841133",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "heidi.alexander@blueyonder.co.uk",
+              "start": 16,
+              "end": 48,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "0161 828",
+              "start": 49,
+              "end": 57,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "1941",
+              "start": 58,
+              "end": 62,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "19/09/1974",
+              "start": 63,
+              "end": 73,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ADDRESS",
+              "text": "32 Durlston Dr",
+              "start": 74,
+              "end": 88,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Bognor Regis",
+              "start": 90,
+              "end": 102,
+              "confidence": "0.8952018",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "PO22 9TD",
+              "start": 103,
+              "end": 111,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ADDRESS",
+              "text": "32 Durlston Dr",
+              "start": 112,
+              "end": 126,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Bognor Regis",
+              "start": 127,
+              "end": 139,
+              "confidence": "0.89714503",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "PO22 9TD",
+              "start": 140,
+              "end": 148,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "BG 10 19 90 A",
+              "start": 149,
+              "end": 162,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "39-18-14",
+              "start": 163,
+              "end": 171,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "54349361",
+              "start": 172,
+              "end": 180,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "52341207448182759",
+              "start": 206,
+              "end": 223,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£17,442.00",
+              "start": 234,
+              "end": 244,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] [DATE_TIME] [ADDRESS], [ORGANIZATION] [UK_POSTCODE] [ADDRESS] [ORGANIZATION] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB19LLGV4194444147376585 [DATE_TIME] CUS665427 [UK_MONETARY_VALUE]",
+          "entity_count": 16
+        }
+      }
+    },
+    {
+      "record_id": "record_9",
+      "record_index": 9,
+      "conversation_id": "",
+      "customer_id": "CUS299448",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Douglas",
+          "Alexander",
+          "douglas.alexander@blueyonder.co.uk",
+          "01276 771394",
+          "07/02/1966",
+          "1, Shepton Mallet BA4 5SB",
+          "1",
+          "Shepton Mallet",
+          "BA4 5SB",
+          "WH 55 64 62 B",
+          "16-96-93",
+          "96728778",
+          "GB22ZAYL6403891355540424",
+          "4315711505445124",
+          "CUS299448",
+          "£70,392.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Douglas Alexander douglas.alexander@blueyonder.co.uk 01276 771394 07/02/1966 1, Shepton Mallet BA4 5SB 1 Shepton Mallet BA4 5SB WH 55 64 62 B 16-96-93 96728778 GB22ZAYL6403891355540424 4315711505445124 CUS299448 £70,392.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Douglas Alexander",
+              "start": 0,
+              "end": 17,
+              "confidence": "0.99568915",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "douglas.alexander@blueyonder.co.uk",
+              "start": 18,
+              "end": 52,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "01276 771394",
+              "start": 53,
+              "end": 65,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "07/02/1966",
+              "start": 66,
+              "end": 76,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "1",
+              "start": 77,
+              "end": 78,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "She",
+              "start": 80,
+              "end": 83,
+              "confidence": "0.9975097",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "pton Mallet",
+              "start": 83,
+              "end": 94,
+              "confidence": "0.99647",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "BA4 5SB",
+              "start": 95,
+              "end": 102,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "She",
+              "start": 105,
+              "end": 108,
+              "confidence": "0.99748576",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "pton Mallet",
+              "start": 108,
+              "end": 119,
+              "confidence": "0.99661636",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "BA4 5SB",
+              "start": 120,
+              "end": 127,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "WH 55 64 62 B",
+              "start": 128,
+              "end": 141,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "16-96-93",
+              "start": 142,
+              "end": 150,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "96728778",
+              "start": 151,
+              "end": 159,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "4315711505445124",
+              "start": 185,
+              "end": 201,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "CUS299448",
+              "start": 202,
+              "end": 211,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£70,392.00",
+              "start": 212,
+              "end": 222,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] [DATE_TIME], [ORGANIZATION][ORGANIZATION] [UK_POSTCODE] 1 [ORGANIZATION][ORGANIZATION] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB22ZAYL6403891355540424 [DATE_TIME] [PERSON] [UK_MONETARY_VALUE]",
+          "entity_count": 17
+        }
+      }
+    },
+    {
+      "record_id": "record_10",
+      "record_index": 10,
+      "conversation_id": "",
+      "customer_id": "CUS102260",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Sadik",
+          "Al-Hassan",
+          "sadik.al-hassan@bt.com",
+          "0203 306 9489",
+          "15/04/1964",
+          "760 Faraday Park, Swindon SN3 5JF",
+          "760 Faraday Park",
+          "Swindon",
+          "SN3 5JF",
+          "WH 80 22 16 A",
+          "21-40-31",
+          "64547971",
+          "GB72ZAYZ3868867663826716",
+          "4526684233132168",
+          "CUS102260",
+          "£51,273.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Sadik Al-Hassan sadik.al-hassan@bt.com 0203 306 9489 15/04/1964 760 Faraday Park, Swindon SN3 5JF 760 Faraday Park Swindon SN3 5JF WH 80 22 16 A 21-40-31 64547971 GB72ZAYZ3868867663826716 4526684233132168 CUS102260 £51,273.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Sadik Al-Hassan",
+              "start": 0,
+              "end": 15,
+              "confidence": "0.89361256",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "sadik.al-hassan@bt.com",
+              "start": 16,
+              "end": 38,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "PHONE_NUMBER",
+              "text": "0203 306 9489",
+              "start": 39,
+              "end": 52,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "15/04/1964",
+              "start": 53,
+              "end": 63,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Park",
+              "start": 76,
+              "end": 80,
+              "confidence": "0.8727039",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Swindon",
+              "start": 82,
+              "end": 89,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "SN3 5JF",
+              "start": 90,
+              "end": 97,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "Faraday",
+              "start": 102,
+              "end": 109,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "SN3 5JF",
+              "start": 123,
+              "end": 130,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "WH 80 22 16 A",
+              "start": 131,
+              "end": 144,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "21-40-31",
+              "start": 145,
+              "end": 153,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "64547971",
+              "start": 154,
+              "end": 162,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "CREDIT_CARD",
+              "text": "4526684233132168",
+              "start": 188,
+              "end": 204,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£51,273.00",
+              "start": 215,
+              "end": 225,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [PHONE_NUMBER] [DATE_TIME] 760 Faraday [LOCATION], [LOCATION] [UK_POSTCODE] 760 [DATE_TIME] Park Swindon [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB72ZAYZ3868867663826716 [CREDIT_CARD] CUS102260 [UK_MONETARY_VALUE]",
+          "entity_count": 14
+        }
+      }
+    },
+    {
+      "record_id": "record_11",
+      "record_index": 11,
+      "conversation_id": "",
+      "customer_id": "CUS184002",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Rushanara",
+          "Ali",
+          "rushanara.ali@uk-consulting.com",
+          "07700 902 713",
+          "05/04/1978",
+          "282 Renny's Ln, Durham DH1 2RS DH1 2RS",
+          "282 Renny's Ln",
+          "Durham DH1 2RS",
+          "DH1 2RS",
+          "BG 17 84 79 A",
+          "50-17-16",
+          "88406989",
+          "GB71LLGV8128654331130263",
+          "4671767352826658",
+          "CUS184002",
+          "£24,456.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Rushanara Ali rushanara.ali@uk-consulting.com 07700 902 713 05/04/1978 282 Renny's Ln, Durham DH1 2RS DH1 2RS 282 Renny's Ln Durham DH1 2RS DH1 2RS BG 17 84 79 A 50-17-16 88406989 GB71LLGV8128654331130263 4671767352826658 CUS184002 £24,456.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Rush",
+              "start": 0,
+              "end": 4,
+              "confidence": "0.9854137",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "ana",
+              "start": 4,
+              "end": 7,
+              "confidence": "0.41206074",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "rushanara.ali@uk-consulting.com",
+              "start": 14,
+              "end": 45,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "07700 902",
+              "start": 46,
+              "end": 55,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "05/04/1978",
+              "start": 60,
+              "end": 70,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Renny",
+              "start": 75,
+              "end": 80,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Ln",
+              "start": 83,
+              "end": 85,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Durham",
+              "start": 87,
+              "end": 93,
+              "confidence": "0.95655614",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "DH1 2RS",
+              "start": 94,
+              "end": 101,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "DH1 2RS",
+              "start": 102,
+              "end": 109,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Renny",
+              "start": 114,
+              "end": 119,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Durham",
+              "start": 125,
+              "end": 131,
+              "confidence": "0.97976685",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "DH1 2RS",
+              "start": 132,
+              "end": 139,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "DH1 2RS",
+              "start": 140,
+              "end": 147,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "BG 17 84 79 A",
+              "start": 148,
+              "end": 161,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "50-17-16",
+              "start": 162,
+              "end": 170,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "88406989",
+              "start": 171,
+              "end": 179,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "MEDICAL_LICENSE",
+              "text": "GV8128654",
+              "start": 186,
+              "end": 195,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "4671767352826658",
+              "start": 205,
+              "end": 221,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£24,456.00",
+              "start": 232,
+              "end": 242,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON][ORGANIZATION]ra Ali [EMAIL_ADDRESS] [DATE_TIME] 713 [DATE_TIME] 282 [PERSON]'s [LOCATION], [ORGANIZATION] [UK_POSTCODE] [UK_POSTCODE] 282 [PERSON]'s Ln [ORGANIZATION] [UK_POSTCODE] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB71LL[MEDICAL_LICENSE]331130263 [DATE_TIME] CUS184002 [UK_MONETARY_VALUE]",
+          "entity_count": 20
+        }
+      }
+    },
+    {
+      "record_id": "record_12",
+      "record_index": 12,
+      "conversation_id": "",
+      "customer_id": "CUS350280",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Tahir",
+          "Ali",
+          "tahir.ali@hotmail.com",
+          "0208 337 3776",
+          "13/02/1996",
+          "251 Marine Cres, Worthing BN12 4HR",
+          "251 Marine Cres",
+          "Worthing",
+          "BN12 4HR",
+          "BG 84 86 15 A",
+          "63-94-84",
+          "85863473",
+          "GB76ZAYZ4499937937415205",
+          "52453740877486221",
+          "CUS350280",
+          "£34,914.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Tahir Ali tahir.ali@hotmail.com 0208 337 3776 13/02/1996 251 Marine Cres, Worthing BN12 4HR 251 Marine Cres Worthing BN12 4HR BG 84 86 15 A 63-94-84 85863473 GB76ZAYZ4499937937415205 52453740877486221 CUS350280 £34,914.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Ta",
+              "start": 0,
+              "end": 2,
+              "confidence": "0.9991548",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "hir Ali",
+              "start": 2,
+              "end": 9,
+              "confidence": "0.78477484",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "tahir.ali@hotmail.com",
+              "start": 10,
+              "end": 31,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "0208 337 3776",
+              "start": 32,
+              "end": 45,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "13/02/1996",
+              "start": 46,
+              "end": 56,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Marine Cres",
+              "start": 61,
+              "end": 72,
+              "confidence": "0.9852016",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Worthing",
+              "start": 74,
+              "end": 82,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "BN12 4HR",
+              "start": 83,
+              "end": 91,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Marine Cres",
+              "start": 96,
+              "end": 107,
+              "confidence": "0.98109293",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "ing",
+              "start": 113,
+              "end": 116,
+              "confidence": "0.820318",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "BN12 4HR",
+              "start": 117,
+              "end": 125,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "BG 84 86 15 A",
+              "start": 126,
+              "end": 139,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "63-94-84",
+              "start": 140,
+              "end": 148,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "85863473",
+              "start": 149,
+              "end": 157,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "52453740877486221",
+              "start": 183,
+              "end": 200,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£34,914.00",
+              "start": 211,
+              "end": 221,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON][PERSON] [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] 251 [ORGANIZATION], [PERSON] [UK_POSTCODE] 251 [ORGANIZATION] Worth[ORGANIZATION] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB76ZAYZ4499937937415205 [DATE_TIME] CUS350280 [UK_MONETARY_VALUE]",
+          "entity_count": 16
+        }
+      }
+    },
+    {
+      "record_id": "record_13",
+      "record_index": 13,
+      "conversation_id": "",
+      "customer_id": "CUS265409",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Rosena",
+          "Allin-Khan",
+          "rosena.allin-khan@bt.com",
+          "0191 344 1004",
+          "15/06/1964",
+          "97-99 Bridgend Rd, Bridgend CF32 9AP",
+          "97-99 Bridgend Rd",
+          "Bridgend",
+          "CF32 9AP",
+          "BR 68 89 82 A",
+          "19-78-37",
+          "77898694",
+          "GB43ZAYL5684317219233013",
+          "4420865708889042",
+          "CUS265409",
+          "£57,533.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Rosena Allin-Khan rosena.allin-khan@bt.com 0191 344 1004 15/06/1964 97-99 Bridgend Rd, Bridgend CF32 9AP 97-99 Bridgend Rd Bridgend CF32 9AP BR 68 89 82 A 19-78-37 77898694 GB43ZAYL5684317219233013 4420865708889042 CUS265409 £57,533.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Rosena Allin",
+              "start": 0,
+              "end": 12,
+              "confidence": "0.8778646",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "rosena.allin-khan@bt.com",
+              "start": 18,
+              "end": 42,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "PHONE_NUMBER",
+              "text": "0191 344 1004",
+              "start": 43,
+              "end": 56,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "15/06/1964",
+              "start": 57,
+              "end": 67,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Bridgend Rd",
+              "start": 74,
+              "end": 85,
+              "confidence": "0.9515214",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Bridgend CF",
+              "start": 87,
+              "end": 98,
+              "confidence": "0.9619071",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "ADDRESS",
+              "text": "99 Bridgend Rd",
+              "start": 108,
+              "end": 122,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "CF32 9AP",
+              "start": 132,
+              "end": 140,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "BR",
+              "start": 141,
+              "end": 143,
+              "confidence": "0.9959721",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "68 89",
+              "start": 144,
+              "end": 149,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "19-78-37",
+              "start": 155,
+              "end": 163,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "77898694",
+              "start": 164,
+              "end": 172,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "GB43ZAYL5684317219233013 4420865708889042",
+              "start": 173,
+              "end": 214,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£57,533.00",
+              "start": 225,
+              "end": 235,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON]-Khan [EMAIL_ADDRESS] [PHONE_NUMBER] [DATE_TIME] 97-99 [LOCATION], [LOCATION]32 9AP 97-[ADDRESS] Bridgend [UK_POSTCODE] [ORGANIZATION] [DATE_TIME] 82 A [UK_SORT_CODE] [UK_BANK_ACCOUNT] [ORGANIZATION] CUS265409 [UK_MONETARY_VALUE]",
+          "entity_count": 14
+        }
+      }
+    },
+    {
+      "record_id": "record_14",
+      "record_index": 14,
+      "conversation_id": "",
+      "customer_id": "CUS820892",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Jim",
+          "Allister",
+          "jim.allister@telford-consulting.co.uk",
+          "01256 389340",
+          "01/11/1995",
+          "229 Beaconsfield Services, Beaconsfield HP9 2SE",
+          "229 Beaconsfield Services",
+          "Beaconsfield",
+          "HP9 2SE",
+          "PG 94 23 27 B",
+          "24-23-80",
+          "30863865",
+          "GB44ZAYZ9117888538270233",
+          "52329228172214442",
+          "CUS820892",
+          "£83,230.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Jim Allister jim.allister@telford-consulting.co.uk 01256 389340 01/11/1995 229 Beaconsfield Services, Beaconsfield HP9 2SE 229 Beaconsfield Services Beaconsfield HP9 2SE PG 94 23 27 B 24-23-80 30863865 GB44ZAYZ9117888538270233 52329228172214442 CUS820892 £83,230.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Jim Allister",
+              "start": 0,
+              "end": 12,
+              "confidence": "0.99868566",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "jim.allister@telford-consulting.co.uk",
+              "start": 13,
+              "end": 50,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "01256 389340 01/11/1995",
+              "start": 51,
+              "end": 74,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Beaconsfield Services",
+              "start": 79,
+              "end": 100,
+              "confidence": "0.9975876",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Beaconsfield",
+              "start": 102,
+              "end": 114,
+              "confidence": "0.9373857",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "HP9 2SE",
+              "start": 115,
+              "end": 122,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Beaconsfield Services",
+              "start": 127,
+              "end": 148,
+              "confidence": "0.9949558",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Beaconsfield",
+              "start": 149,
+              "end": 161,
+              "confidence": "0.9084945",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "HP9 2SE",
+              "start": 162,
+              "end": 169,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "PG 94 23 27 B",
+              "start": 170,
+              "end": 183,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "24-23-80",
+              "start": 184,
+              "end": 192,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "30863865",
+              "start": 193,
+              "end": 201,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£83,230.00",
+              "start": 255,
+              "end": 265,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] 229 [ORGANIZATION], [ORGANIZATION] [UK_POSTCODE] 229 [ORGANIZATION] [ORGANIZATION] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB44ZAYZ9117888538270233 52329228172214442 CUS820892 [UK_MONETARY_VALUE]",
+          "entity_count": 13
+        }
+      }
+    },
+    {
+      "record_id": "record_15",
+      "record_index": 15,
+      "conversation_id": "",
+      "customer_id": "CUS824586",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Gideon",
+          "Amos",
+          "gideon.amos@birmingham-ltd.com",
+          "0191 785 7474",
+          "03/11/1987",
+          "143 Enos Way, Frome BA11 2FH",
+          "143 Enos Way",
+          "Frome",
+          "BA11 2FH",
+          "PG 15 10 52 A",
+          "91-43-30",
+          "69302158",
+          "GB80LLGV6740316685283645",
+          "4184714415440968",
+          "CUS824586",
+          "£19,636.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Gideon Amos gideon.amos@birmingham-ltd.com 0191 785 7474 03/11/1987 143 Enos Way, Frome BA11 2FH 143 Enos Way Frome BA11 2FH PG 15 10 52 A 91-43-30 69302158 GB80LLGV6740316685283645 4184714415440968 CUS824586 £19,636.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Gideon Amos",
+              "start": 0,
+              "end": 11,
+              "confidence": "0.99837816",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "gideon.amos@birmingham-ltd.com",
+              "start": 12,
+              "end": 42,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "0191 785",
+              "start": 43,
+              "end": 51,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "7474",
+              "start": 52,
+              "end": 56,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "03/11/1987",
+              "start": 57,
+              "end": 67,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ADDRESS",
+              "text": "143 Enos Way",
+              "start": 68,
+              "end": 80,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "From",
+              "start": 82,
+              "end": 86,
+              "confidence": "0.9594082",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "BA11 2FH",
+              "start": 88,
+              "end": 96,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ADDRESS",
+              "text": "143 Enos Way",
+              "start": 97,
+              "end": 109,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "From",
+              "start": 110,
+              "end": 114,
+              "confidence": "0.65748286",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "BA11 2FH",
+              "start": 116,
+              "end": 124,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "PG 15 10 52 A",
+              "start": 125,
+              "end": 138,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "91-43-30",
+              "start": 139,
+              "end": 147,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "69302158",
+              "start": 148,
+              "end": 156,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "IBAN_CODE",
+              "text": "GB80LLGV6740316685283645 4184714415",
+              "start": 157,
+              "end": 192,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£19,636.00",
+              "start": 209,
+              "end": 219,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] [DATE_TIME] [ADDRESS], [ORGANIZATION]e [UK_POSTCODE] [ADDRESS] [ORGANIZATION]e [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] [IBAN_CODE]440968 CUS824586 [UK_MONETARY_VALUE]",
+          "entity_count": 16
+        }
+      }
+    },
+    {
+      "record_id": "record_16",
+      "record_index": 16,
+      "conversation_id": "",
+      "customer_id": "CUS270395",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Callum",
+          "Anderson",
+          "callum.anderson@yahoo.com",
+          "0203 630 1251",
+          "14/03/1962",
+          "68 Tylacelyn Rd, Tonypandy CF40 1JU",
+          "68 Tylacelyn Rd",
+          "Tonypandy",
+          "CF40 1JU",
+          "PG 56 15 55 A",
+          "97-41-95",
+          "23796726",
+          "GB55LLGV6454304993303777",
+          "52366545369231029",
+          "CUS270395",
+          "£23,306.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Callum Anderson callum.anderson@yahoo.com 0203 630 1251 14/03/1962 68 Tylacelyn Rd, Tonypandy CF40 1JU 68 Tylacelyn Rd Tonypandy CF40 1JU PG 56 15 55 A 97-41-95 23796726 GB55LLGV6454304993303777 52366545369231029 CUS270395 £23,306.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Callum Anderson",
+              "start": 0,
+              "end": 15,
+              "confidence": "0.99845505",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "callum.anderson@yahoo.com",
+              "start": 16,
+              "end": 41,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "0203 630 1251",
+              "start": 42,
+              "end": 55,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "14/03/1962",
+              "start": 56,
+              "end": 66,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ADDRESS",
+              "text": "68 Tylacelyn Rd",
+              "start": 67,
+              "end": 82,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Tony",
+              "start": 84,
+              "end": 88,
+              "confidence": "0.94018036",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "pan",
+              "start": 88,
+              "end": 91,
+              "confidence": "0.7886383",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "CF40 1JU",
+              "start": 94,
+              "end": 102,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Ty",
+              "start": 106,
+              "end": 108,
+              "confidence": "0.95278394",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "lacelyn Rd",
+              "start": 108,
+              "end": 118,
+              "confidence": "0.763896",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Tony",
+              "start": 119,
+              "end": 123,
+              "confidence": "0.65034616",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "pan",
+              "start": 123,
+              "end": 126,
+              "confidence": "0.75891805",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "dy",
+              "start": 126,
+              "end": 128,
+              "confidence": "0.49953806",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "CF40 1JU",
+              "start": 129,
+              "end": 137,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "PG 56 15 55 A",
+              "start": 138,
+              "end": 151,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "97-41-95",
+              "start": 152,
+              "end": 160,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "23796726",
+              "start": 161,
+              "end": 169,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "52366545369231029",
+              "start": 195,
+              "end": 212,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£23,306.00",
+              "start": 223,
+              "end": 233,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] [ADDRESS], [ORGANIZATION][LOCATION]dy [UK_POSTCODE] 68 [ORGANIZATION][LOCATION] [ORGANIZATION][LOCATION][ORGANIZATION] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB55LLGV6454304993303777 [DATE_TIME] CUS270395 [UK_MONETARY_VALUE]",
+          "entity_count": 19
+        }
+      }
+    },
+    {
+      "record_id": "record_17",
+      "record_index": 17,
+      "conversation_id": "",
+      "customer_id": "CUS302511",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Fleur",
+          "Anderson",
+          "fleur.anderson@gmail.com",
+          "0131 192 5661",
+          "26/07/1975",
+          "755 Unit 2, Birkenhead CH41 4PF",
+          "755 Unit 2",
+          "Birkenhead",
+          "CH41 4PF",
+          "PG 30 99 23 B",
+          "14-70-38",
+          "36786211",
+          "GB68ZAYZ5096202440547349",
+          "4843128228093787",
+          "CUS302511",
+          "£52,327.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Fleur Anderson fleur.anderson@gmail.com 0131 192 5661 26/07/1975 755 Unit 2, Birkenhead CH41 4PF 755 Unit 2 Birkenhead CH41 4PF PG 30 99 23 B 14-70-38 36786211 GB68ZAYZ5096202440547349 4843128228093787 CUS302511 £52,327.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "F",
+              "start": 0,
+              "end": 1,
+              "confidence": "0.9941141",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "ur Anderson",
+              "start": 3,
+              "end": 14,
+              "confidence": "0.98000133",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "fleur.anderson@gmail.com",
+              "start": 15,
+              "end": 39,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "0131 192",
+              "start": 40,
+              "end": 48,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "5661",
+              "start": 49,
+              "end": 53,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "26/07/1975",
+              "start": 54,
+              "end": 64,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "head",
+              "start": 83,
+              "end": 87,
+              "confidence": "0.8708317",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "CH41 4PF",
+              "start": 88,
+              "end": 96,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "head",
+              "start": 114,
+              "end": 118,
+              "confidence": "0.93182385",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "CH41 4PF",
+              "start": 119,
+              "end": 127,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "PG 30 99 23 B",
+              "start": 128,
+              "end": 141,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "14-70-38",
+              "start": 142,
+              "end": 150,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "36786211",
+              "start": 151,
+              "end": 159,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "GB68ZAYZ5096202440547349 4843128228093787",
+              "start": 160,
+              "end": 201,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£52,327.00",
+              "start": 212,
+              "end": 222,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON]le[PERSON] [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] [DATE_TIME] 755 Unit 2, Birken[ORGANIZATION] [UK_POSTCODE] 755 Unit 2 Birken[ORGANIZATION] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] [DATE_TIME] CUS302511 [UK_MONETARY_VALUE]",
+          "entity_count": 15
+        }
+      }
+    },
+    {
+      "record_id": "record_18",
+      "record_index": 18,
+      "conversation_id": "",
+      "customer_id": "CUS924629",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Lee",
+          "Anderson",
+          "lee.anderson@john-lewis.com",
+          "01603 696 6703",
+          "12/11/1992",
+          "105 Dalston Rd, Carlisle CA2 5NP",
+          "105 Dalston Rd",
+          "Carlisle",
+          "CA2 5NP",
+          "WH 96 78 52 A",
+          "24-43-32",
+          "87925434",
+          "GB43ZAYL2454954390070438",
+          "51920267223806788",
+          "CUS924629",
+          "£41,214.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Lee Anderson lee.anderson@john-lewis.com 01603 696 6703 12/11/1992 105 Dalston Rd, Carlisle CA2 5NP 105 Dalston Rd Carlisle CA2 5NP WH 96 78 52 A 24-43-32 87925434 GB43ZAYL2454954390070438 51920267223806788 CUS924629 £41,214.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Lee Anderson",
+              "start": 0,
+              "end": 12,
+              "confidence": "0.9992337",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "lee.anderson@john-lewis.com",
+              "start": 13,
+              "end": 40,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "PHONE_NUMBER",
+              "text": "01603 696 6703",
+              "start": 41,
+              "end": 55,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "12/11/1992",
+              "start": 56,
+              "end": 66,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Dalston Rd",
+              "start": 71,
+              "end": 81,
+              "confidence": "0.9736021",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Carlisle",
+              "start": 83,
+              "end": 91,
+              "confidence": "0.9611985",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "CA2 5NP",
+              "start": 92,
+              "end": 99,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Dalston Rd",
+              "start": 104,
+              "end": 114,
+              "confidence": "0.8736927",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Carlisle",
+              "start": 115,
+              "end": 123,
+              "confidence": "0.7945889",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "CA2 5NP",
+              "start": 124,
+              "end": 131,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "WH 96 78 52 A",
+              "start": 132,
+              "end": 145,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "24-43-32",
+              "start": 146,
+              "end": 154,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "87925434",
+              "start": 155,
+              "end": 163,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "51920267223806788",
+              "start": 189,
+              "end": 206,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£41,214.00",
+              "start": 217,
+              "end": 227,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [PHONE_NUMBER] [DATE_TIME] 105 [LOCATION], [LOCATION] [UK_POSTCODE] 105 [LOCATION] [LOCATION] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB43ZAYL2454954390070438 [DATE_TIME] CUS924629 [UK_MONETARY_VALUE]",
+          "entity_count": 15
+        }
+      }
+    },
+    {
+      "record_id": "record_19",
+      "record_index": 19,
+      "conversation_id": "",
+      "customer_id": "CUS424308",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Stuart",
+          "Anderson",
+          "stuart.anderson@british-industries.com",
+          "07704 331 720",
+          "02/12/1987",
+          "693 Denbigh LL16 3LF, Denbigh LL16 3LF SE1 9AA",
+          "693 Denbigh LL16 3LF",
+          "Denbigh LL16 3LF",
+          "SE1 9AA",
+          "BR 76 78 97 A",
+          "56-65-18",
+          "99152472",
+          "GB52LLGV5213304499038359",
+          "4670969947237264",
+          "CUS424308",
+          "£87,510.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Stuart Anderson stuart.anderson@british-industries.com 07704 331 720 02/12/1987 693 Denbigh LL16 3LF, Denbigh LL16 3LF SE1 9AA 693 Denbigh LL16 3LF Denbigh LL16 3LF SE1 9AA BR 76 78 97 A 56-65-18 99152472 GB52LLGV5213304499038359 4670969947237264 CUS424308 £87,510.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Stuart Anderson",
+              "start": 0,
+              "end": 15,
+              "confidence": "0.99917245",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "stuart.anderson@british-industries.com",
+              "start": 16,
+              "end": 54,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "07704",
+              "start": 55,
+              "end": 60,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "02/12/1987",
+              "start": 69,
+              "end": 79,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Denbigh",
+              "start": 84,
+              "end": 91,
+              "confidence": "0.8974474",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "LL16 3LF",
+              "start": 92,
+              "end": 100,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Denbigh",
+              "start": 102,
+              "end": 109,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "LL16 3LF",
+              "start": 110,
+              "end": 118,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "SE1 9AA",
+              "start": 119,
+              "end": 126,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Denbigh",
+              "start": 131,
+              "end": 138,
+              "confidence": "0.97894627",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "LL16 3LF",
+              "start": 139,
+              "end": 147,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Denbigh",
+              "start": 148,
+              "end": 155,
+              "confidence": "0.9319236",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "LL16 3LF",
+              "start": 156,
+              "end": 164,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "SE1 9AA",
+              "start": 165,
+              "end": 172,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "BR",
+              "start": 173,
+              "end": 175,
+              "confidence": "0.9916632",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "76 78 97",
+              "start": 176,
+              "end": 184,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "56-65-18",
+              "start": 187,
+              "end": 195,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "99152472",
+              "start": 196,
+              "end": 204,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "CREDIT_CARD",
+              "text": "4670969947237264",
+              "start": 230,
+              "end": 246,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£87,510.00",
+              "start": 257,
+              "end": 267,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] 331 720 [DATE_TIME] 693 [ORGANIZATION] [UK_POSTCODE], [ORGANIZATION] [UK_POSTCODE] [UK_POSTCODE] 693 [ORGANIZATION] [UK_POSTCODE] [ORGANIZATION] [UK_POSTCODE] [UK_POSTCODE] [ORGANIZATION] [DATE_TIME] A [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB52LLGV5213304499038359 [CREDIT_CARD] CUS424308 [UK_MONETARY_VALUE]",
+          "entity_count": 20
+        }
+      }
+    },
+    {
+      "record_id": "record_20",
+      "record_index": 20,
+      "conversation_id": "",
+      "customer_id": "CUS708158",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Stuart",
+          "Andrew",
+          "stuart.andrew@leamington-spa-services.co.uk",
+          "01420 523579",
+          "18/03/1972",
+          "64/66 Raven Way Salford City Shopping Centre, Salford M6 5HT",
+          "64/66 Raven Way Salford City Shopping Centre",
+          "Salford",
+          "M6 5HT",
+          "WH 95 58 96 A",
+          "88-82-48",
+          "64502486",
+          "GB80ZAYL5078540548508907",
+          "4984683504952904",
+          "CUS708158",
+          "£79,616.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Stuart Andrew stuart.andrew@leamington-spa-services.co.uk 01420 523579 18/03/1972 64/66 Raven Way Salford City Shopping Centre, Salford M6 5HT 64/66 Raven Way Salford City Shopping Centre Salford M6 5HT WH 95 58 96 A 88-82-48 64502486 GB80ZAYL5078540548508907 4984683504952904 CUS708158 £79,616.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Stuart Andrew",
+              "start": 0,
+              "end": 13,
+              "confidence": "0.9963041",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "stuart.andrew@leamington-spa-services.co.uk",
+              "start": 14,
+              "end": 57,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "523579",
+              "start": 64,
+              "end": 70,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "18/03/1972",
+              "start": 71,
+              "end": 81,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Way",
+              "start": 94,
+              "end": 97,
+              "confidence": "0.9087255",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Salford City Shopping Centre",
+              "start": 98,
+              "end": 126,
+              "confidence": "0.9503092",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Salford",
+              "start": 128,
+              "end": 135,
+              "confidence": "0.89702505",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "M6 5HT",
+              "start": 136,
+              "end": 142,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ADDRESS",
+              "text": "66 Raven Way",
+              "start": 146,
+              "end": 158,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Salford City Shopping Centre",
+              "start": 159,
+              "end": 187,
+              "confidence": "0.96342266",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Salford",
+              "start": 188,
+              "end": 195,
+              "confidence": "0.5694959",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "M6 5HT",
+              "start": 196,
+              "end": 202,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "WH 95 58 96 A",
+              "start": 203,
+              "end": 216,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "88-82-48",
+              "start": 217,
+              "end": 225,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "64502486",
+              "start": 226,
+              "end": 234,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "4984683504952904",
+              "start": 260,
+              "end": 276,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£79,616.00",
+              "start": 287,
+              "end": 297,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] 01420 [DATE_TIME] [DATE_TIME] 64/66 Raven [LOCATION] [LOCATION], [LOCATION] [UK_POSTCODE] 64/[ADDRESS] [LOCATION] [LOCATION] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB80ZAYL5078540548508907 [DATE_TIME] CUS708158 [UK_MONETARY_VALUE]",
+          "entity_count": 17
+        }
+      }
+    },
+    {
+      "record_id": "record_21",
+      "record_index": 21,
+      "conversation_id": "",
+      "customer_id": "CUS991014",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Tonia",
+          "Antoniazzi",
+          "tonia.antoniazzi@uk-consulting.com",
+          "0207 279 7670",
+          "17/08/1970",
+          "100 Foord Rd, Folkestone CT19 5AB",
+          "100 Foord Rd",
+          "Folkestone",
+          "CT19 5AB",
+          "BR 46 75 94 B",
+          "21-40-96",
+          "51663795",
+          "GB38ZAYL2977751413278320",
+          "4788231895173379",
+          "CUS991014",
+          "£9,645.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Tonia Antoniazzi tonia.antoniazzi@uk-consulting.com 0207 279 7670 17/08/1970 100 Foord Rd, Folkestone CT19 5AB 100 Foord Rd Folkestone CT19 5AB BR 46 75 94 B 21-40-96 51663795 GB38ZAYL2977751413278320 4788231895173379 CUS991014 £9,645.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Tonia Antoniazzi",
+              "start": 0,
+              "end": 16,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "tonia.antoniazzi@uk-consulting.com",
+              "start": 17,
+              "end": 51,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "0207 279",
+              "start": 52,
+              "end": 60,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "7670",
+              "start": 61,
+              "end": 65,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "17/08/1970",
+              "start": 66,
+              "end": 76,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ADDRESS",
+              "text": "100 Foord Rd",
+              "start": 77,
+              "end": 89,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Folkestone",
+              "start": 91,
+              "end": 101,
+              "confidence": "0.6912478",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "CT19 5AB",
+              "start": 102,
+              "end": 110,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ADDRESS",
+              "text": "100 Foord Rd",
+              "start": 111,
+              "end": 123,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "Folk",
+              "start": 124,
+              "end": 128,
+              "confidence": "0.72093666",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "estone",
+              "start": 128,
+              "end": 134,
+              "confidence": "0.5210511",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "CT19 5AB",
+              "start": 135,
+              "end": 143,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "BR",
+              "start": 144,
+              "end": 146,
+              "confidence": "0.97291476",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "46 75 94",
+              "start": 147,
+              "end": 155,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "21-40-96",
+              "start": 158,
+              "end": 166,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "51663795",
+              "start": 167,
+              "end": 175,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "4788231895173379",
+              "start": 201,
+              "end": 217,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£9,645.00",
+              "start": 228,
+              "end": 237,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] [DATE_TIME] [ADDRESS], [ORGANIZATION] [UK_POSTCODE] [ADDRESS] [ORGANIZATION][LOCATION] [UK_POSTCODE] [ORGANIZATION] [DATE_TIME] B [UK_SORT_CODE] [DATE_TIME] GB38ZAYL2977751413278320 [DATE_TIME] CUS991014 [UK_MONETARY_VALUE]",
+          "entity_count": 18
+        }
+      }
+    },
+    {
+      "record_id": "record_22",
+      "record_index": 22,
+      "conversation_id": "",
+      "customer_id": "CUS578634",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Steff",
+          "Aquarone",
+          "steff.aquarone@london-financial.co.uk",
+          "0208 174 9243",
+          "23/12/1984",
+          "19 Ford Lane Business Park, Arundel BN18 0UZ",
+          "19 Ford Lane Business Park",
+          "Arundel",
+          "BN18 0UZ",
+          "WH 61 41 28 A",
+          "23-64-38",
+          "33607110",
+          "GB99LLGV7235083016740197",
+          "52236639438164519",
+          "CUS578634",
+          "£17,577.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Steff Aquarone steff.aquarone@london-financial.co.uk 0208 174 9243 23/12/1984 19 Ford Lane Business Park, Arundel BN18 0UZ 19 Ford Lane Business Park Arundel BN18 0UZ WH 61 41 28 A 23-64-38 33607110 GB99LLGV7235083016740197 52236639438164519 CUS578634 £17,577.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "St",
+              "start": 0,
+              "end": 2,
+              "confidence": "0.99104613",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Aqua",
+              "start": 6,
+              "end": 10,
+              "confidence": "0.9849633",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "steff.aquarone@london-financial.co.uk",
+              "start": 15,
+              "end": 52,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "0208 174 9243 23/12/1984",
+              "start": 53,
+              "end": 77,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Ford Lane Business Park",
+              "start": 81,
+              "end": 104,
+              "confidence": "0.96496266",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Arun",
+              "start": 106,
+              "end": 110,
+              "confidence": "0.8534725",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "BN18 0UZ",
+              "start": 114,
+              "end": 122,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Ford Lane Business Park Arun",
+              "start": 126,
+              "end": 154,
+              "confidence": "0.880964",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "BN18 0UZ",
+              "start": 158,
+              "end": 166,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "WH 61 41 28 A",
+              "start": 167,
+              "end": 180,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "23-64-38",
+              "start": 181,
+              "end": 189,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "33607110",
+              "start": 190,
+              "end": 198,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "52236639438164519",
+              "start": 224,
+              "end": 241,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£17,577.00",
+              "start": 252,
+              "end": 262,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON]eff [PERSON]rone [EMAIL_ADDRESS] [DATE_TIME] 19 [LOCATION], [LOCATION]del [UK_POSTCODE] 19 [LOCATION]del [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB99LLGV7235083016740197 [DATE_TIME] CUS578634 [UK_MONETARY_VALUE]",
+          "entity_count": 14
+        }
+      }
+    },
+    {
+      "record_id": "record_23",
+      "record_index": 23,
+      "conversation_id": "",
+      "customer_id": "CUS181247",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Edward",
+          "Argar",
+          "edward.argar@birmingham-ltd.com",
+          "07701 922 625",
+          "25/08/1999",
+          "89-91 New George St, Plymouth PL1 1RQ",
+          "89-91 New George St",
+          "Plymouth",
+          "PL1 1RQ",
+          "WH 80 67 30 B",
+          "67-43-41",
+          "95585469",
+          "GB45LLGV7504151094120751",
+          "4595249563321519",
+          "CUS181247",
+          "£93,625.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Edward Argar edward.argar@birmingham-ltd.com 07701 922 625 25/08/1999 89-91 New George St, Plymouth PL1 1RQ 89-91 New George St Plymouth PL1 1RQ WH 80 67 30 B 67-43-41 95585469 GB45LLGV7504151094120751 4595249563321519 CUS181247 £93,625.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Edward Arga",
+              "start": 0,
+              "end": 11,
+              "confidence": "0.99893516",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "edward.argar@birmingham-ltd.com",
+              "start": 13,
+              "end": 44,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "25/08/1999",
+              "start": 59,
+              "end": 69,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "New George",
+              "start": 76,
+              "end": 86,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Plymouth",
+              "start": 91,
+              "end": 99,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "PL1 1RQ",
+              "start": 100,
+              "end": 107,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "New George",
+              "start": 114,
+              "end": 124,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "St Plymouth",
+              "start": 125,
+              "end": 136,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "PL1 1RQ",
+              "start": 137,
+              "end": 144,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "WH 80 67 30 B",
+              "start": 145,
+              "end": 158,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "67-43-41",
+              "start": 159,
+              "end": 167,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "95585469",
+              "start": 168,
+              "end": 176,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "CREDIT_CARD",
+              "text": "4595249563321519",
+              "start": 202,
+              "end": 218,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£93,625.00",
+              "start": 229,
+              "end": 239,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON]r [EMAIL_ADDRESS] 07701 922 625 [DATE_TIME] 89-91 [PERSON] St, [LOCATION] [UK_POSTCODE] 89-91 [PERSON] [PERSON] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB45LLGV7504151094120751 [CREDIT_CARD] CUS181247 [UK_MONETARY_VALUE]",
+          "entity_count": 14
+        }
+      }
+    },
+    {
+      "record_id": "record_24",
+      "record_index": 24,
+      "conversation_id": "",
+      "customer_id": "CUS907189",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Scott",
+          "Arthur",
+          "scott.arthur@blueyonder.co.uk",
+          "01453 952646",
+          "18/02/1968",
+          "759 St Jude, Woking GU22 8AA",
+          "759 St Jude",
+          "Woking",
+          "GU22 8AA",
+          "BG 39 59 98 A",
+          "37-18-63",
+          "64707061",
+          "GB52LLGV7253530165804273",
+          "4538513670456991",
+          "CUS907189",
+          "£76,656.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Scott Arthur scott.arthur@blueyonder.co.uk 01453 952646 18/02/1968 759 St Jude, Woking GU22 8AA 759 St Jude Woking GU22 8AA BG 39 59 98 A 37-18-63 64707061 GB52LLGV7253530165804273 4538513670456991 CUS907189 £76,656.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Scott Arthur",
+              "start": 0,
+              "end": 12,
+              "confidence": "0.997211",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "scott.arthur@blueyonder.co.uk",
+              "start": 13,
+              "end": 42,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "01453 952646",
+              "start": 43,
+              "end": 55,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "18/02/1968",
+              "start": 56,
+              "end": 66,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "St Jude",
+              "start": 71,
+              "end": 78,
+              "confidence": "0.9779364",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "W",
+              "start": 80,
+              "end": 81,
+              "confidence": "0.9912917",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "oki",
+              "start": 81,
+              "end": 84,
+              "confidence": "0.5896827",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "ng",
+              "start": 84,
+              "end": 86,
+              "confidence": "0.45400137",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "GU22 8AA",
+              "start": 87,
+              "end": 95,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "ORGANIZATION",
+              "text": "St Jude Woking",
+              "start": 100,
+              "end": 114,
+              "confidence": "0.9688457",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "GU22 8AA",
+              "start": 115,
+              "end": 123,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "BG 39 59 98 A",
+              "start": 124,
+              "end": 137,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "37-18-63",
+              "start": 138,
+              "end": 146,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "64707061",
+              "start": 147,
+              "end": 155,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "4538513670456991",
+              "start": 181,
+              "end": 197,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "CUS907189",
+              "start": 198,
+              "end": 207,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£76,656.00",
+              "start": 208,
+              "end": 218,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] 759 [ORGANIZATION], [ORGANIZATION][LOCATION][ORGANIZATION] [UK_POSTCODE] 759 [ORGANIZATION] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] GB52LLGV7253530165804273 [DATE_TIME] [PERSON] [UK_MONETARY_VALUE]",
+          "entity_count": 17
+        }
+      }
+    }
+  ]
+}

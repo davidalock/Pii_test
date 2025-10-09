@@ -1,0 +1,38 @@
+analyzers:
+  ollama:
+    class: OllamaEntityExtractor
+    config:
+      model_name: mistral:7b-instruct
+      temperature: 0.1
+    description: Ollama-based entity extraction using local LLMs
+    enabled: false
+    module: ollama_integration
+  presidio:
+    description: Standard Presidio analyzer with built-in recognizers
+    enabled: true
+    language: en
+    sensitivity_threshold: 0.35
+  transformer:
+    config:
+      sensitivity: 0.35
+      transformer_model: dslim/bert-base-NER
+      uk_specific: true
+    description: Transformer-based NER using BERT models
+    enabled: true
+    function: get_analyzer_with_transformers
+    module: transformer_integration
+  uk_recognizers:
+    description: UK-specific recognizers for postcodes, sort codes, etc.
+    enabled: false
+    function: register_uk_recognizers
+    module: uk_recognizers
+overlap_resolution:
+  confidence_threshold_diff: 0.1
+  enabled: false
+  prioritize_person: false
+pii_entities: []
+processing:
+  max_records: 1000
+  num_threads: 4
+  target_field: source
+  use_threading: true

@@ -1,0 +1,92 @@
+{
+  "analysis_metadata": {
+    "timestamp": "2025-09-01T17:43:35.327038",
+    "file_analyzed": "test_header.csv",
+    "records_processed": 1,
+    "fields_analyzed": [
+      "source"
+    ],
+    "total_presidio_entities": 0,
+    "total_uk_patterns": 0,
+    "total_missed_entities": 0,
+    "total_transformer_entities": 0,
+    "total_all_entities": 2,
+    "analysis_options": {
+      "use_threading": true,
+      "num_threads": 4,
+      "perform_anonymization": true,
+      "verify_anonymization": true,
+      "use_transformers": true,
+      "transformer_model": ""
+    }
+  },
+  "detailed_results": [
+    {
+      "record_id": "record_Hello John Smith",
+      "record_index": "Hello John Smith",
+      "columns_analyzed": {
+        "source": {
+          "analysis": {
+            "presidio_findings": [],
+            "transformer_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "ollama_findings": [
+              {
+                "entity_type": "EMAIL_ADDRESS",
+                "start": 20,
+                "end": 36,
+                "text": "john@example.com",
+                "confidence": 1.0,
+                "source": "ollama-mistral"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 45,
+                "end": 57,
+                "text": "555-123-4567",
+                "confidence": 1.0,
+                "source": "ollama-mistral"
+              }
+            ],
+            "all_findings": [
+              {
+                "entity_type": "EMAIL_ADDRESS",
+                "start": 20,
+                "end": 36,
+                "text": "john@example.com",
+                "confidence": 1.0,
+                "source": "ollama-mistral"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 45,
+                "end": 57,
+                "text": "555-123-4567",
+                "confidence": 1.0,
+                "source": "ollama-mistral"
+              }
+            ],
+            "original_text": " please email me at john@example.com or call 555-123-4567"
+          },
+          "anonymization": {
+            "anonymized_content": " please email me at [EMAIL] or call 555-123-4567"
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'source' was not properly anonymized"
+            ]
+          }
+        }
+      },
+      "summary": {
+        "total_presidio": 0,
+        "total_uk_patterns": 0,
+        "total_missed": 0,
+        "total_all": 2
+      }
+    }
+  ]
+}

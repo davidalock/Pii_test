@@ -1,0 +1,561 @@
+{
+  "metadata": {
+    "timestamp": "20250830_194307",
+    "processing_mode": "sequential",
+    "max_workers": 1,
+    "records_processed": 5,
+    "total_entities_found": 28,
+    "processing_time_seconds": 0.9432220458984375,
+    "total_time_seconds": 4.5010058879852295,
+    "initialization_time_seconds": 3.5577518939971924,
+    "use_ollama": false,
+    "resolve_overlaps": true,
+    "min_confidence": 0.0,
+    "entity_sources": {
+      "transformer-dslim/bert-base-NER": 6,
+      "presidio": 22
+    },
+    "ground_truth_total": 80
+  },
+  "results": [
+    {
+      "record_id": "record_0",
+      "record_index": 0,
+      "conversation_id": "REC_20250829075636_72AF89BA",
+      "customer_id": "CUS671412",
+      "template_category": "Account Inquiry",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Jack",
+          "Abbott",
+          "jack.abbott@gmail.com",
+          "01256 884140",
+          "08/03/1966",
+          "174 London Rd, Southend-on-Sea SS1 1PH",
+          "174 London Rd",
+          "Southend-on-Sea",
+          "SS1 1PH",
+          "BR 85 64 14 A",
+          "21-37-39",
+          "77827638",
+          "GB87ZAYL8532903736687537",
+          "52889623938667401",
+          "CUS671412",
+          "£55,087.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "customer_message": {
+          "original_text": "Hi, my name is Jack Abbott. My customer ID is CUS671412. I need help with account 77827638.",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Jack Abbott",
+              "start": 15,
+              "end": 26,
+              "confidence": "0.99838936",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "77827638",
+              "start": 82,
+              "end": 90,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "Hi, my name is [PERSON]. My customer ID is CUS671412. I need help with account [UK_BANK_ACCOUNT].",
+          "entity_count": 2
+        },
+        "agent_response": {
+          "original_text": "Thank you. I have your email as jack.abbott@gmail.com. Your current balance is £55,087.00. I can reach you on 01256 884140 if needed.",
+          "entities": [
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "jack.abbott@gmail.com",
+              "start": 32,
+              "end": 53,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£55,087.00",
+              "start": 79,
+              "end": 89,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "01256 884140",
+              "start": 110,
+              "end": 122,
+              "confidence": 0.85,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "Thank you. I have your email as [EMAIL_ADDRESS]. Your current balance is [UK_MONETARY_VALUE]. I can reach you on [DATE_TIME] if needed.",
+          "entity_count": 3
+        }
+      }
+    },
+    {
+      "record_id": "record_1",
+      "record_index": 1,
+      "conversation_id": "REC_20250829075636_A0BFF503",
+      "customer_id": "CUS662275",
+      "template_category": "Account Inquiry",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Diane",
+          "Abbott",
+          "diane.abbott@uk-consulting.com",
+          "07702 202 319",
+          "25/03/1987",
+          "19 High St, Crickhowell NP8 1BD",
+          "19 High St",
+          "Crickhowell",
+          "NP8 1BD",
+          "PG 45 29 37 B",
+          "23-21-58",
+          "22981052",
+          "GB55ZAYZ9103073645503389",
+          "4617267520467920",
+          "CUS662275",
+          "£16,461.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "customer_message": {
+          "original_text": "Hi, my name is Diane Abbott. My customer ID is CUS662275. I need help with account 22981052.",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Diane Abbott",
+              "start": 15,
+              "end": 27,
+              "confidence": "0.99798024",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "CUS662275",
+              "start": 47,
+              "end": 56,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "22981052",
+              "start": 83,
+              "end": 91,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "Hi, my name is [PERSON]. My customer ID is [LOCATION]. I need help with account [UK_BANK_ACCOUNT].",
+          "entity_count": 3
+        },
+        "agent_response": {
+          "original_text": "Thank you. I have your email as diane.abbott@uk-consulting.com. Your current balance is £16,461.00. I can reach you on 07702 202 319 if needed.",
+          "entities": [
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "diane.abbott@uk-consulting.com",
+              "start": 32,
+              "end": 62,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£16,461.00",
+              "start": 88,
+              "end": 98,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "07702 202",
+              "start": 119,
+              "end": 128,
+              "confidence": 0.85,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "Thank you. I have your email as [EMAIL_ADDRESS]. Your current balance is [UK_MONETARY_VALUE]. I can reach you on [DATE_TIME] 319 if needed.",
+          "entity_count": 3
+        }
+      }
+    },
+    {
+      "record_id": "record_2",
+      "record_index": 2,
+      "conversation_id": "REC_20250829075636_4CB7FE4A",
+      "customer_id": "CUS802729",
+      "template_category": "Account Inquiry",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Debbie",
+          "Abrahams",
+          "debbie.abrahams@hotmail.com",
+          "0207 920 1852",
+          "19/04/1964",
+          "30A London Rd, Tetbury GL8 8JL",
+          "30A London Rd",
+          "Tetbury",
+          "GL8 8JL",
+          "BR 94 39 47 A",
+          "39-22-58",
+          "47308985",
+          "GB68LLGV5896694631831063",
+          "51335885424739667",
+          "CUS802729",
+          "£35,093.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "customer_message": {
+          "original_text": "Hi, my name is Debbie Abrahams. My customer ID is CUS802729. I need help with account 47308985.",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Debbie Abrahams",
+              "start": 15,
+              "end": 30,
+              "confidence": "0.99386317",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "CUS802729",
+              "start": 50,
+              "end": 59,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "47308985",
+              "start": 86,
+              "end": 94,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "Hi, my name is [PERSON]. My customer ID is [LOCATION]. I need help with account [UK_BANK_ACCOUNT].",
+          "entity_count": 3
+        },
+        "agent_response": {
+          "original_text": "Thank you. I have your email as debbie.abrahams@hotmail.com. Your current balance is £35,093.00. I can reach you on 0207 920 1852 if needed.",
+          "entities": [
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "debbie.abrahams@hotmail.com",
+              "start": 32,
+              "end": 59,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£35,093.00",
+              "start": 85,
+              "end": 95,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "0207 920 1852",
+              "start": 116,
+              "end": 129,
+              "confidence": 0.85,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "Thank you. I have your email as [EMAIL_ADDRESS]. Your current balance is [UK_MONETARY_VALUE]. I can reach you on [DATE_TIME] if needed.",
+          "entity_count": 3
+        }
+      }
+    },
+    {
+      "record_id": "record_3",
+      "record_index": 3,
+      "conversation_id": "REC_20250829075636_8B7A6623",
+      "customer_id": "CUS852787",
+      "template_category": "Account Inquiry",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Shockat",
+          "Adam",
+          "shockat.adam@sky.com",
+          "07700 923 193",
+          "06/08/1984",
+          "116 High St, Maidenhead SL6 1PT",
+          "116 High St",
+          "Maidenhead",
+          "SL6 1PT",
+          "PG 91 98 81 A",
+          "97-51-17",
+          "40742311",
+          "GB14ZAYZ6384342645935572",
+          "4738588377270244",
+          "CUS852787",
+          "£41,345.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "customer_message": {
+          "original_text": "Hi, my name is Shockat Adam. My customer ID is CUS852787. I need help with account 40742311.",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Shock",
+              "start": 15,
+              "end": 20,
+              "confidence": "0.99662364",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Adam",
+              "start": 23,
+              "end": 27,
+              "confidence": "0.9870771",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "40742311",
+              "start": 83,
+              "end": 91,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "Hi, my name is [PERSON]at [PERSON]. My customer ID is CUS852787. I need help with account [UK_BANK_ACCOUNT].",
+          "entity_count": 3
+        },
+        "agent_response": {
+          "original_text": "Thank you. I have your email as shockat.adam@sky.com. Your current balance is £41,345.00. I can reach you on 07700 923 193 if needed.",
+          "entities": [
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "shockat.adam@sky.com",
+              "start": 32,
+              "end": 52,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£41,345.00",
+              "start": 78,
+              "end": 88,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "07700 923 193",
+              "start": 109,
+              "end": 122,
+              "confidence": 0.85,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "Thank you. I have your email as [EMAIL_ADDRESS]. Your current balance is [UK_MONETARY_VALUE]. I can reach you on [DATE_TIME] if needed.",
+          "entity_count": 3
+        }
+      }
+    },
+    {
+      "record_id": "record_4",
+      "record_index": 4,
+      "conversation_id": "REC_20250829075636_9A27B36E",
+      "customer_id": "CUS260265",
+      "template_category": "Account Inquiry",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Zubir",
+          "Ahmed",
+          "zubir.ahmed@manchester-group.co.uk",
+          "01273 714 8133",
+          "05/05/1968",
+          "655 Arena Shopping Park, London N4 1ED",
+          "655 Arena Shopping Park",
+          "London",
+          "N4 1ED",
+          "BG 81 78 43 B",
+          "84-61-56",
+          "39436733",
+          "GB27LLGV7623857422201654",
+          "4223453943397782",
+          "CUS260265",
+          "£82,340.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "customer_message": {
+          "original_text": "Hi, my name is Zubir Ahmed. My customer ID is CUS260265. I need help with account 39436733.",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Zubir Ahmed",
+              "start": 15,
+              "end": 26,
+              "confidence": "0.91821784",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "39436733",
+              "start": 82,
+              "end": 90,
+              "confidence": 1.0,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "Hi, my name is [PERSON]. My customer ID is CUS260265. I need help with account [UK_BANK_ACCOUNT].",
+          "entity_count": 2
+        },
+        "agent_response": {
+          "original_text": "Thank you. I have your email as zubir.ahmed@manchester-group.co.uk. Your current balance is £82,340.00. I can reach you on 01273 714 8133 if needed.",
+          "entities": [
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "zubir.ahmed@manchester-group.co.uk",
+              "start": 32,
+              "end": 66,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£82,340.00",
+              "start": 92,
+              "end": 102,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "01273 714 8133",
+              "start": 123,
+              "end": 137,
+              "confidence": 0.85,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "Thank you. I have your email as [EMAIL_ADDRESS]. Your current balance is [UK_MONETARY_VALUE]. I can reach you on [DATE_TIME] if needed.",
+          "entity_count": 3
+        }
+      }
+    }
+  ]
+}

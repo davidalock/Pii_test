@@ -1,0 +1,2448 @@
+{
+  "metadata": {
+    "timestamp": "20250831_121621",
+    "processing_mode": "multithreaded",
+    "max_workers": 8,
+    "records_processed": 100,
+    "total_entities_found": 0,
+    "processing_time_seconds": 3.0868589878082275,
+    "total_time_seconds": 6.415428161621094,
+    "initialization_time_seconds": 3.328535795211792,
+    "use_ollama": false,
+    "resolve_overlaps": true,
+    "min_confidence": 0.0,
+    "entity_sources": {},
+    "ground_truth_total": 89,
+    "configuration": {
+      "input_file": "",
+      "output_file": "pii_analysis_results.json",
+      "max_records": 1000,
+      "num_threads": 4,
+      "use_threading": true,
+      "target_field": "source",
+      "fields_to_process": [],
+      "pii_entities": [
+        "PERSON",
+        "EMAIL_ADDRESS",
+        "PHONE_NUMBER",
+        "CREDIT_CARD",
+        "IBAN_CODE",
+        "IP_ADDRESS",
+        "DATE_TIME",
+        "LOCATION",
+        "UK_POSTCODE",
+        "UK_SORT_CODE",
+        "UK_NI_NUMBER",
+        "UK_BANK_ACCOUNT",
+        "UK_MONETARY_VALUE",
+        "CUSTOMER_ID"
+      ],
+      "perform_anonymization": true,
+      "verify_anonymization": true,
+      "single_type_anonymization": true,
+      "export_format": "json",
+      "include_summary": true,
+      "include_detailed_results": true
+    }
+  },
+  "results": [
+    {
+      "record_id": "record_0",
+      "record_index": 0,
+      "conversation_id": "TEST_00001",
+      "customer_id": "CUS671412",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Jack",
+          "Abbott",
+          "£55,087.00"
+        ],
+        "count": 3
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_1",
+      "record_index": 1,
+      "conversation_id": "TEST_00002",
+      "customer_id": "CUS662275",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "account_number",
+          "account_balance"
+        ],
+        "raw_values": [
+          "22981052",
+          "£16,461.00"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_2",
+      "record_index": 2,
+      "conversation_id": "TEST_00003",
+      "customer_id": "CUS802729",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_3",
+      "record_index": 3,
+      "conversation_id": "TEST_00004",
+      "customer_id": "CUS852787",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "address_town_city"
+        ],
+        "raw_values": [
+          "Shockat",
+          "Unknown"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_4",
+      "record_index": 4,
+      "conversation_id": "TEST_00005",
+      "customer_id": "CUS260265",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "CUS260265",
+          "£82,340.00"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_5",
+      "record_index": 5,
+      "conversation_id": "TEST_00006",
+      "customer_id": "CUS857168",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_6",
+      "record_index": 6,
+      "conversation_id": "TEST_00007",
+      "customer_id": "CUS867460",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "sort_code"
+        ],
+        "raw_values": [
+          "86-51-72"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_7",
+      "record_index": 7,
+      "conversation_id": "TEST_00008",
+      "customer_id": "CUS573417",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_8",
+      "record_index": 8,
+      "conversation_id": "TEST_00009",
+      "customer_id": "CUS665427",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "account_number"
+        ],
+        "raw_values": [
+          "Heidi",
+          "Alexander",
+          "54349361"
+        ],
+        "count": 3
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_9",
+      "record_index": 9,
+      "conversation_id": "TEST_00010",
+      "customer_id": "CUS299448",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "email"
+        ],
+        "raw_values": [
+          "douglas.alexander@blueyonder.co.uk"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_10",
+      "record_index": 10,
+      "conversation_id": "TEST_00011",
+      "customer_id": "CUS102260",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_11",
+      "record_index": 11,
+      "conversation_id": "TEST_00012",
+      "customer_id": "CUS184002",
+      "template_category": "Personal Details",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "phone_number"
+        ],
+        "raw_values": [
+          "0122 533 8973"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_12",
+      "record_index": 12,
+      "conversation_id": "TEST_00013",
+      "customer_id": "CUS350280",
+      "template_category": "Personal Details",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "email"
+        ],
+        "raw_values": [
+          "tahir.ali@hotmail.com"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_13",
+      "record_index": 13,
+      "conversation_id": "TEST_00014",
+      "customer_id": "CUS265409",
+      "template_category": "Personal Details",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "address_first_line",
+          "address_town_city"
+        ],
+        "raw_values": [
+          "97-99 Bridgend Rd",
+          "Aberkenfig"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_14",
+      "record_index": 14,
+      "conversation_id": "TEST_00015",
+      "customer_id": "CUS820892",
+      "template_category": "Personal Details",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "date_of_birth"
+        ],
+        "raw_values": [
+          "01/11/1995"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_15",
+      "record_index": 15,
+      "conversation_id": "TEST_00016",
+      "customer_id": "CUS824586",
+      "template_category": "Personal Details",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [
+          "address_postcode"
+        ],
+        "raw_values": [
+          "Frome BA11 2FH"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_16",
+      "record_index": 16,
+      "conversation_id": "TEST_00017",
+      "customer_id": "CUS270395",
+      "template_category": "Personal Details",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_17",
+      "record_index": 17,
+      "conversation_id": "TEST_00018",
+      "customer_id": "CUS302511",
+      "template_category": "Security Fraud",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "pan_number"
+        ],
+        "raw_values": [
+          "4843128228093787"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_18",
+      "record_index": 18,
+      "conversation_id": "TEST_00019",
+      "customer_id": "CUS924629",
+      "template_category": "Security Fraud",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "iban"
+        ],
+        "raw_values": [
+          "GB43ZAYL2454954390070438"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_19",
+      "record_index": 19,
+      "conversation_id": "TEST_00020",
+      "customer_id": "CUS424308",
+      "template_category": "Security Fraud",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_20",
+      "record_index": 20,
+      "conversation_id": "TEST_00021",
+      "customer_id": "CUS708158",
+      "template_category": "Security Fraud",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "national_insurance_number"
+        ],
+        "raw_values": [
+          "WH 95 58 96 A"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_21",
+      "record_index": 21,
+      "conversation_id": "TEST_00022",
+      "customer_id": "CUS991014",
+      "template_category": "Security Fraud",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_22",
+      "record_index": 22,
+      "conversation_id": "TEST_00023",
+      "customer_id": "CUS578634",
+      "template_category": "Security Fraud",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_23",
+      "record_index": 23,
+      "conversation_id": "TEST_00024",
+      "customer_id": "CUS181247",
+      "template_category": "Loan Mortgage",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "date_of_birth"
+        ],
+        "raw_values": [
+          "25/08/1999"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_24",
+      "record_index": 24,
+      "conversation_id": "TEST_00025",
+      "customer_id": "CUS907189",
+      "template_category": "Loan Mortgage",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "customer_id"
+        ],
+        "raw_values": [
+          "CUS907189"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_25",
+      "record_index": 25,
+      "conversation_id": "TEST_00026",
+      "customer_id": "CUS752483",
+      "template_category": "Loan Mortgage",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_26",
+      "record_index": 26,
+      "conversation_id": "TEST_00027",
+      "customer_id": "CUS120324",
+      "template_category": "Loan Mortgage",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "account_balance"
+        ],
+        "raw_values": [
+          "£98,276.00"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_27",
+      "record_index": 27,
+      "conversation_id": "TEST_00028",
+      "customer_id": "CUS486814",
+      "template_category": "Loan Mortgage",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_28",
+      "record_index": 28,
+      "conversation_id": "TEST_00029",
+      "customer_id": "CUS488571",
+      "template_category": "General Inquiry",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_29",
+      "record_index": 29,
+      "conversation_id": "TEST_00030",
+      "customer_id": "CUS381433",
+      "template_category": "General Inquiry",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [
+          "address_town_city"
+        ],
+        "raw_values": [
+          "Unknown"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_30",
+      "record_index": 30,
+      "conversation_id": "TEST_00031",
+      "customer_id": "CUS682789",
+      "template_category": "General Inquiry",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_31",
+      "record_index": 31,
+      "conversation_id": "TEST_00032",
+      "customer_id": "CUS680358",
+      "template_category": "General Inquiry",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_32",
+      "record_index": 32,
+      "conversation_id": "TEST_00033",
+      "customer_id": "CUS859782",
+      "template_category": "General Inquiry",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_33",
+      "record_index": 33,
+      "conversation_id": "TEST_00034",
+      "customer_id": "CUS398151",
+      "template_category": "Direct Debits",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "national_insurance_number"
+        ],
+        "raw_values": [
+          "BG 48 11 78 A"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_34",
+      "record_index": 34,
+      "conversation_id": "TEST_00035",
+      "customer_id": "CUS929151",
+      "template_category": "Direct Debits",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "account_number"
+        ],
+        "raw_values": [
+          "50780112"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_35",
+      "record_index": 35,
+      "conversation_id": "TEST_00036",
+      "customer_id": "CUS264136",
+      "template_category": "Direct Debits",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_36",
+      "record_index": 36,
+      "conversation_id": "TEST_00037",
+      "customer_id": "CUS779094",
+      "template_category": "Direct Debits",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name"
+        ],
+        "raw_values": [
+          "David",
+          "Baines"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_37",
+      "record_index": 37,
+      "conversation_id": "TEST_00038",
+      "customer_id": "CUS437978",
+      "template_category": "Mobile Banking",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "email"
+        ],
+        "raw_values": [
+          "alex.baker@bt.com"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_38",
+      "record_index": 38,
+      "conversation_id": "TEST_00039",
+      "customer_id": "CUS436653",
+      "template_category": "Mobile Banking",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name"
+        ],
+        "raw_values": [
+          "Richard",
+          "Baker"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_39",
+      "record_index": 39,
+      "conversation_id": "TEST_00040",
+      "customer_id": "CUS643623",
+      "template_category": "Mobile Banking",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_40",
+      "record_index": 40,
+      "conversation_id": "TEST_00041",
+      "customer_id": "CUS335615",
+      "template_category": "Mobile Banking",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "phone_number"
+        ],
+        "raw_values": [
+          "0137 152 4335"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_41",
+      "record_index": 41,
+      "conversation_id": "TEST_00042",
+      "customer_id": "CUS928381",
+      "template_category": "Technical Issues",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "customer_id"
+        ],
+        "raw_values": [
+          "Antonia",
+          "CUS928381"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_42",
+      "record_index": 42,
+      "conversation_id": "TEST_00043",
+      "customer_id": "CUS501574",
+      "template_category": "Technical Issues",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_43",
+      "record_index": 43,
+      "conversation_id": "TEST_00044",
+      "customer_id": "CUS178463",
+      "template_category": "Technical Issues",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_44",
+      "record_index": 44,
+      "conversation_id": "TEST_00045",
+      "customer_id": "CUS897305",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Lee",
+          "Barron",
+          "£83,166.00"
+        ],
+        "count": 3
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_45",
+      "record_index": 45,
+      "conversation_id": "TEST_00046",
+      "customer_id": "CUS501126",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "account_number",
+          "account_balance"
+        ],
+        "raw_values": [
+          "65304649",
+          "£81,326.00"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_46",
+      "record_index": 46,
+      "conversation_id": "TEST_00047",
+      "customer_id": "CUS362246",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_47",
+      "record_index": 47,
+      "conversation_id": "TEST_00048",
+      "customer_id": "CUS937665",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "address_town_city"
+        ],
+        "raw_values": [
+          "Danny",
+          "Unknown"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_48",
+      "record_index": 48,
+      "conversation_id": "TEST_00049",
+      "customer_id": "CUS310548",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "CUS310548",
+          "£17,422.00"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_49",
+      "record_index": 49,
+      "conversation_id": "TEST_00050",
+      "customer_id": "CUS229592",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_50",
+      "record_index": 50,
+      "conversation_id": "TEST_00051",
+      "customer_id": "CUS147549",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "sort_code"
+        ],
+        "raw_values": [
+          "88-38-92"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_51",
+      "record_index": 51,
+      "conversation_id": "TEST_00052",
+      "customer_id": "CUS488528",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_52",
+      "record_index": 52,
+      "conversation_id": "TEST_00053",
+      "customer_id": "CUS449709",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "account_number"
+        ],
+        "raw_values": [
+          "Torsten",
+          "Bell",
+          "98955314"
+        ],
+        "count": 3
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_53",
+      "record_index": 53,
+      "conversation_id": "TEST_00054",
+      "customer_id": "CUS928358",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "email"
+        ],
+        "raw_values": [
+          "hilary.benn@virgin.com"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_54",
+      "record_index": 54,
+      "conversation_id": "TEST_00055",
+      "customer_id": "CUS646781",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_55",
+      "record_index": 55,
+      "conversation_id": "TEST_00056",
+      "customer_id": "CUS499407",
+      "template_category": "Personal Details",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "phone_number"
+        ],
+        "raw_values": [
+          "0114 590 7580"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_56",
+      "record_index": 56,
+      "conversation_id": "TEST_00057",
+      "customer_id": "CUS260053",
+      "template_category": "Personal Details",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "email"
+        ],
+        "raw_values": [
+          "clive.betts@telford-consulting.co.uk"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_57",
+      "record_index": 57,
+      "conversation_id": "TEST_00058",
+      "customer_id": "CUS208633",
+      "template_category": "Personal Details",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "address_first_line",
+          "address_town_city"
+        ],
+        "raw_values": [
+          "3 Millburngate",
+          "Unknown"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_58",
+      "record_index": 58,
+      "conversation_id": "TEST_00059",
+      "customer_id": "CUS969752",
+      "template_category": "Personal Details",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "date_of_birth"
+        ],
+        "raw_values": [
+          "08/02/1982"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_59",
+      "record_index": 59,
+      "conversation_id": "TEST_00060",
+      "customer_id": "CUS457455",
+      "template_category": "Personal Details",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [
+          "address_postcode"
+        ],
+        "raw_values": [
+          "Pontyclun CF72 9NR"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_60",
+      "record_index": 60,
+      "conversation_id": "TEST_00061",
+      "customer_id": "CUS550797",
+      "template_category": "Personal Details",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_61",
+      "record_index": 61,
+      "conversation_id": "TEST_00062",
+      "customer_id": "CUS658453",
+      "template_category": "Security Fraud",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "pan_number"
+        ],
+        "raw_values": [
+          "4528075650273404"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_62",
+      "record_index": 62,
+      "conversation_id": "TEST_00063",
+      "customer_id": "CUS940247",
+      "template_category": "Security Fraud",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "iban"
+        ],
+        "raw_values": [
+          "GB91ZAYZ4885807325458308"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_63",
+      "record_index": 63,
+      "conversation_id": "TEST_00064",
+      "customer_id": "CUS913934",
+      "template_category": "Security Fraud",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_64",
+      "record_index": 64,
+      "conversation_id": "TEST_00065",
+      "customer_id": "CUS431495",
+      "template_category": "Security Fraud",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "national_insurance_number"
+        ],
+        "raw_values": [
+          "BG 93 19 32 B"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_65",
+      "record_index": 65,
+      "conversation_id": "TEST_00066",
+      "customer_id": "CUS631699",
+      "template_category": "Security Fraud",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_66",
+      "record_index": 66,
+      "conversation_id": "TEST_00067",
+      "customer_id": "CUS559022",
+      "template_category": "Security Fraud",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_67",
+      "record_index": 67,
+      "conversation_id": "TEST_00068",
+      "customer_id": "CUS992931",
+      "template_category": "Loan Mortgage",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "date_of_birth"
+        ],
+        "raw_values": [
+          "12/05/1984"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_68",
+      "record_index": 68,
+      "conversation_id": "TEST_00069",
+      "customer_id": "CUS633188",
+      "template_category": "Loan Mortgage",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "customer_id"
+        ],
+        "raw_values": [
+          "CUS633188"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_69",
+      "record_index": 69,
+      "conversation_id": "TEST_00070",
+      "customer_id": "CUS261745",
+      "template_category": "Loan Mortgage",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_70",
+      "record_index": 70,
+      "conversation_id": "TEST_00071",
+      "customer_id": "CUS915922",
+      "template_category": "Loan Mortgage",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "account_balance"
+        ],
+        "raw_values": [
+          "£50,152.00"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_71",
+      "record_index": 71,
+      "conversation_id": "TEST_00072",
+      "customer_id": "CUS254506",
+      "template_category": "Loan Mortgage",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_72",
+      "record_index": 72,
+      "conversation_id": "TEST_00073",
+      "customer_id": "CUS400814",
+      "template_category": "General Inquiry",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_73",
+      "record_index": 73,
+      "conversation_id": "TEST_00074",
+      "customer_id": "CUS579318",
+      "template_category": "General Inquiry",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [
+          "address_town_city"
+        ],
+        "raw_values": [
+          "The Angel"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_74",
+      "record_index": 74,
+      "conversation_id": "TEST_00075",
+      "customer_id": "CUS651613",
+      "template_category": "General Inquiry",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_75",
+      "record_index": 75,
+      "conversation_id": "TEST_00076",
+      "customer_id": "CUS672536",
+      "template_category": "General Inquiry",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_76",
+      "record_index": 76,
+      "conversation_id": "TEST_00077",
+      "customer_id": "CUS778324",
+      "template_category": "General Inquiry",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_77",
+      "record_index": 77,
+      "conversation_id": "TEST_00078",
+      "customer_id": "CUS551524",
+      "template_category": "Direct Debits",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "national_insurance_number"
+        ],
+        "raw_values": [
+          "WH 61 66 59 B"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_78",
+      "record_index": 78,
+      "conversation_id": "TEST_00079",
+      "customer_id": "CUS929924",
+      "template_category": "Direct Debits",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "account_number"
+        ],
+        "raw_values": [
+          "70012727"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_79",
+      "record_index": 79,
+      "conversation_id": "TEST_00080",
+      "customer_id": "CUS565504",
+      "template_category": "Direct Debits",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_80",
+      "record_index": 80,
+      "conversation_id": "TEST_00081",
+      "customer_id": "CUS228594",
+      "template_category": "Direct Debits",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name"
+        ],
+        "raw_values": [
+          "Alex",
+          "Burghart"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_81",
+      "record_index": 81,
+      "conversation_id": "TEST_00082",
+      "customer_id": "CUS930541",
+      "template_category": "Mobile Banking",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "email"
+        ],
+        "raw_values": [
+          "richard.burgon@uk-consulting.com"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_82",
+      "record_index": 82,
+      "conversation_id": "TEST_00083",
+      "customer_id": "CUS813145",
+      "template_category": "Mobile Banking",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name"
+        ],
+        "raw_values": [
+          "Maureen",
+          "Burke"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_83",
+      "record_index": 83,
+      "conversation_id": "TEST_00084",
+      "customer_id": "CUS677599",
+      "template_category": "Mobile Banking",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_84",
+      "record_index": 84,
+      "conversation_id": "TEST_00085",
+      "customer_id": "CUS699929",
+      "template_category": "Mobile Banking",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "phone_number"
+        ],
+        "raw_values": [
+          "0132 646 2530"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_85",
+      "record_index": 85,
+      "conversation_id": "TEST_00086",
+      "customer_id": "CUS250647",
+      "template_category": "Technical Issues",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "customer_id"
+        ],
+        "raw_values": [
+          "Ian",
+          "CUS250647"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_86",
+      "record_index": 86,
+      "conversation_id": "TEST_00087",
+      "customer_id": "CUS427905",
+      "template_category": "Technical Issues",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_87",
+      "record_index": 87,
+      "conversation_id": "TEST_00088",
+      "customer_id": "CUS399628",
+      "template_category": "Technical Issues",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_88",
+      "record_index": 88,
+      "conversation_id": "TEST_00089",
+      "customer_id": "CUS740725",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Nesil",
+          "Caliskan",
+          "£15,672.00"
+        ],
+        "count": 3
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_89",
+      "record_index": 89,
+      "conversation_id": "TEST_00090",
+      "customer_id": "CUS246570",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "account_number",
+          "account_balance"
+        ],
+        "raw_values": [
+          "54699966",
+          "£43,087.00"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_90",
+      "record_index": 90,
+      "conversation_id": "TEST_00091",
+      "customer_id": "CUS378428",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_91",
+      "record_index": 91,
+      "conversation_id": "TEST_00092",
+      "customer_id": "CUS313795",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "address_town_city"
+        ],
+        "raw_values": [
+          "Gregory",
+          "Unknown"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_92",
+      "record_index": 92,
+      "conversation_id": "TEST_00093",
+      "customer_id": "CUS855944",
+      "template_category": "Account Balance Inquiry",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "CUS855944",
+          "£89,326.00"
+        ],
+        "count": 2
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_93",
+      "record_index": 93,
+      "conversation_id": "TEST_00094",
+      "customer_id": "CUS513697",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_94",
+      "record_index": 94,
+      "conversation_id": "TEST_00095",
+      "customer_id": "CUS656837",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "sort_code"
+        ],
+        "raw_values": [
+          "81-99-44"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_95",
+      "record_index": 95,
+      "conversation_id": "TEST_00096",
+      "customer_id": "CUS783984",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_96",
+      "record_index": 96,
+      "conversation_id": "TEST_00097",
+      "customer_id": "CUS669691",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "account_number"
+        ],
+        "raw_values": [
+          "Sam",
+          "Carling",
+          "86230551"
+        ],
+        "count": 3
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_97",
+      "record_index": 97,
+      "conversation_id": "TEST_00098",
+      "customer_id": "CUS967161",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "email"
+        ],
+        "raw_values": [
+          "alistair.carmichael@bt.com"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_98",
+      "record_index": 98,
+      "conversation_id": "TEST_00099",
+      "customer_id": "CUS826420",
+      "template_category": "Payment Issues",
+      "template_sensitivity": "low",
+      "ground_truth_pii": {
+        "fields_used": [],
+        "raw_values": [],
+        "count": 0
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    },
+    {
+      "record_id": "record_99",
+      "record_index": 99,
+      "conversation_id": "TEST_00100",
+      "customer_id": "CUS491774",
+      "template_category": "Personal Details",
+      "template_sensitivity": "medium",
+      "ground_truth_pii": {
+        "fields_used": [
+          "phone_number"
+        ],
+        "raw_values": [
+          "0127 414 3616"
+        ],
+        "count": 1
+      },
+      "fields": {
+        "source": {
+          "original_text": "mplist_650",
+          "entities": [],
+          "anonymized_text": "mplist_650",
+          "entity_count": 0
+        }
+      }
+    }
+  ]
+}

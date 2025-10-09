@@ -1,0 +1,261 @@
+{
+  "metadata": {
+    "timestamp": "20250830_195618",
+    "processing_mode": "multithreaded",
+    "max_workers": 2,
+    "records_processed": 3,
+    "total_entities_found": 9,
+    "processing_time_seconds": 0.47003698348999023,
+    "total_time_seconds": 4.062097072601318,
+    "initialization_time_seconds": 3.5920281410217285,
+    "use_ollama": false,
+    "resolve_overlaps": true,
+    "min_confidence": 0.0,
+    "entity_sources": {
+      "presidio": 9
+    },
+    "ground_truth_total": 48
+  },
+  "results": [
+    {
+      "record_id": "record_0",
+      "record_index": 0,
+      "conversation_id": "REC_20250829075636_72AF89BA",
+      "customer_id": "CUS671412",
+      "template_category": "Account Inquiry",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Jack",
+          "Abbott",
+          "jack.abbott@gmail.com",
+          "01256 884140",
+          "08/03/1966",
+          "174 London Rd, Southend-on-Sea SS1 1PH",
+          "174 London Rd",
+          "Southend-on-Sea",
+          "SS1 1PH",
+          "BR 85 64 14 A",
+          "21-37-39",
+          "77827638",
+          "GB87ZAYL8532903736687537",
+          "52889623938667401",
+          "CUS671412",
+          "£55,087.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "agent_response": {
+          "original_text": "Thank you. I have your email as jack.abbott@gmail.com. Your current balance is £55,087.00. I can reach you on 01256 884140 if needed.",
+          "entities": [
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "jack.abbott@gmail.com",
+              "start": 32,
+              "end": 53,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£55,087.00",
+              "start": 79,
+              "end": 89,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "01256 884140",
+              "start": 110,
+              "end": 122,
+              "confidence": 0.85,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "Thank you. I have your email as [EMAIL_ADDRESS]. Your current balance is [UK_MONETARY_VALUE]. I can reach you on [DATE_TIME] if needed.",
+          "entity_count": 3
+        }
+      }
+    },
+    {
+      "record_id": "record_1",
+      "record_index": 1,
+      "conversation_id": "REC_20250829075636_A0BFF503",
+      "customer_id": "CUS662275",
+      "template_category": "Account Inquiry",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Diane",
+          "Abbott",
+          "diane.abbott@uk-consulting.com",
+          "07702 202 319",
+          "25/03/1987",
+          "19 High St, Crickhowell NP8 1BD",
+          "19 High St",
+          "Crickhowell",
+          "NP8 1BD",
+          "PG 45 29 37 B",
+          "23-21-58",
+          "22981052",
+          "GB55ZAYZ9103073645503389",
+          "4617267520467920",
+          "CUS662275",
+          "£16,461.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "agent_response": {
+          "original_text": "Thank you. I have your email as diane.abbott@uk-consulting.com. Your current balance is £16,461.00. I can reach you on 07702 202 319 if needed.",
+          "entities": [
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "diane.abbott@uk-consulting.com",
+              "start": 32,
+              "end": 62,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£16,461.00",
+              "start": 88,
+              "end": 98,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "07702 202",
+              "start": 119,
+              "end": 128,
+              "confidence": 0.85,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "Thank you. I have your email as [EMAIL_ADDRESS]. Your current balance is [UK_MONETARY_VALUE]. I can reach you on [DATE_TIME] 319 if needed.",
+          "entity_count": 3
+        }
+      }
+    },
+    {
+      "record_id": "record_2",
+      "record_index": 2,
+      "conversation_id": "REC_20250829075636_4CB7FE4A",
+      "customer_id": "CUS802729",
+      "template_category": "Account Inquiry",
+      "template_sensitivity": "high",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Debbie",
+          "Abrahams",
+          "debbie.abrahams@hotmail.com",
+          "0207 920 1852",
+          "19/04/1964",
+          "30A London Rd, Tetbury GL8 8JL",
+          "30A London Rd",
+          "Tetbury",
+          "GL8 8JL",
+          "BR 94 39 47 A",
+          "39-22-58",
+          "47308985",
+          "GB68LLGV5896694631831063",
+          "51335885424739667",
+          "CUS802729",
+          "£35,093.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "agent_response": {
+          "original_text": "Thank you. I have your email as debbie.abrahams@hotmail.com. Your current balance is £35,093.00. I can reach you on 0207 920 1852 if needed.",
+          "entities": [
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "debbie.abrahams@hotmail.com",
+              "start": 32,
+              "end": 59,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£35,093.00",
+              "start": 85,
+              "end": 95,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "0207 920 1852",
+              "start": 116,
+              "end": 129,
+              "confidence": 0.85,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "Thank you. I have your email as [EMAIL_ADDRESS]. Your current balance is [UK_MONETARY_VALUE]. I can reach you on [DATE_TIME] if needed.",
+          "entity_count": 3
+        }
+      }
+    }
+  ]
+}

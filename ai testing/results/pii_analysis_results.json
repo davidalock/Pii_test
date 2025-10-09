@@ -1,0 +1,4803 @@
+{
+  "analysis_metadata": {
+    "timestamp": "2025-08-30T08:06:38.139058",
+    "file_analyzed": "unified_customer_communication_first250.csv",
+    "records_processed": 5,
+    "fields_analyzed": [
+      "record_type",
+      "record_id",
+      "customer_id",
+      "content",
+      "delivery_method",
+      "category",
+      "communication_type",
+      "sensitivity",
+      "pii_fields",
+      "data_version",
+      "template_id",
+      "template_type",
+      "generation_timestamp"
+    ],
+    "total_presidio_entities": 41,
+    "total_uk_patterns": 15,
+    "total_missed_entities": 143,
+    "total_all_entities": 199,
+    "analysis_options": {
+      "use_threading": true,
+      "num_threads": 4,
+      "perform_anonymization": true,
+      "verify_anonymization": true
+    }
+  },
+  "detailed_results": [
+    {
+      "record_id": "COMM_CUS671412_account_statements_0",
+      "record_index": 0,
+      "columns_analyzed": {
+        "record_type": {
+          "original_content": "communication",
+          "anonymized_content": "communication",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'record_type' was not properly anonymized"
+            ]
+          }
+        },
+        "record_id": {
+          "original_content": "COMM_CUS671412_account_statements_0",
+          "anonymized_content": "COMM_CUS671412_account_statements_0",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'record_id' was not properly anonymized"
+            ]
+          }
+        },
+        "customer_id": {
+          "original_content": "CUS671412",
+          "anonymized_content": "CUS671412",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'customer_id' was not properly anonymized"
+            ]
+          }
+        },
+        "content": {
+          "original_content": "ACCOUNT STATEMENT\n                \nAccount Holder: Jack Abbott\nAccount Number: 77827638\nSort Code: 21-37-39\nStatement Period: {statement_start} to {statement_end}\nAddress: 174 London Rd, Southend-on-Sea SS1 1PH\n\nACCOUNT SUMMARY\nOpening Balance: \u00a3{opening_balance}\nTotal Credits: \u00a3{total_credits}\nTotal Debits: \u00a3{total_debits}\nClosing Balance: \u00a3\u00a355,087.00\n\nInterest Earned: \u00a3{interest_earned}\nFees & Charges: \u00a3{fees_charged}\n\nFor enquiries, contact us on 0800-123-4567 or visit your local branch.\n\nThank you for banking with us.\n{bank_name}",
+          "anonymized_content": "ACCOUNT STATEMENT\n                \n[PERSON] [PERSON]: [PERSON]SON]N]\n[PERSON] [PERSON]: [DATE]_ACCOUNT]\n[PERSON] [PERSON]: [SORT_CODE]DE]\n[PERSON] [PERSON]: {statement_start} to {statement_end}\n[PERSON]: 174 [PERSON]ION], [PERSON]-on-[PERSON] [POSTCODE]DE]\n\nACCOUNT SUMMARY\n[PERSON] [PERSON]: \u00a3{opening_balance}\n[PERSON] [PERSON]: \u00a3{total_credits}\n[PERSON] [PERSON]: \u00a3{total_debits}\n[PERSON] [PERSON]: \u00a3[AMOUNT]\n\n[PERSON] [PERSON]: \u00a3{interest_earned}\n[PERSON] & [PERSON]: \u00a3{fees_charged}\n\n[PERSON] enquiries, contact us on [PHONE] or visit your local branch.\n\n[PERSON] you for banking with us.\n{bank_name}",
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "UK_BANK_ACCOUNT",
+                "start": 79,
+                "end": 87,
+                "text": "77827638",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 99,
+                "end": 107,
+                "text": "21-37-39",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 203,
+                "end": 210,
+                "text": "SS1 1PH",
+                "confidence": 0.9,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PERSON",
+                "start": 51,
+                "end": 62,
+                "text": "Jack Abbott",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 79,
+                "end": 87,
+                "text": "77827638",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "LOCATION",
+                "start": 176,
+                "end": 185,
+                "text": "London Rd",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 454,
+                "end": 467,
+                "text": "0800-123-4567",
+                "confidence": 0.4,
+                "source": "Presidio"
+              }
+            ],
+            "uk_pattern_findings": [
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 203,
+                "end": 210,
+                "text": "SS1 1PH",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 99,
+                "end": 107,
+                "text": "21-37-39",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_MONETARY_VALUE",
+                "start": 344,
+                "end": 354,
+                "text": "\u00a355,087.00",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              }
+            ],
+            "missed_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 35,
+                "end": 42,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 43,
+                "end": 49,
+                "text": "Holder",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 51,
+                "end": 55,
+                "text": "Jack",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 56,
+                "end": 62,
+                "text": "Abbott",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 63,
+                "end": 70,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 71,
+                "end": 77,
+                "text": "Number",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 88,
+                "end": 92,
+                "text": "Sort",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 93,
+                "end": 97,
+                "text": "Code",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 108,
+                "end": 117,
+                "text": "Statement",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 118,
+                "end": 124,
+                "text": "Period",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 163,
+                "end": 170,
+                "text": "Address",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 176,
+                "end": 182,
+                "text": "London",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 187,
+                "end": 195,
+                "text": "Southend",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 199,
+                "end": 202,
+                "text": "Sea",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 228,
+                "end": 235,
+                "text": "Opening",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 236,
+                "end": 243,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 264,
+                "end": 269,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 270,
+                "end": 277,
+                "text": "Credits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 296,
+                "end": 301,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 302,
+                "end": 308,
+                "text": "Debits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 326,
+                "end": 333,
+                "text": "Closing",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 334,
+                "end": 341,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 356,
+                "end": 364,
+                "text": "Interest",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 365,
+                "end": 371,
+                "text": "Earned",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 392,
+                "end": 396,
+                "text": "Fees",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 399,
+                "end": 406,
+                "text": "Charges",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 425,
+                "end": 428,
+                "text": "For",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 497,
+                "end": 502,
+                "text": "Thank",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "all_findings": [
+              {
+                "entity_type": "UK_BANK_ACCOUNT",
+                "start": 79,
+                "end": 87,
+                "text": "77827638",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 99,
+                "end": 107,
+                "text": "21-37-39",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 203,
+                "end": 210,
+                "text": "SS1 1PH",
+                "confidence": 0.9,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PERSON",
+                "start": 51,
+                "end": 62,
+                "text": "Jack Abbott",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 79,
+                "end": 87,
+                "text": "77827638",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "LOCATION",
+                "start": 176,
+                "end": 185,
+                "text": "London Rd",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 454,
+                "end": 467,
+                "text": "0800-123-4567",
+                "confidence": 0.4,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 203,
+                "end": 210,
+                "text": "SS1 1PH",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 99,
+                "end": 107,
+                "text": "21-37-39",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_MONETARY_VALUE",
+                "start": 344,
+                "end": 354,
+                "text": "\u00a355,087.00",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 35,
+                "end": 42,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 43,
+                "end": 49,
+                "text": "Holder",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 51,
+                "end": 55,
+                "text": "Jack",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 56,
+                "end": 62,
+                "text": "Abbott",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 63,
+                "end": 70,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 71,
+                "end": 77,
+                "text": "Number",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 88,
+                "end": 92,
+                "text": "Sort",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 93,
+                "end": 97,
+                "text": "Code",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 108,
+                "end": 117,
+                "text": "Statement",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 118,
+                "end": 124,
+                "text": "Period",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 163,
+                "end": 170,
+                "text": "Address",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 176,
+                "end": 182,
+                "text": "London",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 187,
+                "end": 195,
+                "text": "Southend",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 199,
+                "end": 202,
+                "text": "Sea",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 228,
+                "end": 235,
+                "text": "Opening",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 236,
+                "end": 243,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 264,
+                "end": 269,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 270,
+                "end": 277,
+                "text": "Credits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 296,
+                "end": 301,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 302,
+                "end": 308,
+                "text": "Debits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 326,
+                "end": 333,
+                "text": "Closing",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 334,
+                "end": 341,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 356,
+                "end": 364,
+                "text": "Interest",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 365,
+                "end": 371,
+                "text": "Earned",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 392,
+                "end": 396,
+                "text": "Fees",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 399,
+                "end": 406,
+                "text": "Charges",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 425,
+                "end": 428,
+                "text": "For",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 497,
+                "end": 502,
+                "text": "Thank",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "summary": {
+              "total_presidio": 7,
+              "total_uk_patterns": 3,
+              "total_missed": 28,
+              "total_all": 38
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'content' was not properly anonymized"
+            ]
+          }
+        },
+        "delivery_method": {
+          "original_content": "post",
+          "anonymized_content": "post",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'delivery_method' was not properly anonymized"
+            ]
+          }
+        },
+        "category": {
+          "original_content": "Account Statements",
+          "anonymized_content": "Account [PERSON]",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 8,
+                "end": 18,
+                "text": "Statements",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "all_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 8,
+                "end": 18,
+                "text": "Statements",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 1,
+              "total_all": 1
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'category' was not properly anonymized"
+            ]
+          }
+        },
+        "communication_type": {
+          "original_content": "statement",
+          "anonymized_content": "statement",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'communication_type' was not properly anonymized"
+            ]
+          }
+        },
+        "sensitivity": {
+          "original_content": "high",
+          "anonymized_content": "high",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'sensitivity' was not properly anonymized"
+            ]
+          }
+        },
+        "pii_fields": {
+          "original_content": "['first_name', 'last_name', 'account_number', 'sort_code', 'address', 'account_balance']",
+          "anonymized_content": "['first_name', 'last_name', 'account_number', 'sort_code', 'address', 'account_balance']",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'pii_fields' was not properly anonymized"
+            ]
+          }
+        },
+        "data_version": {
+          "original_content": "clean",
+          "anonymized_content": "clean",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'data_version' was not properly anonymized"
+            ]
+          }
+        },
+        "template_id": {
+          "original_content": "account_statements_0",
+          "anonymized_content": "account_statements_0",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'template_id' was not properly anonymized"
+            ]
+          }
+        },
+        "template_type": {
+          "original_content": "communication",
+          "anonymized_content": "communication",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'template_type' was not properly anonymized"
+            ]
+          }
+        },
+        "generation_timestamp": {
+          "original_content": "2025-08-29T12:09:12.687576",
+          "anonymized_content": "[DATE]CODE]",
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "DATE_TIME",
+                "start": 0,
+                "end": 26,
+                "text": "2025-08-29T12:09:12.687576",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 20,
+                "end": 26,
+                "text": "687576",
+                "confidence": 0.7,
+                "source": "Presidio"
+              }
+            ],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [
+              {
+                "entity_type": "DATE_TIME",
+                "start": 0,
+                "end": 26,
+                "text": "2025-08-29T12:09:12.687576",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 20,
+                "end": 26,
+                "text": "687576",
+                "confidence": 0.7,
+                "source": "Presidio"
+              }
+            ],
+            "summary": {
+              "total_presidio": 2,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 2
+            }
+          },
+          "verification": {
+            "success": true,
+            "risk_level": "LOW",
+            "recommendations": []
+          }
+        }
+      },
+      "summary": {
+        "total_presidio": 9,
+        "total_uk_patterns": 3,
+        "total_missed": 29,
+        "total_all": 41
+      }
+    },
+    {
+      "record_id": "COMM_CUS662275_account_statements_0",
+      "record_index": 1,
+      "columns_analyzed": {
+        "record_type": {
+          "original_content": "communication",
+          "anonymized_content": "communication",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'record_type' was not properly anonymized"
+            ]
+          }
+        },
+        "record_id": {
+          "original_content": "COMM_CUS662275_account_statements_0",
+          "anonymized_content": "COMM_CUS662275_account_statements_0",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'record_id' was not properly anonymized"
+            ]
+          }
+        },
+        "customer_id": {
+          "original_content": "CUS662275",
+          "anonymized_content": "[PERSON]",
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "PERSON",
+                "start": 0,
+                "end": 9,
+                "text": "CUS662275",
+                "confidence": 0.85,
+                "source": "Presidio"
+              }
+            ],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [
+              {
+                "entity_type": "PERSON",
+                "start": 0,
+                "end": 9,
+                "text": "CUS662275",
+                "confidence": 0.85,
+                "source": "Presidio"
+              }
+            ],
+            "summary": {
+              "total_presidio": 1,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 1
+            }
+          },
+          "verification": {
+            "success": true,
+            "risk_level": "LOW",
+            "recommendations": []
+          }
+        },
+        "content": {
+          "original_content": "ACCOUNT STATEMENT\n                \nAccount Holder: Diane Abbott\nAccount Number: 22981052\nSort Code: 23-21-58\nStatement Period: {statement_start} to {statement_end}\nAddress: 19 High St, Crickhowell NP8 1BD\n\nACCOUNT SUMMARY\nOpening Balance: \u00a3{opening_balance}\nTotal Credits: \u00a3{total_credits}\nTotal Debits: \u00a3{total_debits}\nClosing Balance: \u00a3\u00a316,461.00\n\nInterest Earned: \u00a3{interest_earned}\nFees & Charges: \u00a3{fees_charged}\n\nFor enquiries, contact us on 0800-123-4567 or visit your local branch.\n\nThank you for banking with us.\n{bank_name}",
+          "anonymized_content": "ACCOUNT STATEMENT\n                \n[PERSON] [PERSON]: [PERSON]ON]N]\n[PERSON] [PERSON]: [UK_BANK_ACCOUNT]\n[PERSON] [PERSON]: [SORT_CODE]DE]\n[PERSON] [PERSON]: {statement_start} to {statement_end}\n[PERSON]: 19 [PERSON] St, [PERSON] [POSTCODE]DE]\n\nACCOUNT SUMMARY\n[PERSON] [PERSON]: \u00a3{opening_balance}\n[PERSON] [PERSON]: \u00a3{total_credits}\n[PERSON] [PERSON]: \u00a3{total_debits}\n[PERSON] [PERSON]: \u00a3[AMOUNT]\n\n[PERSON] [PERSON]: \u00a3{interest_earned}\n[PERSON] & [PERSON]: \u00a3{fees_charged}\n\n[PERSON] enquiries, contact us on [PHONE] or visit your local branch.\n\n[PERSON] you for banking with us.\n{bank_name}",
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "UK_BANK_ACCOUNT",
+                "start": 80,
+                "end": 88,
+                "text": "22981052",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 100,
+                "end": 108,
+                "text": "23-21-58",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 197,
+                "end": 204,
+                "text": "NP8 1BD",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PERSON",
+                "start": 51,
+                "end": 63,
+                "text": "Diane Abbott",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 448,
+                "end": 461,
+                "text": "0800-123-4567",
+                "confidence": 0.4,
+                "source": "Presidio"
+              }
+            ],
+            "uk_pattern_findings": [
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 197,
+                "end": 204,
+                "text": "NP8 1BD",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 100,
+                "end": 108,
+                "text": "23-21-58",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_MONETARY_VALUE",
+                "start": 338,
+                "end": 348,
+                "text": "\u00a316,461.00",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              }
+            ],
+            "missed_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 35,
+                "end": 42,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 43,
+                "end": 49,
+                "text": "Holder",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 51,
+                "end": 56,
+                "text": "Diane",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 57,
+                "end": 63,
+                "text": "Abbott",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 64,
+                "end": 71,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 72,
+                "end": 78,
+                "text": "Number",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 89,
+                "end": 93,
+                "text": "Sort",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 94,
+                "end": 98,
+                "text": "Code",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 109,
+                "end": 118,
+                "text": "Statement",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 119,
+                "end": 125,
+                "text": "Period",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 164,
+                "end": 171,
+                "text": "Address",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 176,
+                "end": 180,
+                "text": "High",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 185,
+                "end": 196,
+                "text": "Crickhowell",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 222,
+                "end": 229,
+                "text": "Opening",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 230,
+                "end": 237,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 258,
+                "end": 263,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 264,
+                "end": 271,
+                "text": "Credits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 290,
+                "end": 295,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 296,
+                "end": 302,
+                "text": "Debits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 320,
+                "end": 327,
+                "text": "Closing",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 328,
+                "end": 335,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 350,
+                "end": 358,
+                "text": "Interest",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 359,
+                "end": 365,
+                "text": "Earned",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 386,
+                "end": 390,
+                "text": "Fees",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 393,
+                "end": 400,
+                "text": "Charges",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 419,
+                "end": 422,
+                "text": "For",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 491,
+                "end": 496,
+                "text": "Thank",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "all_findings": [
+              {
+                "entity_type": "UK_BANK_ACCOUNT",
+                "start": 80,
+                "end": 88,
+                "text": "22981052",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 100,
+                "end": 108,
+                "text": "23-21-58",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 197,
+                "end": 204,
+                "text": "NP8 1BD",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PERSON",
+                "start": 51,
+                "end": 63,
+                "text": "Diane Abbott",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 448,
+                "end": 461,
+                "text": "0800-123-4567",
+                "confidence": 0.4,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 197,
+                "end": 204,
+                "text": "NP8 1BD",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 100,
+                "end": 108,
+                "text": "23-21-58",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_MONETARY_VALUE",
+                "start": 338,
+                "end": 348,
+                "text": "\u00a316,461.00",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 35,
+                "end": 42,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 43,
+                "end": 49,
+                "text": "Holder",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 51,
+                "end": 56,
+                "text": "Diane",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 57,
+                "end": 63,
+                "text": "Abbott",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 64,
+                "end": 71,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 72,
+                "end": 78,
+                "text": "Number",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 89,
+                "end": 93,
+                "text": "Sort",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 94,
+                "end": 98,
+                "text": "Code",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 109,
+                "end": 118,
+                "text": "Statement",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 119,
+                "end": 125,
+                "text": "Period",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 164,
+                "end": 171,
+                "text": "Address",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 176,
+                "end": 180,
+                "text": "High",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 185,
+                "end": 196,
+                "text": "Crickhowell",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 222,
+                "end": 229,
+                "text": "Opening",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 230,
+                "end": 237,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 258,
+                "end": 263,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 264,
+                "end": 271,
+                "text": "Credits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 290,
+                "end": 295,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 296,
+                "end": 302,
+                "text": "Debits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 320,
+                "end": 327,
+                "text": "Closing",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 328,
+                "end": 335,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 350,
+                "end": 358,
+                "text": "Interest",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 359,
+                "end": 365,
+                "text": "Earned",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 386,
+                "end": 390,
+                "text": "Fees",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 393,
+                "end": 400,
+                "text": "Charges",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 419,
+                "end": 422,
+                "text": "For",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 491,
+                "end": 496,
+                "text": "Thank",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "summary": {
+              "total_presidio": 5,
+              "total_uk_patterns": 3,
+              "total_missed": 27,
+              "total_all": 35
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'content' was not properly anonymized"
+            ]
+          }
+        },
+        "delivery_method": {
+          "original_content": "post",
+          "anonymized_content": "post",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'delivery_method' was not properly anonymized"
+            ]
+          }
+        },
+        "category": {
+          "original_content": "Account Statements",
+          "anonymized_content": "Account [PERSON]",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 8,
+                "end": 18,
+                "text": "Statements",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "all_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 8,
+                "end": 18,
+                "text": "Statements",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 1,
+              "total_all": 1
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'category' was not properly anonymized"
+            ]
+          }
+        },
+        "communication_type": {
+          "original_content": "statement",
+          "anonymized_content": "statement",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'communication_type' was not properly anonymized"
+            ]
+          }
+        },
+        "sensitivity": {
+          "original_content": "high",
+          "anonymized_content": "high",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'sensitivity' was not properly anonymized"
+            ]
+          }
+        },
+        "pii_fields": {
+          "original_content": "['first_name', 'last_name', 'account_number', 'sort_code', 'address', 'account_balance']",
+          "anonymized_content": "['first_name', 'last_name', 'account_number', 'sort_code', 'address', 'account_balance']",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'pii_fields' was not properly anonymized"
+            ]
+          }
+        },
+        "data_version": {
+          "original_content": "clean",
+          "anonymized_content": "clean",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'data_version' was not properly anonymized"
+            ]
+          }
+        },
+        "template_id": {
+          "original_content": "account_statements_0",
+          "anonymized_content": "account_statements_0",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'template_id' was not properly anonymized"
+            ]
+          }
+        },
+        "template_type": {
+          "original_content": "communication",
+          "anonymized_content": "communication",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'template_type' was not properly anonymized"
+            ]
+          }
+        },
+        "generation_timestamp": {
+          "original_content": "2025-08-29T12:09:12.687613",
+          "anonymized_content": "[DATE]CODE]",
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "DATE_TIME",
+                "start": 0,
+                "end": 26,
+                "text": "2025-08-29T12:09:12.687613",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 20,
+                "end": 26,
+                "text": "687613",
+                "confidence": 0.7,
+                "source": "Presidio"
+              }
+            ],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [
+              {
+                "entity_type": "DATE_TIME",
+                "start": 0,
+                "end": 26,
+                "text": "2025-08-29T12:09:12.687613",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 20,
+                "end": 26,
+                "text": "687613",
+                "confidence": 0.7,
+                "source": "Presidio"
+              }
+            ],
+            "summary": {
+              "total_presidio": 2,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 2
+            }
+          },
+          "verification": {
+            "success": true,
+            "risk_level": "LOW",
+            "recommendations": []
+          }
+        }
+      },
+      "summary": {
+        "total_presidio": 8,
+        "total_uk_patterns": 3,
+        "total_missed": 28,
+        "total_all": 39
+      }
+    },
+    {
+      "record_id": "COMM_CUS802729_account_statements_0",
+      "record_index": 2,
+      "columns_analyzed": {
+        "record_type": {
+          "original_content": "communication",
+          "anonymized_content": "communication",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'record_type' was not properly anonymized"
+            ]
+          }
+        },
+        "record_id": {
+          "original_content": "COMM_CUS802729_account_statements_0",
+          "anonymized_content": "COMM_CUS802729_account_statements_0",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'record_id' was not properly anonymized"
+            ]
+          }
+        },
+        "customer_id": {
+          "original_content": "CUS802729",
+          "anonymized_content": "CUS802729",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'customer_id' was not properly anonymized"
+            ]
+          }
+        },
+        "content": {
+          "original_content": "ACCOUNT STATEMENT\n                \nAccount Holder: Debbie Abrahams\nAccount Number: 47308985\nSort Code: 39-22-58\nStatement Period: {statement_start} to {statement_end}\nAddress: 30A London Rd, Tetbury GL8 8JL\n\nACCOUNT SUMMARY\nOpening Balance: \u00a3{opening_balance}\nTotal Credits: \u00a3{total_credits}\nTotal Debits: \u00a3{total_debits}\nClosing Balance: \u00a3\u00a335,093.00\n\nInterest Earned: \u00a3{interest_earned}\nFees & Charges: \u00a3{fees_charged}\n\nFor enquiries, contact us on 0800-123-4567 or visit your local branch.\n\nThank you for banking with us.\n{bank_name}",
+          "anonymized_content": "ACCOUNT STATEMENT\n                \n[PERSON] [PERSON]: [PERSON] [PERSON]\n[PERSON] [PERSON]: [DATE]_ACCOUNT]\n[PERSON] [PERSON]: [SORT_CODE]E]\n[PERSON] [PERSON]: {statement_start} to {statement_end}\n[PERSON]: 30A [PERSON] Rd, [PERSON] [POSTCODE]DE]\n\nACCOUNT SUMMARY\n[PERSON] [PERSON]: \u00a3{opening_balance}\n[PERSON] [PERSON]: \u00a3{total_credits}\n[PERSON] [PERSON]: \u00a3{total_debits}\n[PERSON] [PERSON]: \u00a3[AMOUNT]\n\n[PERSON] [PERSON]: \u00a3{interest_earned}\n[PERSON] & [PERSON]: \u00a3{fees_charged}\n\n[PERSON] enquiries, contact us on [PHONE] or visit your local branch.\n\n[PERSON] you for banking with us.\n{bank_name}",
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "UK_BANK_ACCOUNT",
+                "start": 83,
+                "end": 91,
+                "text": "47308985",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 103,
+                "end": 111,
+                "text": "39-22-58",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 199,
+                "end": 206,
+                "text": "GL8 8JL",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 83,
+                "end": 91,
+                "text": "47308985",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 103,
+                "end": 111,
+                "text": "39-22-58",
+                "confidence": 0.75,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 450,
+                "end": 463,
+                "text": "0800-123-4567",
+                "confidence": 0.4,
+                "source": "Presidio"
+              }
+            ],
+            "uk_pattern_findings": [
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 199,
+                "end": 206,
+                "text": "GL8 8JL",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 103,
+                "end": 111,
+                "text": "39-22-58",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_MONETARY_VALUE",
+                "start": 340,
+                "end": 350,
+                "text": "\u00a335,093.00",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              }
+            ],
+            "missed_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 35,
+                "end": 42,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 43,
+                "end": 49,
+                "text": "Holder",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 51,
+                "end": 57,
+                "text": "Debbie",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 58,
+                "end": 66,
+                "text": "Abrahams",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 67,
+                "end": 74,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 75,
+                "end": 81,
+                "text": "Number",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 92,
+                "end": 96,
+                "text": "Sort",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 97,
+                "end": 101,
+                "text": "Code",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 112,
+                "end": 121,
+                "text": "Statement",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 122,
+                "end": 128,
+                "text": "Period",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 167,
+                "end": 174,
+                "text": "Address",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 180,
+                "end": 186,
+                "text": "London",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 191,
+                "end": 198,
+                "text": "Tetbury",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 224,
+                "end": 231,
+                "text": "Opening",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 232,
+                "end": 239,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 260,
+                "end": 265,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 266,
+                "end": 273,
+                "text": "Credits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 292,
+                "end": 297,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 298,
+                "end": 304,
+                "text": "Debits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 322,
+                "end": 329,
+                "text": "Closing",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 330,
+                "end": 337,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 352,
+                "end": 360,
+                "text": "Interest",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 361,
+                "end": 367,
+                "text": "Earned",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 388,
+                "end": 392,
+                "text": "Fees",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 395,
+                "end": 402,
+                "text": "Charges",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 421,
+                "end": 424,
+                "text": "For",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 493,
+                "end": 498,
+                "text": "Thank",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "all_findings": [
+              {
+                "entity_type": "UK_BANK_ACCOUNT",
+                "start": 83,
+                "end": 91,
+                "text": "47308985",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 103,
+                "end": 111,
+                "text": "39-22-58",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 199,
+                "end": 206,
+                "text": "GL8 8JL",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 83,
+                "end": 91,
+                "text": "47308985",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 103,
+                "end": 111,
+                "text": "39-22-58",
+                "confidence": 0.75,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 450,
+                "end": 463,
+                "text": "0800-123-4567",
+                "confidence": 0.4,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 199,
+                "end": 206,
+                "text": "GL8 8JL",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 103,
+                "end": 111,
+                "text": "39-22-58",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_MONETARY_VALUE",
+                "start": 340,
+                "end": 350,
+                "text": "\u00a335,093.00",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 35,
+                "end": 42,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 43,
+                "end": 49,
+                "text": "Holder",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 51,
+                "end": 57,
+                "text": "Debbie",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 58,
+                "end": 66,
+                "text": "Abrahams",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 67,
+                "end": 74,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 75,
+                "end": 81,
+                "text": "Number",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 92,
+                "end": 96,
+                "text": "Sort",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 97,
+                "end": 101,
+                "text": "Code",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 112,
+                "end": 121,
+                "text": "Statement",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 122,
+                "end": 128,
+                "text": "Period",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 167,
+                "end": 174,
+                "text": "Address",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 180,
+                "end": 186,
+                "text": "London",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 191,
+                "end": 198,
+                "text": "Tetbury",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 224,
+                "end": 231,
+                "text": "Opening",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 232,
+                "end": 239,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 260,
+                "end": 265,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 266,
+                "end": 273,
+                "text": "Credits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 292,
+                "end": 297,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 298,
+                "end": 304,
+                "text": "Debits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 322,
+                "end": 329,
+                "text": "Closing",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 330,
+                "end": 337,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 352,
+                "end": 360,
+                "text": "Interest",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 361,
+                "end": 367,
+                "text": "Earned",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 388,
+                "end": 392,
+                "text": "Fees",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 395,
+                "end": 402,
+                "text": "Charges",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 421,
+                "end": 424,
+                "text": "For",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 493,
+                "end": 498,
+                "text": "Thank",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "summary": {
+              "total_presidio": 6,
+              "total_uk_patterns": 3,
+              "total_missed": 27,
+              "total_all": 36
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'content' was not properly anonymized"
+            ]
+          }
+        },
+        "delivery_method": {
+          "original_content": "post",
+          "anonymized_content": "post",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'delivery_method' was not properly anonymized"
+            ]
+          }
+        },
+        "category": {
+          "original_content": "Account Statements",
+          "anonymized_content": "Account [PERSON]",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 8,
+                "end": 18,
+                "text": "Statements",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "all_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 8,
+                "end": 18,
+                "text": "Statements",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 1,
+              "total_all": 1
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'category' was not properly anonymized"
+            ]
+          }
+        },
+        "communication_type": {
+          "original_content": "statement",
+          "anonymized_content": "statement",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'communication_type' was not properly anonymized"
+            ]
+          }
+        },
+        "sensitivity": {
+          "original_content": "high",
+          "anonymized_content": "high",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'sensitivity' was not properly anonymized"
+            ]
+          }
+        },
+        "pii_fields": {
+          "original_content": "['first_name', 'last_name', 'account_number', 'sort_code', 'address', 'account_balance']",
+          "anonymized_content": "['first_name', 'last_name', 'account_number', 'sort_code', 'address', 'account_balance']",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'pii_fields' was not properly anonymized"
+            ]
+          }
+        },
+        "data_version": {
+          "original_content": "clean",
+          "anonymized_content": "clean",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'data_version' was not properly anonymized"
+            ]
+          }
+        },
+        "template_id": {
+          "original_content": "account_statements_0",
+          "anonymized_content": "account_statements_0",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'template_id' was not properly anonymized"
+            ]
+          }
+        },
+        "template_type": {
+          "original_content": "communication",
+          "anonymized_content": "communication",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'template_type' was not properly anonymized"
+            ]
+          }
+        },
+        "generation_timestamp": {
+          "original_content": "2025-08-29T12:09:12.687646",
+          "anonymized_content": "[DATE]CODE]",
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "DATE_TIME",
+                "start": 0,
+                "end": 26,
+                "text": "2025-08-29T12:09:12.687646",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 20,
+                "end": 26,
+                "text": "687646",
+                "confidence": 0.7,
+                "source": "Presidio"
+              }
+            ],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [
+              {
+                "entity_type": "DATE_TIME",
+                "start": 0,
+                "end": 26,
+                "text": "2025-08-29T12:09:12.687646",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 20,
+                "end": 26,
+                "text": "687646",
+                "confidence": 0.7,
+                "source": "Presidio"
+              }
+            ],
+            "summary": {
+              "total_presidio": 2,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 2
+            }
+          },
+          "verification": {
+            "success": true,
+            "risk_level": "LOW",
+            "recommendations": []
+          }
+        }
+      },
+      "summary": {
+        "total_presidio": 8,
+        "total_uk_patterns": 3,
+        "total_missed": 28,
+        "total_all": 39
+      }
+    },
+    {
+      "record_id": "COMM_CUS852787_account_statements_0",
+      "record_index": 3,
+      "columns_analyzed": {
+        "record_type": {
+          "original_content": "communication",
+          "anonymized_content": "communication",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'record_type' was not properly anonymized"
+            ]
+          }
+        },
+        "record_id": {
+          "original_content": "COMM_CUS852787_account_statements_0",
+          "anonymized_content": "COMM_CUS852787_account_statements_0",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'record_id' was not properly anonymized"
+            ]
+          }
+        },
+        "customer_id": {
+          "original_content": "CUS852787",
+          "anonymized_content": "CUS852787",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'customer_id' was not properly anonymized"
+            ]
+          }
+        },
+        "content": {
+          "original_content": "ACCOUNT STATEMENT\n                \nAccount Holder: Shockat Adam\nAccount Number: 40742311\nSort Code: 97-51-17\nStatement Period: {statement_start} to {statement_end}\nAddress: 116 High St, Maidenhead SL6 1PT\n\nACCOUNT SUMMARY\nOpening Balance: \u00a3{opening_balance}\nTotal Credits: \u00a3{total_credits}\nTotal Debits: \u00a3{total_debits}\nClosing Balance: \u00a3\u00a341,345.00\n\nInterest Earned: \u00a3{interest_earned}\nFees & Charges: \u00a3{fees_charged}\n\nFor enquiries, contact us on 0800-123-4567 or visit your local branch.\n\nThank you for banking with us.\n{bank_name}",
+          "anonymized_content": "ACCOUNT STATEMENT\n                \n[PERSON] [PERSON]: [PERSON]]RSON] [PERSON]: [DATE]_ACCOUNT]\n[PERSON] [PERSON]: [SORT_CODE]DE]\n[PERSON] [PERSON]: {statement_start} to {statement_end}\n[PERSON]: 116 [PERSON] St, [PERSON] [POSTCODE]DE]\n\nACCOUNT SUMMARY\n[PERSON] [PERSON]: \u00a3{opening_balance}\n[PERSON] [PERSON]: \u00a3{total_credits}\n[PERSON] [PERSON]: \u00a3{total_debits}\n[PERSON] [PERSON]: \u00a3[AMOUNT]\n\n[PERSON] [PERSON]: \u00a3{interest_earned}\n[PERSON] & [PERSON]: \u00a3{fees_charged}\n\n[PERSON] enquiries, contact us on [PHONE] or visit your local branch.\n\n[PERSON] you for banking with us.\n{bank_name}",
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "UK_BANK_ACCOUNT",
+                "start": 80,
+                "end": 88,
+                "text": "40742311",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 100,
+                "end": 108,
+                "text": "97-51-17",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 197,
+                "end": 204,
+                "text": "SL6 1PT",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PERSON",
+                "start": 51,
+                "end": 71,
+                "text": "Shockat Adam\nAccount",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 80,
+                "end": 88,
+                "text": "40742311",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 448,
+                "end": 461,
+                "text": "0800-123-4567",
+                "confidence": 0.4,
+                "source": "Presidio"
+              }
+            ],
+            "uk_pattern_findings": [
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 197,
+                "end": 204,
+                "text": "SL6 1PT",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 100,
+                "end": 108,
+                "text": "97-51-17",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_MONETARY_VALUE",
+                "start": 338,
+                "end": 348,
+                "text": "\u00a341,345.00",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              }
+            ],
+            "missed_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 35,
+                "end": 42,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 43,
+                "end": 49,
+                "text": "Holder",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 51,
+                "end": 58,
+                "text": "Shockat",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 59,
+                "end": 63,
+                "text": "Adam",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 64,
+                "end": 71,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 72,
+                "end": 78,
+                "text": "Number",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 89,
+                "end": 93,
+                "text": "Sort",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 94,
+                "end": 98,
+                "text": "Code",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 109,
+                "end": 118,
+                "text": "Statement",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 119,
+                "end": 125,
+                "text": "Period",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 164,
+                "end": 171,
+                "text": "Address",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 177,
+                "end": 181,
+                "text": "High",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 186,
+                "end": 196,
+                "text": "Maidenhead",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 222,
+                "end": 229,
+                "text": "Opening",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 230,
+                "end": 237,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 258,
+                "end": 263,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 264,
+                "end": 271,
+                "text": "Credits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 290,
+                "end": 295,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 296,
+                "end": 302,
+                "text": "Debits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 320,
+                "end": 327,
+                "text": "Closing",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 328,
+                "end": 335,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 350,
+                "end": 358,
+                "text": "Interest",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 359,
+                "end": 365,
+                "text": "Earned",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 386,
+                "end": 390,
+                "text": "Fees",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 393,
+                "end": 400,
+                "text": "Charges",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 419,
+                "end": 422,
+                "text": "For",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 491,
+                "end": 496,
+                "text": "Thank",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "all_findings": [
+              {
+                "entity_type": "UK_BANK_ACCOUNT",
+                "start": 80,
+                "end": 88,
+                "text": "40742311",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 100,
+                "end": 108,
+                "text": "97-51-17",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 197,
+                "end": 204,
+                "text": "SL6 1PT",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PERSON",
+                "start": 51,
+                "end": 71,
+                "text": "Shockat Adam\nAccount",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 80,
+                "end": 88,
+                "text": "40742311",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 448,
+                "end": 461,
+                "text": "0800-123-4567",
+                "confidence": 0.4,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 197,
+                "end": 204,
+                "text": "SL6 1PT",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 100,
+                "end": 108,
+                "text": "97-51-17",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_MONETARY_VALUE",
+                "start": 338,
+                "end": 348,
+                "text": "\u00a341,345.00",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 35,
+                "end": 42,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 43,
+                "end": 49,
+                "text": "Holder",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 51,
+                "end": 58,
+                "text": "Shockat",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 59,
+                "end": 63,
+                "text": "Adam",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 64,
+                "end": 71,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 72,
+                "end": 78,
+                "text": "Number",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 89,
+                "end": 93,
+                "text": "Sort",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 94,
+                "end": 98,
+                "text": "Code",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 109,
+                "end": 118,
+                "text": "Statement",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 119,
+                "end": 125,
+                "text": "Period",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 164,
+                "end": 171,
+                "text": "Address",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 177,
+                "end": 181,
+                "text": "High",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 186,
+                "end": 196,
+                "text": "Maidenhead",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 222,
+                "end": 229,
+                "text": "Opening",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 230,
+                "end": 237,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 258,
+                "end": 263,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 264,
+                "end": 271,
+                "text": "Credits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 290,
+                "end": 295,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 296,
+                "end": 302,
+                "text": "Debits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 320,
+                "end": 327,
+                "text": "Closing",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 328,
+                "end": 335,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 350,
+                "end": 358,
+                "text": "Interest",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 359,
+                "end": 365,
+                "text": "Earned",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 386,
+                "end": 390,
+                "text": "Fees",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 393,
+                "end": 400,
+                "text": "Charges",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 419,
+                "end": 422,
+                "text": "For",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 491,
+                "end": 496,
+                "text": "Thank",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "summary": {
+              "total_presidio": 6,
+              "total_uk_patterns": 3,
+              "total_missed": 27,
+              "total_all": 36
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'content' was not properly anonymized"
+            ]
+          }
+        },
+        "delivery_method": {
+          "original_content": "post",
+          "anonymized_content": "post",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'delivery_method' was not properly anonymized"
+            ]
+          }
+        },
+        "category": {
+          "original_content": "Account Statements",
+          "anonymized_content": "Account [PERSON]",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 8,
+                "end": 18,
+                "text": "Statements",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "all_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 8,
+                "end": 18,
+                "text": "Statements",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 1,
+              "total_all": 1
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'category' was not properly anonymized"
+            ]
+          }
+        },
+        "communication_type": {
+          "original_content": "statement",
+          "anonymized_content": "statement",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'communication_type' was not properly anonymized"
+            ]
+          }
+        },
+        "sensitivity": {
+          "original_content": "high",
+          "anonymized_content": "high",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'sensitivity' was not properly anonymized"
+            ]
+          }
+        },
+        "pii_fields": {
+          "original_content": "['first_name', 'last_name', 'account_number', 'sort_code', 'address', 'account_balance']",
+          "anonymized_content": "['first_name', 'last_name', 'account_number', 'sort_code', 'address', 'account_balance']",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'pii_fields' was not properly anonymized"
+            ]
+          }
+        },
+        "data_version": {
+          "original_content": "clean",
+          "anonymized_content": "clean",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'data_version' was not properly anonymized"
+            ]
+          }
+        },
+        "template_id": {
+          "original_content": "account_statements_0",
+          "anonymized_content": "account_statements_0",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'template_id' was not properly anonymized"
+            ]
+          }
+        },
+        "template_type": {
+          "original_content": "communication",
+          "anonymized_content": "communication",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'template_type' was not properly anonymized"
+            ]
+          }
+        },
+        "generation_timestamp": {
+          "original_content": "2025-08-29T12:09:12.687676",
+          "anonymized_content": "[DATE]CODE]",
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "DATE_TIME",
+                "start": 0,
+                "end": 26,
+                "text": "2025-08-29T12:09:12.687676",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 20,
+                "end": 26,
+                "text": "687676",
+                "confidence": 0.7,
+                "source": "Presidio"
+              }
+            ],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [
+              {
+                "entity_type": "DATE_TIME",
+                "start": 0,
+                "end": 26,
+                "text": "2025-08-29T12:09:12.687676",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 20,
+                "end": 26,
+                "text": "687676",
+                "confidence": 0.7,
+                "source": "Presidio"
+              }
+            ],
+            "summary": {
+              "total_presidio": 2,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 2
+            }
+          },
+          "verification": {
+            "success": true,
+            "risk_level": "LOW",
+            "recommendations": []
+          }
+        }
+      },
+      "summary": {
+        "total_presidio": 8,
+        "total_uk_patterns": 3,
+        "total_missed": 28,
+        "total_all": 39
+      }
+    },
+    {
+      "record_id": "COMM_CUS260265_account_statements_0",
+      "record_index": 4,
+      "columns_analyzed": {
+        "record_type": {
+          "original_content": "communication",
+          "anonymized_content": "communication",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'record_type' was not properly anonymized"
+            ]
+          }
+        },
+        "record_id": {
+          "original_content": "COMM_CUS260265_account_statements_0",
+          "anonymized_content": "COMM_CUS260265_account_statements_0",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'record_id' was not properly anonymized"
+            ]
+          }
+        },
+        "customer_id": {
+          "original_content": "CUS260265",
+          "anonymized_content": "CUS260265",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'customer_id' was not properly anonymized"
+            ]
+          }
+        },
+        "content": {
+          "original_content": "ACCOUNT STATEMENT\n                \nAccount Holder: Zubir Ahmed\nAccount Number: 39436733\nSort Code: 84-61-56\nStatement Period: {statement_start} to {statement_end}\nAddress: 655 Arena Shopping Park, London N4 1ED\n\nACCOUNT SUMMARY\nOpening Balance: \u00a3{opening_balance}\nTotal Credits: \u00a3{total_credits}\nTotal Debits: \u00a3{total_debits}\nClosing Balance: \u00a3\u00a382,340.00\n\nInterest Earned: \u00a3{interest_earned}\nFees & Charges: \u00a3{fees_charged}\n\nFor enquiries, contact us on 0800-123-4567 or visit your local branch.\n\nThank you for banking with us.\n{bank_name}",
+          "anonymized_content": "ACCOUNT STATEMENT\n                \n[PERSON] [PERSON]: [PERSON]ON]ON]\n[PERSON] [PERSON]: [DATE]_ACCOUNT]\n[PERSON] [PERSON]: [SORT_CODE]DE]\n[PERSON] [PERSON]: {statement_start} to {statement_end}\n[PERSON]: 655 [PERSON] [PERSON] [PERSON], [PERSON] [POSTCODE]ODE]\n\nACCOUNT SUMMARY\n[PERSON] [PERSON]: \u00a3{opening_balance}\n[PERSON] [PERSON]: \u00a3{total_credits}\n[PERSON] [PERSON]: \u00a3{total_debits}\n[PERSON] [PERSON]: \u00a3[AMOUNT]\n\n[PERSON] [PERSON]: \u00a3{interest_earned}\n[PERSON] & [PERSON]: \u00a3{fees_charged}\n\n[PERSON] enquiries, contact us on [PHONE] or visit your local branch.\n\n[PERSON] you for banking with us.\n{bank_name}",
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "UK_BANK_ACCOUNT",
+                "start": 79,
+                "end": 87,
+                "text": "39436733",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 99,
+                "end": 107,
+                "text": "84-61-56",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 204,
+                "end": 210,
+                "text": "N4 1ED",
+                "confidence": 0.9,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PERSON",
+                "start": 51,
+                "end": 62,
+                "text": "Zubir Ahmed",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 79,
+                "end": 87,
+                "text": "39436733",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 454,
+                "end": 467,
+                "text": "0800-123-4567",
+                "confidence": 0.4,
+                "source": "Presidio"
+              }
+            ],
+            "uk_pattern_findings": [
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 204,
+                "end": 210,
+                "text": "N4 1ED",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 99,
+                "end": 107,
+                "text": "84-61-56",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_MONETARY_VALUE",
+                "start": 344,
+                "end": 354,
+                "text": "\u00a382,340.00",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              }
+            ],
+            "missed_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 35,
+                "end": 42,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 43,
+                "end": 49,
+                "text": "Holder",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 51,
+                "end": 56,
+                "text": "Zubir",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 57,
+                "end": 62,
+                "text": "Ahmed",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 63,
+                "end": 70,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 71,
+                "end": 77,
+                "text": "Number",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 88,
+                "end": 92,
+                "text": "Sort",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 93,
+                "end": 97,
+                "text": "Code",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 108,
+                "end": 117,
+                "text": "Statement",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 118,
+                "end": 124,
+                "text": "Period",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 163,
+                "end": 170,
+                "text": "Address",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 176,
+                "end": 181,
+                "text": "Arena",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 182,
+                "end": 190,
+                "text": "Shopping",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 191,
+                "end": 195,
+                "text": "Park",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 197,
+                "end": 203,
+                "text": "London",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 228,
+                "end": 235,
+                "text": "Opening",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 236,
+                "end": 243,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 264,
+                "end": 269,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 270,
+                "end": 277,
+                "text": "Credits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 296,
+                "end": 301,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 302,
+                "end": 308,
+                "text": "Debits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 326,
+                "end": 333,
+                "text": "Closing",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 334,
+                "end": 341,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 356,
+                "end": 364,
+                "text": "Interest",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 365,
+                "end": 371,
+                "text": "Earned",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 392,
+                "end": 396,
+                "text": "Fees",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 399,
+                "end": 406,
+                "text": "Charges",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 425,
+                "end": 428,
+                "text": "For",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 497,
+                "end": 502,
+                "text": "Thank",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "all_findings": [
+              {
+                "entity_type": "UK_BANK_ACCOUNT",
+                "start": 79,
+                "end": 87,
+                "text": "39436733",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 99,
+                "end": 107,
+                "text": "84-61-56",
+                "confidence": 1.0,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 204,
+                "end": 210,
+                "text": "N4 1ED",
+                "confidence": 0.9,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PERSON",
+                "start": 51,
+                "end": 62,
+                "text": "Zubir Ahmed",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "DATE_TIME",
+                "start": 79,
+                "end": 87,
+                "text": "39436733",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "PHONE_NUMBER",
+                "start": 454,
+                "end": 467,
+                "text": "0800-123-4567",
+                "confidence": 0.4,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_POSTCODE",
+                "start": 204,
+                "end": 210,
+                "text": "N4 1ED",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 99,
+                "end": 107,
+                "text": "84-61-56",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "UK_MONETARY_VALUE",
+                "start": 344,
+                "end": 354,
+                "text": "\u00a382,340.00",
+                "confidence": 0.9,
+                "source": "Custom UK Pattern"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 35,
+                "end": 42,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 43,
+                "end": 49,
+                "text": "Holder",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 51,
+                "end": 56,
+                "text": "Zubir",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 57,
+                "end": 62,
+                "text": "Ahmed",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 63,
+                "end": 70,
+                "text": "Account",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 71,
+                "end": 77,
+                "text": "Number",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 88,
+                "end": 92,
+                "text": "Sort",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 93,
+                "end": 97,
+                "text": "Code",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 108,
+                "end": 117,
+                "text": "Statement",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 118,
+                "end": 124,
+                "text": "Period",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 163,
+                "end": 170,
+                "text": "Address",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 176,
+                "end": 181,
+                "text": "Arena",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 182,
+                "end": 190,
+                "text": "Shopping",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 191,
+                "end": 195,
+                "text": "Park",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 197,
+                "end": 203,
+                "text": "London",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 228,
+                "end": 235,
+                "text": "Opening",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 236,
+                "end": 243,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 264,
+                "end": 269,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 270,
+                "end": 277,
+                "text": "Credits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 296,
+                "end": 301,
+                "text": "Total",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 302,
+                "end": 308,
+                "text": "Debits",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 326,
+                "end": 333,
+                "text": "Closing",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 334,
+                "end": 341,
+                "text": "Balance",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 356,
+                "end": 364,
+                "text": "Interest",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 365,
+                "end": 371,
+                "text": "Earned",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 392,
+                "end": 396,
+                "text": "Fees",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 399,
+                "end": 406,
+                "text": "Charges",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 425,
+                "end": 428,
+                "text": "For",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              },
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 497,
+                "end": 502,
+                "text": "Thank",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "summary": {
+              "total_presidio": 6,
+              "total_uk_patterns": 3,
+              "total_missed": 29,
+              "total_all": 38
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'content' was not properly anonymized"
+            ]
+          }
+        },
+        "delivery_method": {
+          "original_content": "post",
+          "anonymized_content": "post",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'delivery_method' was not properly anonymized"
+            ]
+          }
+        },
+        "category": {
+          "original_content": "Account Statements",
+          "anonymized_content": "Account [PERSON]",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 8,
+                "end": 18,
+                "text": "Statements",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "all_findings": [
+              {
+                "entity_type": "POTENTIALLY_MISSED_PII",
+                "start": 8,
+                "end": 18,
+                "text": "Statements",
+                "confidence": 0.6,
+                "source": "Missed Pattern Detection"
+              }
+            ],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 1,
+              "total_all": 1
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'category' was not properly anonymized"
+            ]
+          }
+        },
+        "communication_type": {
+          "original_content": "statement",
+          "anonymized_content": "statement",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'communication_type' was not properly anonymized"
+            ]
+          }
+        },
+        "sensitivity": {
+          "original_content": "high",
+          "anonymized_content": "high",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'sensitivity' was not properly anonymized"
+            ]
+          }
+        },
+        "pii_fields": {
+          "original_content": "['first_name', 'last_name', 'account_number', 'sort_code', 'address', 'account_balance']",
+          "anonymized_content": "['first_name', 'last_name', 'account_number', 'sort_code', 'address', 'account_balance']",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'pii_fields' was not properly anonymized"
+            ]
+          }
+        },
+        "data_version": {
+          "original_content": "clean",
+          "anonymized_content": "clean",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'data_version' was not properly anonymized"
+            ]
+          }
+        },
+        "template_id": {
+          "original_content": "account_statements_0",
+          "anonymized_content": "account_statements_0",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'template_id' was not properly anonymized"
+            ]
+          }
+        },
+        "template_type": {
+          "original_content": "communication",
+          "anonymized_content": "communication",
+          "analysis": {
+            "presidio_findings": [],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [],
+            "summary": {
+              "total_presidio": 0,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 0
+            }
+          },
+          "verification": {
+            "success": false,
+            "risk_level": "HIGH",
+            "recommendations": [
+              "PII data from column 'template_type' was not properly anonymized"
+            ]
+          }
+        },
+        "generation_timestamp": {
+          "original_content": "2025-08-29T12:09:12.687706",
+          "anonymized_content": "[DATE]CODE]",
+          "analysis": {
+            "presidio_findings": [
+              {
+                "entity_type": "DATE_TIME",
+                "start": 0,
+                "end": 26,
+                "text": "2025-08-29T12:09:12.687706",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 20,
+                "end": 26,
+                "text": "687706",
+                "confidence": 0.7,
+                "source": "Presidio"
+              }
+            ],
+            "uk_pattern_findings": [],
+            "missed_findings": [],
+            "all_findings": [
+              {
+                "entity_type": "DATE_TIME",
+                "start": 0,
+                "end": 26,
+                "text": "2025-08-29T12:09:12.687706",
+                "confidence": 0.85,
+                "source": "Presidio"
+              },
+              {
+                "entity_type": "UK_SORT_CODE",
+                "start": 20,
+                "end": 26,
+                "text": "687706",
+                "confidence": 0.7,
+                "source": "Presidio"
+              }
+            ],
+            "summary": {
+              "total_presidio": 2,
+              "total_uk_patterns": 0,
+              "total_missed": 0,
+              "total_all": 2
+            }
+          },
+          "verification": {
+            "success": true,
+            "risk_level": "LOW",
+            "recommendations": []
+          }
+        }
+      },
+      "summary": {
+        "total_presidio": 8,
+        "total_uk_patterns": 3,
+        "total_missed": 30,
+        "total_all": 41
+      }
+    }
+  ]
+}

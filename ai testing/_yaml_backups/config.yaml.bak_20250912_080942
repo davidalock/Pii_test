@@ -1,0 +1,106 @@
+# Default configuration for PII Detection and Anonymization
+# This file contains the default parameters that can be overridden via command line
+
+# Input/Output settings
+input_file: "test_datasets/unified_test_analyzer_format.csv" # Path to input CSV file in dataset folder
+output_file: "pii_analysis_results.json" # Default output file name
+
+# Processing settings
+max_records: 1000 # Maximum number of records to process
+num_threads: 4 # Number of threads to use for processing
+use_threading: true # Whether to use multithreading
+
+# Field Selection - which field to analyze for PII
+# Options: "source", "customer_message", "agent_response", or any column name
+# Default: "source" (concatenated PII data field in test_datasets)
+target_field: "source"
+
+# Fields to process (empty list means auto-detect)
+fields_to_process: []
+
+# PII Entities to detect (empty means all available)
+pii_entities:
+  # Standard Presidio entities
+  - PERSON
+  - EMAIL_ADDRESS
+  - PHONE_NUMBER
+  - CREDIT_CARD
+  - IBAN_CODE
+  # - IP_ADDRESS
+  - DATE_TIME  # Re-enabled with custom recognizer that avoids false positives
+  - LOCATION
+  # - ORGANIZATION
+  # - NRP
+  - URL
+  # - US_SSN
+  # - US_DRIVER_LICENSE
+  # - US_PASSPORT
+  
+  # UK-specific entities (YAML-based recognizers)
+  - UK_POSTCODE
+  - UK_SORT_CODE
+  - UK_NI_NUMBER
+  - UK_NHS_NUMBER
+  - UK_BANK_ACCOUNT
+  - UK_MONETARY_VALUE
+  # - UK_PASSPORT
+  - UK_PHONE_NUMBER
+  # - UK_VAT_NUMBER
+  # - UK_COMPANY_NUMBER
+  # - UK_VEHICLE_REGISTRATION
+  # - UK_DRIVING_LICENSE
+  - CUSTOMER_ID
+  
+  # Enhanced entities from YAML config
+  - ENHANCED_EMAIL
+  - ENHANCED_CREDIT_CARD
+  - ENHANCED_IBAN
+  
+# Engine Configuration
+use_presidio: true
+use_transformers: true
+use_ollama: false
+use_uk_patterns: true
+interactive_mode: true
+
+# Interactive Search examples (editable from UI). Shown in a dropdown.
+interactive_examples:
+  - "My name is David Lock and I live at 21 Jubilee Drive, Norwich NR7 0AA. My email is david.lock@example.co.uk and my phone is 01263 733344."
+  - "Please update my card 5444 4412 3456 1234 exp 08/27, name D LOCK."
+  - "Contact Sarah O'Neill at sarah.oneill@acme.co.uk or +44 20 7946 0958 regarding invoice INV-100234."
+  - "NI number is QQ 12 34 56 C and my card number is 5444441234561234."
+  - "Sort code 20-45-67, account 12345678, IBAN GB29 NWBK 6016 1331 9268 19."
+  - "I was born on 15/08/1990 and moved to 221B Baker Street, London NW1 6XE last year."
+  - "Call me on 07700 900123 or 01632 960123; "
+  - "My name is Kier Starmer and I live at 10 Downing Street EC1A 1BB."
+  - "Meeting with John Smith at Barclays PLC in Canary Wharf at 10:30am tomorrow."
+  - "Customer ID CUS0002345 reports card ending 1234 and email cust.2345+alerts@example.com."
+
+# Ollama Integration
+ollama_extractor_config:
+  model_name: "mistral:7b-instruct"
+  temperature: 0.1
+  entity_types: ["PERSON", "EMAIL_ADDRESS", "PHONE_NUMBER", "LOCATION", "ORGANIZATION"]
+  prompt_template: |
+    You are a PII detection system. Extract all personally identifiable information from the provided text.
+    
+    Text to analyze: {text}
+    
+    Find entities of these types: PERSON, ORGANIZATION, EMAIL_ADDRESS, PHONE_NUMBER, LOCATION
+    
+    For each entity found in the text above, return ONLY a JSON array with the actual entities from the text.
+    Do not include examples. Analyze the actual text provided.
+    
+    Format: [{{"entity_type": "ENTITY_TYPE", "value": "actual_text_from_input", "start": start_pos, "end": end_pos, "confidence": 0.9}}]
+    
+    Return only the JSON array, nothing else:
+
+# Anonymization settings
+perform_anonymization: true
+verify_anonymization: true
+single_type_anonymization: true
+
+# Output settings
+export_format: "json" # Can be json, csv, or excel
+include_summary: true
+include_detailed_results: true

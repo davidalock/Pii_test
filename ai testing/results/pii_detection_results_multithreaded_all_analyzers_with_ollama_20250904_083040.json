@@ -1,0 +1,3568 @@
+{
+  "metadata": {
+    "timestamp": "20250904_083040",
+    "processing_mode": "multithreaded",
+    "max_workers": 3,
+    "records_processed": 10,
+    "total_entities_found": 135,
+    "processing_time_seconds": 92.48506116867065,
+    "total_time_seconds": 96.48221683502197,
+    "initialization_time_seconds": 3.997105836868286,
+    "use_ollama": true,
+    "builtin_only": false,
+    "resolve_overlaps": true,
+    "min_confidence": 0.0,
+    "entity_sources": {
+      "transformer-dslim/bert-base-NER": 16,
+      "presidio": 112,
+      "pattern-matching": 7
+    },
+    "ground_truth_total": 160,
+    "configuration": {
+      "input_file": "test_datasets/unified_test_analyzer_format.csv",
+      "output_file": "pii_analysis_results.json",
+      "max_records": 1000,
+      "num_threads": 4,
+      "use_threading": true,
+      "target_field": "source",
+      "fields_to_process": [],
+      "pii_entities": [
+        "PERSON",
+        "EMAIL_ADDRESS",
+        "PHONE_NUMBER",
+        "CREDIT_CARD",
+        "IBAN_CODE",
+        "DATE_TIME",
+        "LOCATION",
+        "URL",
+        "UK_POSTCODE",
+        "UK_SORT_CODE",
+        "UK_NI_NUMBER",
+        "UK_NHS_NUMBER",
+        "UK_BANK_ACCOUNT",
+        "UK_MONETARY_VALUE",
+        "UK_PHONE_NUMBER",
+        "CUSTOMER_ID",
+        "ENHANCED_EMAIL",
+        "ENHANCED_CREDIT_CARD",
+        "ENHANCED_IBAN"
+      ],
+      "use_presidio": true,
+      "use_transformers": true,
+      "use_ollama": false,
+      "use_uk_patterns": true,
+      "interactive_mode": true,
+      "ollama_extractor_config": {
+        "model_name": "mistral:7b-instruct",
+        "temperature": 0.1,
+        "entity_types": [
+          "PERSON",
+          "EMAIL_ADDRESS",
+          "PHONE_NUMBER",
+          "LOCATION",
+          "ORGANIZATION"
+        ],
+        "prompt_template": "You are a PII detection system. Extract all personally identifiable information from the provided text.\n\nText to analyze: {text}\n\nFind entities of these types: PERSON, ORGANIZATION, EMAIL_ADDRESS, PHONE_NUMBER, LOCATION\n\nFor each entity found in the text above, return ONLY a JSON array with the actual entities from the text.\nDo not include examples. Analyze the actual text provided.\n\nFormat: [{{\"entity_type\": \"ENTITY_TYPE\", \"value\": \"actual_text_from_input\", \"start\": start_pos, \"end\": end_pos, \"confidence\": 0.9}}]\n\nReturn only the JSON array, nothing else:\n"
+      },
+      "perform_anonymization": true,
+      "verify_anonymization": true,
+      "single_type_anonymization": true,
+      "export_format": "json",
+      "include_summary": true,
+      "include_detailed_results": true
+    },
+    "recognizer_analysis": {
+      "recognizer_categories": {
+        "presidio_builtin": [
+          {
+            "name": "CreditCardRecognizer",
+            "supported_entities": [
+              "CREDIT_CARD"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "UsBankRecognizer",
+            "supported_entities": [
+              "US_BANK_NUMBER"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "UsLicenseRecognizer",
+            "supported_entities": [
+              "US_DRIVER_LICENSE"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "UsItinRecognizer",
+            "supported_entities": [
+              "US_ITIN"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "UsPassportRecognizer",
+            "supported_entities": [
+              "US_PASSPORT"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "UsSsnRecognizer",
+            "supported_entities": [
+              "US_SSN"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "NhsRecognizer",
+            "supported_entities": [
+              "UK_NHS"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "CryptoRecognizer",
+            "supported_entities": [
+              "CRYPTO"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "DateRecognizer",
+            "supported_entities": [
+              "DATE_TIME"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "EmailRecognizer",
+            "supported_entities": [
+              "EMAIL_ADDRESS"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "IbanRecognizer",
+            "supported_entities": [
+              "IBAN_CODE"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "IpRecognizer",
+            "supported_entities": [
+              "IP_ADDRESS"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "MedicalLicenseRecognizer",
+            "supported_entities": [
+              "MEDICAL_LICENSE"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "PhoneRecognizer",
+            "supported_entities": [
+              "PHONE_NUMBER"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "UrlRecognizer",
+            "supported_entities": [
+              "URL"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "SpacyRecognizer",
+            "supported_entities": [
+              "PERSON",
+              "LOCATION",
+              "DATE_TIME",
+              "NRP"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entities": [
+              "UK_POSTCODE"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entities": [
+              "UK_SORT_CODE"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entities": [
+              "UK_NHS_NUMBER"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entities": [
+              "UK_NI_NUMBER"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entities": [
+              "UK_BANK_ACCOUNT"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entities": [
+              "UK_MONETARY_VALUE"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entities": [
+              "UK_PASSPORT"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entities": [
+              "CUSTOMER_ID"
+            ],
+            "type": "built-in"
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entities": [
+              "PHONE_NUMBER"
+            ],
+            "type": "built-in"
+          }
+        ],
+        "custom_uk": [
+          {
+            "name": "PatternRecognizer",
+            "supported_entity": "UNKNOWN",
+            "type": "custom_uk",
+            "patterns": [
+              {
+                "name": "uk_postcode_standard",
+                "regex": "\\b[A-Z]{1,2}\\d{1,2}[A-Z]?\\s\\d[A-Z]{2}\\b",
+                "score": 0.9
+              },
+              {
+                "name": "uk_postcode_no_space",
+                "regex": "\\b[A-Z]{1,2}\\d{1,2}[A-Z]?\\d[A-Z]{2}\\b",
+                "score": 0.85
+              }
+            ]
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entity": "UNKNOWN",
+            "type": "custom_uk",
+            "patterns": [
+              {
+                "name": "uk_sort_code_standard",
+                "regex": "\\b\\d{2}-\\d{2}-\\d{2}\\b",
+                "score": 0.9
+              },
+              {
+                "name": "uk_sort_code_no_hyphens",
+                "regex": "\\b\\d{6}\\b",
+                "score": 0.7
+              }
+            ]
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entity": "UNKNOWN",
+            "type": "custom_uk",
+            "patterns": [
+              {
+                "name": "uk_nhs_standard",
+                "regex": "\\b\\d{3}\\s\\d{3}\\s\\d{4}\\b",
+                "score": 0.9
+              },
+              {
+                "name": "uk_nhs_no_spaces",
+                "regex": "\\b\\d{10}\\b",
+                "score": 0.7
+              }
+            ]
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entity": "UNKNOWN",
+            "type": "custom_uk",
+            "patterns": [
+              {
+                "name": "uk_ni_standard",
+                "regex": "\\b[A-Z]{2}\\s?\\d{2}\\s?\\d{2}\\s?\\d{2}\\s?[A-Z]\\b",
+                "score": 0.9
+              },
+              {
+                "name": "uk_ni_no_spaces",
+                "regex": "\\b[A-Z]{2}\\d{6}[A-Z]\\b",
+                "score": 0.85
+              }
+            ]
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entity": "UNKNOWN",
+            "type": "custom_uk",
+            "patterns": [
+              {
+                "name": "uk_bank_account_standard",
+                "regex": "\\b\\d{8}\\b",
+                "score": 0.7
+              },
+              {
+                "name": "uk_bank_account_with_spaces",
+                "regex": "\\b\\d{2}\\s?\\d{2}\\s?\\d{2}\\s?\\d{2}\\b",
+                "score": 0.7
+              }
+            ]
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entity": "UNKNOWN",
+            "type": "custom_uk",
+            "patterns": [
+              {
+                "name": "uk_monetary_standard",
+                "regex": "£\\d{1,3}(?:,\\d{3})*(?:\\.\\d{2})?",
+                "score": 0.9
+              },
+              {
+                "name": "uk_monetary_gbp",
+                "regex": "GBP\\s?\\d{1,3}(?:,\\d{3})*(?:\\.\\d{2})?",
+                "score": 0.85
+              }
+            ]
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entity": "UNKNOWN",
+            "type": "custom_uk",
+            "patterns": [
+              {
+                "name": "uk_passport_standard",
+                "regex": "\\b\\d{9}\\b",
+                "score": 0.7
+              },
+              {
+                "name": "uk_passport_with_prefix",
+                "regex": "\\b[Pp]assport\\s+[Nn]o\\.?\\s*\\d{9}\\b",
+                "score": 0.9
+              }
+            ]
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entity": "UNKNOWN",
+            "type": "custom_uk",
+            "patterns": [
+              {
+                "name": "customer_id_standard",
+                "regex": "\\bCUS\\d{6,8}\\b",
+                "score": 0.9
+              },
+              {
+                "name": "customer_id_generic",
+                "regex": "\\b[A-Z]{2,4}\\d{6,10}\\b",
+                "score": 0.7
+              }
+            ]
+          },
+          {
+            "name": "PatternRecognizer",
+            "supported_entity": "UNKNOWN",
+            "type": "custom_uk",
+            "patterns": [
+              {
+                "name": "uk_phone_mobile",
+                "regex": "\\b07\\d{3}\\s?\\d{3}\\s?\\d{3}\\b",
+                "score": 0.9
+              },
+              {
+                "name": "uk_phone_landline",
+                "regex": "\\b0[1-9]\\d{2,4}\\s?\\d{3,7}\\b",
+                "score": 0.85
+              }
+            ]
+          }
+        ],
+        "pattern_matching": [
+          {
+            "name": "Pattern_EMAIL_ADDRESS",
+            "supported_entity": "EMAIL_ADDRESS",
+            "type": "pattern_matching",
+            "regex": "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b"
+          },
+          {
+            "name": "Pattern_PHONE_NUMBER",
+            "supported_entity": "PHONE_NUMBER",
+            "type": "pattern_matching",
+            "regex": "\\b(?:\\+\\d{1,3}\\s?)?\\(?\\d{3,5}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}\\b"
+          },
+          {
+            "name": "Pattern_UK_POSTCODE",
+            "supported_entity": "UK_POSTCODE",
+            "type": "pattern_matching",
+            "regex": "\\b[A-Z]{1,2}[0-9][A-Z0-9]? ?[0-9][A-Z]{2}\\b"
+          },
+          {
+            "name": "Pattern_CREDIT_CARD",
+            "supported_entity": "CREDIT_CARD",
+            "type": "pattern_matching",
+            "regex": "\\b(?:\\d{4}[-\\s]?){3}\\d{4}\\b"
+          },
+          {
+            "name": "Pattern_PERSON",
+            "supported_entity": "PERSON",
+            "type": "pattern_matching",
+            "regex": "\\b[A-Z][a-z]+ [A-Z][a-z]+\\b"
+          },
+          {
+            "name": "Pattern_UK_NI_NUMBER",
+            "supported_entity": "UK_NI_NUMBER",
+            "type": "pattern_matching",
+            "regex": "\\b[A-Z]{2}\\d{6}[A-Z]?\\b"
+          },
+          {
+            "name": "Pattern_UK_NHS_NUMBER",
+            "supported_entity": "UK_NHS_NUMBER",
+            "type": "pattern_matching",
+            "regex": "\\b\\d{3}[-\\s]?\\d{3}[-\\s]?\\d{4}\\b"
+          },
+          {
+            "name": "Pattern_ADDRESS",
+            "supported_entity": "ADDRESS",
+            "type": "pattern_matching",
+            "regex": "\\b\\d+\\s+[A-Za-z]+ (?:Street|St|Avenue|Ave|Road|Rd|Boulevard|Blvd|Lane|Ln|Drive|Dr|Way|Court|Ct|Place|Pl|Terrace|Ter)\\b"
+          }
+        ],
+        "transformer_enhanced": {
+          "note": "Transformer-enhanced Presidio analyzer available but details not extracted",
+          "type": "enhanced"
+        },
+        "ollama_llm": {
+          "name": "OllamaEntityExtractor",
+          "model": "mistral:7b-instruct",
+          "type": "llm_based",
+          "supported_entities": "dynamic_extraction"
+        }
+      },
+      "entity_type_mappings": {
+        "CREDIT_CARD": [
+          {
+            "recognizer": "CreditCardRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          },
+          {
+            "recognizer": "Pattern_CREDIT_CARD",
+            "source": "pattern-matching",
+            "type": "regex-based"
+          }
+        ],
+        "US_BANK_NUMBER": [
+          {
+            "recognizer": "UsBankRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "US_DRIVER_LICENSE": [
+          {
+            "recognizer": "UsLicenseRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "US_ITIN": [
+          {
+            "recognizer": "UsItinRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "US_PASSPORT": [
+          {
+            "recognizer": "UsPassportRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "US_SSN": [
+          {
+            "recognizer": "UsSsnRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "UK_NHS": [
+          {
+            "recognizer": "NhsRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "CRYPTO": [
+          {
+            "recognizer": "CryptoRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "DATE_TIME": [
+          {
+            "recognizer": "DateRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          },
+          {
+            "recognizer": "SpacyRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "EMAIL_ADDRESS": [
+          {
+            "recognizer": "EmailRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          },
+          {
+            "recognizer": "Pattern_EMAIL_ADDRESS",
+            "source": "pattern-matching",
+            "type": "regex-based"
+          }
+        ],
+        "IBAN_CODE": [
+          {
+            "recognizer": "IbanRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "IP_ADDRESS": [
+          {
+            "recognizer": "IpRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "MEDICAL_LICENSE": [
+          {
+            "recognizer": "MedicalLicenseRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "PHONE_NUMBER": [
+          {
+            "recognizer": "PhoneRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          },
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          },
+          {
+            "recognizer": "Pattern_PHONE_NUMBER",
+            "source": "pattern-matching",
+            "type": "regex-based"
+          }
+        ],
+        "URL": [
+          {
+            "recognizer": "UrlRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "PERSON": [
+          {
+            "recognizer": "SpacyRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          },
+          {
+            "recognizer": "Pattern_PERSON",
+            "source": "pattern-matching",
+            "type": "regex-based"
+          }
+        ],
+        "LOCATION": [
+          {
+            "recognizer": "SpacyRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "NRP": [
+          {
+            "recognizer": "SpacyRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "UK_POSTCODE": [
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          },
+          {
+            "recognizer": "Pattern_UK_POSTCODE",
+            "source": "pattern-matching",
+            "type": "regex-based"
+          }
+        ],
+        "UK_SORT_CODE": [
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "UK_NHS_NUMBER": [
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          },
+          {
+            "recognizer": "Pattern_UK_NHS_NUMBER",
+            "source": "pattern-matching",
+            "type": "regex-based"
+          }
+        ],
+        "UK_NI_NUMBER": [
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          },
+          {
+            "recognizer": "Pattern_UK_NI_NUMBER",
+            "source": "pattern-matching",
+            "type": "regex-based"
+          }
+        ],
+        "UK_BANK_ACCOUNT": [
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "UK_MONETARY_VALUE": [
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "UK_PASSPORT": [
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "CUSTOMER_ID": [
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "presidio",
+            "type": "built-in"
+          }
+        ],
+        "UNKNOWN": [
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "custom_uk",
+            "type": "pattern-based"
+          },
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "custom_uk",
+            "type": "pattern-based"
+          },
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "custom_uk",
+            "type": "pattern-based"
+          },
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "custom_uk",
+            "type": "pattern-based"
+          },
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "custom_uk",
+            "type": "pattern-based"
+          },
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "custom_uk",
+            "type": "pattern-based"
+          },
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "custom_uk",
+            "type": "pattern-based"
+          },
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "custom_uk",
+            "type": "pattern-based"
+          },
+          {
+            "recognizer": "PatternRecognizer",
+            "source": "custom_uk",
+            "type": "pattern-based"
+          }
+        ],
+        "ADDRESS": [
+          {
+            "recognizer": "Pattern_ADDRESS",
+            "source": "pattern-matching",
+            "type": "regex-based"
+          }
+        ]
+      },
+      "pattern_definitions": {
+        "UNKNOWN": [
+          {
+            "name": "uk_phone_mobile",
+            "regex": "\\b07\\d{3}\\s?\\d{3}\\s?\\d{3}\\b",
+            "score": 0.9
+          },
+          {
+            "name": "uk_phone_landline",
+            "regex": "\\b0[1-9]\\d{2,4}\\s?\\d{3,7}\\b",
+            "score": 0.85
+          }
+        ],
+        "EMAIL_ADDRESS": [
+          {
+            "name": "hardcoded_email_address",
+            "regex": "\\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Z|a-z]{2,}\\b",
+            "score": 0.8
+          }
+        ],
+        "PHONE_NUMBER": [
+          {
+            "name": "hardcoded_phone_number",
+            "regex": "\\b(?:\\+\\d{1,3}\\s?)?\\(?\\d{3,5}\\)?[\\s.-]?\\d{3}[\\s.-]?\\d{4}\\b",
+            "score": 0.8
+          }
+        ],
+        "UK_POSTCODE": [
+          {
+            "name": "hardcoded_uk_postcode",
+            "regex": "\\b[A-Z]{1,2}[0-9][A-Z0-9]? ?[0-9][A-Z]{2}\\b",
+            "score": 0.8
+          }
+        ],
+        "CREDIT_CARD": [
+          {
+            "name": "hardcoded_credit_card",
+            "regex": "\\b(?:\\d{4}[-\\s]?){3}\\d{4}\\b",
+            "score": 0.8
+          }
+        ],
+        "PERSON": [
+          {
+            "name": "hardcoded_person",
+            "regex": "\\b[A-Z][a-z]+ [A-Z][a-z]+\\b",
+            "score": 0.8
+          }
+        ],
+        "UK_NI_NUMBER": [
+          {
+            "name": "hardcoded_uk_ni_number",
+            "regex": "\\b[A-Z]{2}\\d{6}[A-Z]?\\b",
+            "score": 0.8
+          }
+        ],
+        "UK_NHS_NUMBER": [
+          {
+            "name": "hardcoded_uk_nhs_number",
+            "regex": "\\b\\d{3}[-\\s]?\\d{3}[-\\s]?\\d{4}\\b",
+            "score": 0.8
+          }
+        ],
+        "ADDRESS": [
+          {
+            "name": "hardcoded_address",
+            "regex": "\\b\\d+\\s+[A-Za-z]+ (?:Street|St|Avenue|Ave|Road|Rd|Boulevard|Blvd|Lane|Ln|Drive|Dr|Way|Court|Ct|Place|Pl|Terrace|Ter)\\b",
+            "score": 0.8
+          }
+        ]
+      },
+      "total_recognizers": 43
+    }
+  },
+  "results": [
+    {
+      "record_id": "record_0",
+      "record_index": 0,
+      "conversation_id": "",
+      "customer_id": "CUS671412",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Jack",
+          "Abbott",
+          "jack.abbott@gmail.com",
+          "01256 884140",
+          "08/03/1966",
+          "174 London Rd, Southend-on-Sea SS1 1PH",
+          "174 London Rd",
+          "Southend-on-Sea",
+          "SS1 1PH",
+          "BR 85 64 14 A",
+          "21-37-39",
+          "77827638",
+          "GB80ZAYL8532903736687537",
+          "5288962393866745",
+          "CUS671412",
+          "£55,087.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Jack Abbott jack.abbott@gmail.com 01256 884140 08/03/1966 174 London Rd, Southend-on-Sea SS1 1PH BR 85 64 14 A 21-37-39 77827638 GB02ABBY09271092852291 5288962393866745 CUS671412 £55,087.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Jack Abbott",
+              "start": 0,
+              "end": 11,
+              "confidence": "0.9976244",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "PERSON",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "jack.abbott@gmail.com",
+              "start": 12,
+              "end": 33,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "EmailRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "EmailRecognizer",
+                  "recognizer_identifier": "EmailRecognizer_5708636448"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "01256 884140",
+              "start": 34,
+              "end": 46,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_5708633424"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "08/03/1966",
+              "start": 47,
+              "end": 57,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                  "recognizer_identifier": "CUSTOM_DATE_TIME_RECOGNIZER_5643912784"
+                }
+              }
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "London Rd",
+              "start": 62,
+              "end": 71,
+              "confidence": 0.85,
+              "source": "pattern-matching",
+              "recognizer_details": {
+                "recognizer_name": "Pattern_PERSON",
+                "recognizer_type": "regex-based",
+                "pattern_used": "\\b[A-Z][a-z]+ [A-Z][a-z]+\\b",
+                "pattern_source": "hardcoded"
+              }
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Southend-on-Sea",
+              "start": 73,
+              "end": 88,
+              "confidence": "0.992975",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "LOCATION",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "SS1 1PH",
+              "start": 89,
+              "end": 96,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5708631072"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "64 14",
+              "start": 103,
+              "end": 108,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_5708633424"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "21-37-39",
+              "start": 111,
+              "end": 119,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5707379920"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "77827638",
+              "start": 120,
+              "end": 128,
+              "confidence": 0.7,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705544544"
+                }
+              }
+            },
+            {
+              "entity_type": "IBAN_CODE",
+              "text": "GB02ABBY09271092852291",
+              "start": 129,
+              "end": 151,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "IbanRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "IbanRecognizer",
+                  "recognizer_identifier": "IbanRecognizer_5708636784"
+                }
+              }
+            },
+            {
+              "entity_type": "CREDIT_CARD",
+              "text": "5288962393866745",
+              "start": 152,
+              "end": 168,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "ENHANCED_CREDIT_CARD_RECOGNIZER",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "ENHANCED_CREDIT_CARD_RECOGNIZER",
+                  "recognizer_identifier": "ENHANCED_CREDIT_CARD_RECOGNIZER_13332102880"
+                }
+              }
+            },
+            {
+              "entity_type": "CUSTOMER_ID",
+              "text": "CUS671412",
+              "start": 169,
+              "end": 178,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700745648"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£55,087.00",
+              "start": 179,
+              "end": 189,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700748784"
+                }
+              }
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] 174 [PERSON], [LOCATION] [UK_POSTCODE] BR 85 [DATE_TIME] A [UK_SORT_CODE] [UK_BANK_ACCOUNT] [IBAN_CODE] [CREDIT_CARD] [CUSTOMER_ID] [UK_MONETARY_VALUE]",
+          "entity_count": 14
+        }
+      }
+    },
+    {
+      "record_id": "record_1",
+      "record_index": 1,
+      "conversation_id": "",
+      "customer_id": "CUS662275",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Diane",
+          "Abbott",
+          "diane.abbott@uk-consulting.com",
+          "07702 202 319",
+          "25/03/1987",
+          "19 High St, Crickhowell NP8 1BD",
+          "19 High St",
+          "Crickhowell",
+          "NP8 1BD",
+          "PG 45 29 37 B",
+          "23-21-58",
+          "22981052",
+          "GB93ZAYZ9103073645503389",
+          "4617267520467927",
+          "CUS662275",
+          "£16,461.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Diane Abbott diane.abbott@uk-consulting.com 07702 202 319 25/03/1987 19 High St, Crickhowell NP8 1BD PG 45 29 37 B 23-21-58 22981052 GB53NWBK60000040227641 4617267520467927 CUS662275 £16,461.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Diane Abbott",
+              "start": 0,
+              "end": 12,
+              "confidence": "0.9974826",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "PERSON",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "diane.abbott@uk-consulting.com",
+              "start": 13,
+              "end": 43,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "EmailRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "EmailRecognizer",
+                  "recognizer_identifier": "EmailRecognizer_5708636448"
+                }
+              }
+            },
+            {
+              "entity_type": "PHONE_NUMBER",
+              "text": "07702 202 319",
+              "start": 44,
+              "end": 57,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5602048848"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "25/03/1987",
+              "start": 58,
+              "end": 68,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                  "recognizer_identifier": "CUSTOM_DATE_TIME_RECOGNIZER_5643912784"
+                }
+              }
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "High St",
+              "start": 72,
+              "end": 79,
+              "confidence": 0.85,
+              "source": "pattern-matching",
+              "recognizer_details": {
+                "recognizer_name": "Pattern_PERSON",
+                "recognizer_type": "regex-based",
+                "pattern_used": "\\b[A-Z][a-z]+ [A-Z][a-z]+\\b",
+                "pattern_source": "hardcoded"
+              }
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "C",
+              "start": 81,
+              "end": 82,
+              "confidence": "0.9828266",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "LOCATION",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "rickhowell",
+              "start": 82,
+              "end": 92,
+              "confidence": "0.86577225",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "LOCATION",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "NP8 1BD",
+              "start": 93,
+              "end": 100,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5708631072"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "PG 45 29 37 B",
+              "start": 101,
+              "end": 114,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705542720"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "23-21-58",
+              "start": 115,
+              "end": 123,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5707379920"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "22981052",
+              "start": 124,
+              "end": 132,
+              "confidence": 0.7,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705544544"
+                }
+              }
+            },
+            {
+              "entity_type": "IBAN_CODE",
+              "text": "GB53NWBK60000040227641",
+              "start": 133,
+              "end": 155,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "IbanRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "IbanRecognizer",
+                  "recognizer_identifier": "IbanRecognizer_5708636784"
+                }
+              }
+            },
+            {
+              "entity_type": "CUSTOMER_ID",
+              "text": "CUS662275",
+              "start": 173,
+              "end": 182,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700745648"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£16,461.00",
+              "start": 183,
+              "end": 193,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700748784"
+                }
+              }
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [PHONE_NUMBER] [DATE_TIME] 19 [PERSON], [LOCATION][LOCATION] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] [IBAN_CODE] 4617267520467927 [CUSTOMER_ID] [UK_MONETARY_VALUE]",
+          "entity_count": 14
+        }
+      }
+    },
+    {
+      "record_id": "record_2",
+      "record_index": 2,
+      "conversation_id": "",
+      "customer_id": "CUS802729",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Debbie",
+          "Abrahams",
+          "debbie.abrahams@hotmail.com",
+          "0207 920 1852",
+          "19/04/1964",
+          "30A London Rd, Tetbury GL8 8JL",
+          "30A London Rd",
+          "Tetbury",
+          "GL8 8JL",
+          "BR 94 39 47 A",
+          "39-22-58",
+          "47308985",
+          "GB21LLGV5896694631831063",
+          "5133588542473968",
+          "CUS802729",
+          "£35,093.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Debbie Abrahams debbie.abrahams@hotmail.com 0207 920 1852 19/04/1964 30A London Rd, Tetbury GL8 8JL BR 94 39 47 A 39-22-58 47308985 GB78HSBC40202387599620 5133588542473968 CUS802729 £35,093.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Debbie Abraham",
+              "start": 0,
+              "end": 14,
+              "confidence": "0.9992937",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "PERSON",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "debbie.abrahams@hotmail.com",
+              "start": 16,
+              "end": 43,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "EmailRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "EmailRecognizer",
+                  "recognizer_identifier": "EmailRecognizer_5708636448"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "0207 920 1852",
+              "start": 44,
+              "end": 57,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_5708633424"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "19/04/1964",
+              "start": 58,
+              "end": 68,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                  "recognizer_identifier": "CUSTOM_DATE_TIME_RECOGNIZER_5643912784"
+                }
+              }
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "London Rd",
+              "start": 73,
+              "end": 82,
+              "confidence": 0.85,
+              "source": "pattern-matching",
+              "recognizer_details": {
+                "recognizer_name": "Pattern_PERSON",
+                "recognizer_type": "regex-based",
+                "pattern_used": "\\b[A-Z][a-z]+ [A-Z][a-z]+\\b",
+                "pattern_source": "hardcoded"
+              }
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Tetbury",
+              "start": 84,
+              "end": 91,
+              "confidence": "0.9092508",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "LOCATION",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "GL8 8JL",
+              "start": 92,
+              "end": 99,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5708631072"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "94 39",
+              "start": 103,
+              "end": 108,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_13331658256"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "39-22-58",
+              "start": 114,
+              "end": 122,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5707379920"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "47308985",
+              "start": 123,
+              "end": 131,
+              "confidence": 0.7,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705544544"
+                }
+              }
+            },
+            {
+              "entity_type": "IBAN_CODE",
+              "text": "GB78HSBC40202387599620",
+              "start": 132,
+              "end": 154,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "IbanRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "IbanRecognizer",
+                  "recognizer_identifier": "IbanRecognizer_5708636784"
+                }
+              }
+            },
+            {
+              "entity_type": "CUSTOMER_ID",
+              "text": "CUS802729",
+              "start": 172,
+              "end": 181,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700745648"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£35,093.00",
+              "start": 182,
+              "end": 192,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700748784"
+                }
+              }
+            }
+          ],
+          "anonymized_text": "[PERSON]s [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] 30A [PERSON], [LOCATION] [UK_POSTCODE] BR [DATE_TIME] 47 A [UK_SORT_CODE] [UK_BANK_ACCOUNT] [IBAN_CODE] 5133588542473968 [CUSTOMER_ID] [UK_MONETARY_VALUE]",
+          "entity_count": 13
+        }
+      }
+    },
+    {
+      "record_id": "record_3",
+      "record_index": 3,
+      "conversation_id": "",
+      "customer_id": "CUS852787",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Shockat",
+          "Adam",
+          "shockat.adam@sky.com",
+          "07700 923 193",
+          "06/08/1984",
+          "116 High St, Maidenhead SL6 1PT",
+          "116 High St",
+          "Maidenhead",
+          "SL6 1PT",
+          "PG 91 98 81 A",
+          "97-51-17",
+          "40742311",
+          "GB54ZAYZ6384342645935572",
+          "4738588377270248",
+          "CUS852787",
+          "£41,345.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Shockat Adam shockat.adam@sky.com 07700 923 193 06/08/1984 116 High St, Maidenhead SL6 1PT PG 91 98 81 A 97-51-17 40742311 GB80RBOS83345688965948 4738588377270248 CUS852787 £41,345.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Shockat Adam",
+              "start": 0,
+              "end": 12,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_5708633424"
+                }
+              }
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "shockat.adam@sky.com",
+              "start": 13,
+              "end": 33,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "EmailRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "EmailRecognizer",
+                  "recognizer_identifier": "EmailRecognizer_5708636448"
+                }
+              }
+            },
+            {
+              "entity_type": "PHONE_NUMBER",
+              "text": "07700 923 193",
+              "start": 34,
+              "end": 47,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5602048848"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "06/08/1984",
+              "start": 48,
+              "end": 58,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                  "recognizer_identifier": "CUSTOM_DATE_TIME_RECOGNIZER_5643912784"
+                }
+              }
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "High St",
+              "start": 63,
+              "end": 70,
+              "confidence": 0.85,
+              "source": "pattern-matching",
+              "recognizer_details": {
+                "recognizer_name": "Pattern_PERSON",
+                "recognizer_type": "regex-based",
+                "pattern_used": "\\b[A-Z][a-z]+ [A-Z][a-z]+\\b",
+                "pattern_source": "hardcoded"
+              }
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Maidenhead",
+              "start": 72,
+              "end": 82,
+              "confidence": "0.98437774",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "LOCATION",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "SL6 1PT",
+              "start": 83,
+              "end": 90,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5708631072"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "PG 91 98 81 A",
+              "start": 91,
+              "end": 104,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705542720"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "97-51-17",
+              "start": 105,
+              "end": 113,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5707379920"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "40742311",
+              "start": 114,
+              "end": 122,
+              "confidence": 0.7,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705544544"
+                }
+              }
+            },
+            {
+              "entity_type": "IBAN_CODE",
+              "text": "GB80RBOS83345688965948",
+              "start": 123,
+              "end": 145,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "IbanRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "IbanRecognizer",
+                  "recognizer_identifier": "IbanRecognizer_5708636784"
+                }
+              }
+            },
+            {
+              "entity_type": "CUSTOMER_ID",
+              "text": "CUS852787",
+              "start": 163,
+              "end": 172,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700745648"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£41,345.00",
+              "start": 173,
+              "end": 183,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700748784"
+                }
+              }
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [PHONE_NUMBER] [DATE_TIME] 116 [PERSON], [LOCATION] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] [IBAN_CODE] 4738588377270248 [CUSTOMER_ID] [UK_MONETARY_VALUE]",
+          "entity_count": 13
+        }
+      }
+    },
+    {
+      "record_id": "record_4",
+      "record_index": 4,
+      "conversation_id": "",
+      "customer_id": "CUS260265",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Zubir",
+          "Ahmed",
+          "zubir.ahmed@manchester-group.co.uk",
+          "01273 714 8133",
+          "05/05/1968",
+          "655 Arena Shopping Park, London N4 1ED",
+          "655 Arena Shopping Park",
+          "London",
+          "N4 1ED",
+          "BG 81 78 43 B",
+          "84-61-56",
+          "39436733",
+          "GB08LLGV7623857422201654",
+          "4223453943397785",
+          "CUS260265",
+          "£82,340.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Zubir Ahmed zubir.ahmed@manchester-group.co.uk 01273 714 8133 05/05/1968 655 Arena Shopping Park, London N4 1ED BG 81 78 43 B 84-61-56 39436733 GB71RBOS83123457832455 4223453943397785 CUS260265 £82,340.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Zubir Ahmed",
+              "start": 0,
+              "end": 11,
+              "confidence": "0.92013335",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "PERSON",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "zubir.ahmed@manchester-group.co.uk",
+              "start": 12,
+              "end": 46,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "EmailRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "EmailRecognizer",
+                  "recognizer_identifier": "EmailRecognizer_5708636448"
+                }
+              }
+            },
+            {
+              "entity_type": "PHONE_NUMBER",
+              "text": "01273 714",
+              "start": 47,
+              "end": 56,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5602048848"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "8133",
+              "start": 57,
+              "end": 61,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_5708633424"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "05/05/1968",
+              "start": 62,
+              "end": 72,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                  "recognizer_identifier": "CUSTOM_DATE_TIME_RECOGNIZER_5643912784"
+                }
+              }
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Arena Shopping",
+              "start": 77,
+              "end": 91,
+              "confidence": 0.85,
+              "source": "pattern-matching",
+              "recognizer_details": {
+                "recognizer_name": "Pattern_PERSON",
+                "recognizer_type": "regex-based",
+                "pattern_used": "\\b[A-Z][a-z]+ [A-Z][a-z]+\\b",
+                "pattern_source": "hardcoded"
+              }
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "London",
+              "start": 98,
+              "end": 104,
+              "confidence": "0.9992507",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "LOCATION",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "N4 1ED",
+              "start": 105,
+              "end": 111,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5708631072"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "BG 81 78 43 B",
+              "start": 112,
+              "end": 125,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705542720"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "84-61-56",
+              "start": 126,
+              "end": 134,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5707379920"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "39436733",
+              "start": 135,
+              "end": 143,
+              "confidence": 0.7,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705544544"
+                }
+              }
+            },
+            {
+              "entity_type": "IBAN_CODE",
+              "text": "GB71RBOS83123457832455",
+              "start": 144,
+              "end": 166,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "IbanRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "IbanRecognizer",
+                  "recognizer_identifier": "IbanRecognizer_5708636784"
+                }
+              }
+            },
+            {
+              "entity_type": "CUSTOMER_ID",
+              "text": "CUS260265",
+              "start": 184,
+              "end": 193,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700745648"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£82,340.00",
+              "start": 194,
+              "end": 204,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700748784"
+                }
+              }
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [PHONE_NUMBER] [DATE_TIME] [DATE_TIME] 655 [PERSON] Park, [LOCATION] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] [IBAN_CODE] 4223453943397785 [CUSTOMER_ID] [UK_MONETARY_VALUE]",
+          "entity_count": 14
+        }
+      }
+    },
+    {
+      "record_id": "record_5",
+      "record_index": 5,
+      "conversation_id": "",
+      "customer_id": "CUS857168",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Luke",
+          "Akehurst",
+          "luke.akehurst@london-financial.co.uk",
+          "07704 327 479",
+          "13/10/1989",
+          "115 London Southend Airport, Southend-on-Sea SS2 6YF",
+          "115 London Southend Airport",
+          "Southend-on-Sea",
+          "SS2 6YF",
+          "PG 80 11 97 A",
+          "97-78-44",
+          "96028436",
+          "GB04ZAYL4939292068353204",
+          "4103652670930086",
+          "CUS857168",
+          "£94,429.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Luke Akehurst luke.akehurst@london-financial.co.uk 07704 327 479 13/10/1989 115 London Southend Airport, Southend-on-Sea SS2 6YF PG 80 11 97 A 97-78-44 96028436 GB34RBOS83123460943232 4103652670930086 CUS857168 £94,429.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Luke Akehurst",
+              "start": 0,
+              "end": 13,
+              "confidence": "0.9941549",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "PERSON",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "luke.akehurst@london-financial.co.uk",
+              "start": 14,
+              "end": 50,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "EmailRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "EmailRecognizer",
+                  "recognizer_identifier": "EmailRecognizer_5708636448"
+                }
+              }
+            },
+            {
+              "entity_type": "PHONE_NUMBER",
+              "text": "07704 327 479",
+              "start": 51,
+              "end": 64,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5602048848"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "13/10/1989",
+              "start": 65,
+              "end": 75,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                  "recognizer_identifier": "CUSTOM_DATE_TIME_RECOGNIZER_5643912784"
+                }
+              }
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "London Southend",
+              "start": 80,
+              "end": 95,
+              "confidence": 0.85,
+              "source": "pattern-matching",
+              "recognizer_details": {
+                "recognizer_name": "Pattern_PERSON",
+                "recognizer_type": "regex-based",
+                "pattern_used": "\\b[A-Z][a-z]+ [A-Z][a-z]+\\b",
+                "pattern_source": "hardcoded"
+              }
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Southend-on-Sea",
+              "start": 105,
+              "end": 120,
+              "confidence": "0.99096495",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "LOCATION",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "SS2 6YF",
+              "start": 121,
+              "end": 128,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5708631072"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "PG 80 11 97 A",
+              "start": 129,
+              "end": 142,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705542720"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "97-78-44",
+              "start": 143,
+              "end": 151,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5707379920"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "96028436",
+              "start": 152,
+              "end": 160,
+              "confidence": 0.7,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705544544"
+                }
+              }
+            },
+            {
+              "entity_type": "IBAN_CODE",
+              "text": "GB34RBOS83123460943232",
+              "start": 161,
+              "end": 183,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "IbanRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "IbanRecognizer",
+                  "recognizer_identifier": "IbanRecognizer_5708636784"
+                }
+              }
+            },
+            {
+              "entity_type": "CREDIT_CARD",
+              "text": "4103652670930086",
+              "start": 184,
+              "end": 200,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "CreditCardRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "CreditCardRecognizer",
+                  "recognizer_identifier": "CreditCardRecognizer_5707644080"
+                }
+              }
+            },
+            {
+              "entity_type": "CUSTOMER_ID",
+              "text": "CUS857168",
+              "start": 201,
+              "end": 210,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700745648"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£94,429.00",
+              "start": 211,
+              "end": 221,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700748784"
+                }
+              }
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [PHONE_NUMBER] [DATE_TIME] 115 [PERSON] Airport, [LOCATION] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] [IBAN_CODE] [CREDIT_CARD] [CUSTOMER_ID] [UK_MONETARY_VALUE]",
+          "entity_count": 14
+        }
+      }
+    },
+    {
+      "record_id": "record_6",
+      "record_index": 6,
+      "conversation_id": "",
+      "customer_id": "CUS867460",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Bayo",
+          "Alaba",
+          "bayo.alaba@birmingham-ltd.com",
+          "07700 841 493",
+          "04/11/1979",
+          "48 Church St, Abertillery NP13 1DB",
+          "48 Church St",
+          "Abertillery",
+          "NP13 1DB",
+          "BG 29 57 30 A",
+          "86-51-72",
+          "12614124",
+          "GB59ZAYZ5127384742138745",
+          "4196435238956034",
+          "CUS867460",
+          "£63,799.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Bayo Alaba bayo.alaba@birmingham-ltd.com 07700 841 493 04/11/1979 48 Church St, Abertillery NP13 1DB BG 29 57 30 A 86-51-72 12614124 GB69HSBC40451385819223 4196435238956034 CUS867460 £63,799.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Bayo Alaba",
+              "start": 0,
+              "end": 10,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_5708633424"
+                }
+              }
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "bayo.alaba@birmingham-ltd.com",
+              "start": 11,
+              "end": 40,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "EmailRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "EmailRecognizer",
+                  "recognizer_identifier": "EmailRecognizer_5708636448"
+                }
+              }
+            },
+            {
+              "entity_type": "PHONE_NUMBER",
+              "text": "07700 841 493",
+              "start": 41,
+              "end": 54,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5602048848"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "04/11/1979",
+              "start": 55,
+              "end": 65,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                  "recognizer_identifier": "CUSTOM_DATE_TIME_RECOGNIZER_5643912784"
+                }
+              }
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Church St",
+              "start": 69,
+              "end": 78,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_13331658256"
+                }
+              }
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Abertillery",
+              "start": 80,
+              "end": 91,
+              "confidence": "0.8951756",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "LOCATION",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "29 57",
+              "start": 104,
+              "end": 109,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_13331658256"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "86-51-72",
+              "start": 115,
+              "end": 123,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5707379920"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "12614124",
+              "start": 124,
+              "end": 132,
+              "confidence": 0.7,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705544544"
+                }
+              }
+            },
+            {
+              "entity_type": "IBAN_CODE",
+              "text": "GB69HSBC40451385819223",
+              "start": 133,
+              "end": 155,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "IbanRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "IbanRecognizer",
+                  "recognizer_identifier": "IbanRecognizer_5708636784"
+                }
+              }
+            },
+            {
+              "entity_type": "CUSTOMER_ID",
+              "text": "CUS867460",
+              "start": 173,
+              "end": 182,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700745648"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£63,799.00",
+              "start": 183,
+              "end": 193,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700748784"
+                }
+              }
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [PHONE_NUMBER] [DATE_TIME] 48 [PERSON], [LOCATION] NP13 1DB BG [DATE_TIME] 30 A [UK_SORT_CODE] [UK_BANK_ACCOUNT] [IBAN_CODE] 4196435238956034 [CUSTOMER_ID] [UK_MONETARY_VALUE]",
+          "entity_count": 12
+        }
+      }
+    },
+    {
+      "record_id": "record_7",
+      "record_index": 7,
+      "conversation_id": "",
+      "customer_id": "CUS573417",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Dan",
+          "Aldridge",
+          "dan.aldridge@scotland-enterprises.co.uk",
+          "01395 743789",
+          "22/08/1995",
+          "26 Stane St, Billingshurst RH14 9AE",
+          "26 Stane St",
+          "Billingshurst",
+          "RH14 9AE",
+          "BG 43 77 87 B",
+          "37-79-98",
+          "36998038",
+          "GB87ZAYZ9722515660119651",
+          "5168274073156703",
+          "CUS573417",
+          "£15,960.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Dan Aldridge dan.aldridge@scotland-enterprises.co.uk 01395 743789 22/08/1995 26 Stane St, Billingshurst RH14 9AE BG 43 77 87 B 37-79-98 36998038 GB38HSBC40000096730301 5168274073156703 CUS573417 £15,960.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Dan Aldridge",
+              "start": 0,
+              "end": 12,
+              "confidence": "0.9987505",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "PERSON",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "dan.aldridge@scotland-enterprises.co.uk",
+              "start": 13,
+              "end": 52,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "EmailRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "EmailRecognizer",
+                  "recognizer_identifier": "EmailRecognizer_5708636448"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "01395 743789",
+              "start": 53,
+              "end": 65,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_5708633424"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "22/08/1995",
+              "start": 66,
+              "end": 76,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                  "recognizer_identifier": "CUSTOM_DATE_TIME_RECOGNIZER_5643912784"
+                }
+              }
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Stane St",
+              "start": 80,
+              "end": 88,
+              "confidence": 0.85,
+              "source": "pattern-matching",
+              "recognizer_details": {
+                "recognizer_name": "Pattern_PERSON",
+                "recognizer_type": "regex-based",
+                "pattern_used": "\\b[A-Z][a-z]+ [A-Z][a-z]+\\b",
+                "pattern_source": "hardcoded"
+              }
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Billingshurst",
+              "start": 90,
+              "end": 103,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_5708633424"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "77 87",
+              "start": 119,
+              "end": 124,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_13331658256"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "37-79-98",
+              "start": 127,
+              "end": 135,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5707379920"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "36998038",
+              "start": 136,
+              "end": 144,
+              "confidence": 0.7,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705544544"
+                }
+              }
+            },
+            {
+              "entity_type": "IBAN_CODE",
+              "text": "GB38HSBC40000096730301",
+              "start": 145,
+              "end": 167,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "IbanRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "IbanRecognizer",
+                  "recognizer_identifier": "IbanRecognizer_5708636784"
+                }
+              }
+            },
+            {
+              "entity_type": "CREDIT_CARD",
+              "text": "5168274073156703",
+              "start": 168,
+              "end": 184,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "CreditCardRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "CreditCardRecognizer",
+                  "recognizer_identifier": "CreditCardRecognizer_5707644080"
+                }
+              }
+            },
+            {
+              "entity_type": "CUSTOMER_ID",
+              "text": "CUS573417",
+              "start": 185,
+              "end": 194,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700745648"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£15,960.00",
+              "start": 195,
+              "end": 205,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700748784"
+                }
+              }
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] 26 [PERSON], [PERSON] RH14 9AE BG 43 [DATE_TIME] B [UK_SORT_CODE] [UK_BANK_ACCOUNT] [IBAN_CODE] [CREDIT_CARD] [CUSTOMER_ID] [UK_MONETARY_VALUE]",
+          "entity_count": 13
+        }
+      }
+    },
+    {
+      "record_id": "record_8",
+      "record_index": 8,
+      "conversation_id": "",
+      "customer_id": "CUS665427",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Heidi",
+          "Alexander",
+          "heidi.alexander@blueyonder.co.uk",
+          "0161 828 1941",
+          "19/09/1974",
+          "32 Durlston Dr, Bognor Regis PO22 9TD",
+          "32 Durlston Dr",
+          "Bognor Regis",
+          "PO22 9TD",
+          "BG 10 19 90 A",
+          "39-18-14",
+          "54349361",
+          "GB48LLGV4194444147376585",
+          "5234120744818279",
+          "CUS665427",
+          "£17,442.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Heidi Alexander heidi.alexander@blueyonder.co.uk 0161 828 1941 19/09/1974 32 Durlston Dr, Bognor Regis PO22 9TD BG 10 19 90 A 39-18-14 54349361 GB07RBOS83123434047752 5234120744818279 CUS665427 £17,442.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Heidi Alexander",
+              "start": 0,
+              "end": 15,
+              "confidence": "0.99059796",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "PERSON",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "heidi.alexander@blueyonder.co.uk",
+              "start": 16,
+              "end": 48,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "EmailRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "EmailRecognizer",
+                  "recognizer_identifier": "EmailRecognizer_5708636448"
+                }
+              }
+            },
+            {
+              "entity_type": "PHONE_NUMBER",
+              "text": "0161 828",
+              "start": 49,
+              "end": 57,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5602048848"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "1941",
+              "start": 58,
+              "end": 62,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_5708633424"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "19/09/1974",
+              "start": 63,
+              "end": 73,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                  "recognizer_identifier": "CUSTOM_DATE_TIME_RECOGNIZER_5643912784"
+                }
+              }
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Durlston Dr",
+              "start": 77,
+              "end": 88,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_5708633424"
+                }
+              }
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Bognor Regis",
+              "start": 90,
+              "end": 102,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_5708633424"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "PO22 9TD",
+              "start": 103,
+              "end": 111,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5708631072"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "BG 10 19 90 A",
+              "start": 112,
+              "end": 125,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705542720"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "39-18-14",
+              "start": 126,
+              "end": 134,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5707379920"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "54349361",
+              "start": 135,
+              "end": 143,
+              "confidence": 0.7,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705544544"
+                }
+              }
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "GB07RBOS83123434047752",
+              "start": 144,
+              "end": 166,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_13331658256"
+                }
+              }
+            },
+            {
+              "entity_type": "CREDIT_CARD",
+              "text": "5234120744818279",
+              "start": 167,
+              "end": 183,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "ENHANCED_CREDIT_CARD_RECOGNIZER",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "ENHANCED_CREDIT_CARD_RECOGNIZER",
+                  "recognizer_identifier": "ENHANCED_CREDIT_CARD_RECOGNIZER_13332102880"
+                }
+              }
+            },
+            {
+              "entity_type": "CUSTOMER_ID",
+              "text": "CUS665427",
+              "start": 184,
+              "end": 193,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700745648"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£17,442.00",
+              "start": 194,
+              "end": 204,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700748784"
+                }
+              }
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [PHONE_NUMBER] [DATE_TIME] [DATE_TIME] 32 [PERSON], [PERSON] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] [PERSON] [CREDIT_CARD] [CUSTOMER_ID] [UK_MONETARY_VALUE]",
+          "entity_count": 15
+        }
+      }
+    },
+    {
+      "record_id": "record_9",
+      "record_index": 9,
+      "conversation_id": "",
+      "customer_id": "CUS299448",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Douglas",
+          "Alexander",
+          "douglas.alexander@blueyonder.co.uk",
+          "01276 771394",
+          "07/02/1966",
+          "1, Shepton Mallet BA4 5SB",
+          "1",
+          "Shepton Mallet",
+          "BA4 5SB",
+          "WH 55 64 62 B",
+          "16-96-93",
+          "96728778",
+          "GB17ZAYL6403891355540424",
+          "4315711505445125",
+          "CUS299448",
+          "£70,392.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Douglas Alexander douglas.alexander@blueyonder.co.uk 01276 771394 07/02/1966 1, Shepton Mallet BA4 5SB WH 55 64 62 B 16-96-93 96728778 GB87ABBY09271091835171 4315711505445125 CUS299448 £70,392.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Douglas Alexander",
+              "start": 0,
+              "end": 17,
+              "confidence": "0.9964962",
+              "source": "transformer-dslim/bert-base-NER",
+              "recognizer_details": {
+                "recognizer_name": "transformer_entity_recognizer",
+                "recognizer_type": "custom",
+                "recognition_metadata": {
+                  "source": "transformer-dslim/bert-base-NER",
+                  "model_entity": "PERSON",
+                  "recognizer_identifier": "transformer_entity_recognizer_13331872944",
+                  "recognizer_name": "transformer_entity_recognizer"
+                }
+              }
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "douglas.alexander@blueyonder.co.uk",
+              "start": 18,
+              "end": 52,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "EmailRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "EmailRecognizer",
+                  "recognizer_identifier": "EmailRecognizer_5708636448"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "01276 771394",
+              "start": 53,
+              "end": 65,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_5708633424"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "07/02/1966",
+              "start": 66,
+              "end": 76,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "CUSTOM_DATE_TIME_RECOGNIZER",
+                  "recognizer_identifier": "CUSTOM_DATE_TIME_RECOGNIZER_5643912784"
+                }
+              }
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "1",
+              "start": 77,
+              "end": 78,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_5708633424"
+                }
+              }
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Shepton Mallet",
+              "start": 80,
+              "end": 94,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_5708633424"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "BA4 5SB",
+              "start": 95,
+              "end": 102,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5708631072"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "WH 55 64 62 B",
+              "start": 103,
+              "end": 116,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705542720"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_SORT_CODE",
+              "text": "16-96-93",
+              "start": 117,
+              "end": 125,
+              "confidence": 0.9,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5707379920"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "96728778",
+              "start": 126,
+              "end": 134,
+              "confidence": 0.7,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5705544544"
+                }
+              }
+            },
+            {
+              "entity_type": "IBAN_CODE",
+              "text": "GB87ABBY09271091835171",
+              "start": 135,
+              "end": 157,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "IbanRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "IbanRecognizer",
+                  "recognizer_identifier": "IbanRecognizer_5708636784"
+                }
+              }
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "CUS299448",
+              "start": 175,
+              "end": 184,
+              "confidence": 0.85,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "SpacyRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "SpacyRecognizer",
+                  "recognizer_identifier": "SpacyRecognizer_13331658256"
+                }
+              }
+            },
+            {
+              "entity_type": "UK_MONETARY_VALUE",
+              "text": "£70,392.00",
+              "start": 185,
+              "end": 195,
+              "confidence": 1.0,
+              "source": "presidio",
+              "recognizer_details": {
+                "recognizer_name": "PatternRecognizer",
+                "recognizer_type": "presidio_builtin",
+                "recognition_metadata": {
+                  "recognizer_name": "PatternRecognizer",
+                  "recognizer_identifier": "PatternRecognizer_5700748784"
+                }
+              }
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] [DATE_TIME], [PERSON] [UK_POSTCODE] [UK_NI_NUMBER] [UK_SORT_CODE] [UK_BANK_ACCOUNT] [IBAN_CODE] 4315711505445125 [PERSON] [UK_MONETARY_VALUE]",
+          "entity_count": 13
+        }
+      }
+    }
+  ]
+}

@@ -1,0 +1,660 @@
+{
+  "metadata": {
+    "timestamp": "20250830_203444",
+    "processing_mode": "multithreaded",
+    "max_workers": 1,
+    "records_processed": 3,
+    "total_entities_found": 55,
+    "processing_time_seconds": 30.384301900863647,
+    "total_time_seconds": 35.27720284461975,
+    "initialization_time_seconds": 4.892865896224976,
+    "use_ollama": true,
+    "resolve_overlaps": true,
+    "min_confidence": 0.0,
+    "entity_sources": {
+      "transformer-dslim/bert-base-NER": 13,
+      "ollama-mistral": 16,
+      "presidio": 24,
+      "pattern-matching": 2
+    },
+    "ground_truth_total": 48,
+    "configuration": {
+      "input_file": "",
+      "output_file": "pii_analysis_results.json",
+      "max_records": 1000,
+      "num_threads": 4,
+      "use_threading": true,
+      "target_field": "source",
+      "fields_to_process": [],
+      "pii_entities": [
+        "PERSON",
+        "EMAIL_ADDRESS",
+        "PHONE_NUMBER",
+        "CREDIT_CARD",
+        "IBAN_CODE",
+        "IP_ADDRESS",
+        "DATE_TIME",
+        "LOCATION",
+        "UK_POSTCODE",
+        "UK_NI_NUMBER",
+        "UK_BANK_ACCOUNT"
+      ],
+      "perform_anonymization": true,
+      "verify_anonymization": true,
+      "single_type_anonymization": true,
+      "export_format": "json",
+      "include_summary": true,
+      "include_detailed_results": true
+    }
+  },
+  "results": [
+    {
+      "record_id": "record_0",
+      "record_index": 0,
+      "conversation_id": "",
+      "customer_id": "CUS671412",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Jack",
+          "Abbott",
+          "jack.abbott@gmail.com",
+          "01256 884140",
+          "08/03/1966",
+          "174 London Rd, Southend-on-Sea SS1 1PH",
+          "174 London Rd",
+          "Southend-on-Sea",
+          "SS1 1PH",
+          "BR 85 64 14 A",
+          "21-37-39",
+          "77827638",
+          "GB87ZAYL8532903736687537",
+          "5288962393866745",
+          "CUS671412",
+          "£55,087.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Jack Abbott jack.abbott@gmail.com 01256 884140 08/03/1966 174 London Rd, Southend-on-Sea SS1 1PH 174 London Rd Southend-on-Sea SS1 1PH BR 85 64 14 A 21-37-39 77827638 GB87ZAYL8532903736687537 5288962393866745 CUS671412 £55,087.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Jack Abbott",
+              "start": 0,
+              "end": 11,
+              "confidence": "0.9974904",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Jack Abbott",
+              "start": 0,
+              "end": 0,
+              "confidence": 0.99,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "jack.abbott@gmail.com",
+              "start": 0,
+              "end": 0,
+              "confidence": 0.99,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "PHONE_NUMBER",
+              "text": "01256 884140",
+              "start": 0,
+              "end": 0,
+              "confidence": 0.99,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "08/03/1966",
+              "start": 0,
+              "end": 0,
+              "confidence": 0.99,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "CREDIT_CARD",
+              "text": "21-37-39",
+              "start": 0,
+              "end": 0,
+              "confidence": 0.99,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "jack.abbott@gmail.com",
+              "start": 12,
+              "end": 33,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "01256 884140",
+              "start": 34,
+              "end": 46,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "08/03/1966",
+              "start": 47,
+              "end": 57,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "London Rd",
+              "start": 62,
+              "end": 71,
+              "confidence": "0.98140764",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Southend-on-Sea",
+              "start": 73,
+              "end": 88,
+              "confidence": "0.9955035",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "SS1 1PH",
+              "start": 89,
+              "end": 96,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "London Rd",
+              "start": 101,
+              "end": 110,
+              "confidence": "0.96766174",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "Southend-on-Sea",
+              "start": 111,
+              "end": 126,
+              "confidence": "0.9940173",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "SS1 1PH",
+              "start": 127,
+              "end": 134,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "64 14",
+              "start": 141,
+              "end": 146,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "77827638",
+              "start": 158,
+              "end": 166,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "IBAN_CODE",
+              "text": "GB87ZAYL8532903736687537",
+              "start": 167,
+              "end": 191,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "CREDIT_CARD",
+              "text": "5288962393866745",
+              "start": 192,
+              "end": 208,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] 174 [LOCATION], [LOCATION] [UK_POSTCODE] 174 [LOCATION] [LOCATION] [UK_POSTCODE] BR 85 [DATE_TIME] A 21-37-39 [UK_BANK_ACCOUNT] [IBAN_CODE] [CREDIT_CARD] CUS671412 £55,087.00",
+          "entity_count": 19
+        }
+      }
+    },
+    {
+      "record_id": "record_1",
+      "record_index": 1,
+      "conversation_id": "",
+      "customer_id": "CUS662275",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Diane",
+          "Abbott",
+          "diane.abbott@uk-consulting.com",
+          "07702 202 319",
+          "25/03/1987",
+          "19 High St, Crickhowell NP8 1BD",
+          "19 High St",
+          "Crickhowell",
+          "NP8 1BD",
+          "PG 45 29 37 B",
+          "23-21-58",
+          "22981052",
+          "GB55ZAYZ9103073645503389",
+          "4617267520467927",
+          "CUS662275",
+          "£16,461.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Diane Abbott diane.abbott@uk-consulting.com 07702 202 319 25/03/1987 19 High St, Crickhowell NP8 1BD 19 High St Crickhowell NP8 1BD PG 45 29 37 B 23-21-58 22981052 GB55ZAYZ9103073645503389 4617267520467927 CUS662275 £16,461.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Diane Abbott",
+              "start": 0,
+              "end": 12,
+              "confidence": "0.99691606",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Diane Abbott",
+              "start": 0,
+              "end": 0,
+              "confidence": 1,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "diane.abbott@uk-consulting.com",
+              "start": 0,
+              "end": 0,
+              "confidence": 1,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "PHONE_NUMBER",
+              "text": "07702 202 319",
+              "start": 0,
+              "end": 0,
+              "confidence": 1,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "25/03/1987",
+              "start": 0,
+              "end": 0,
+              "confidence": 1,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "GB55ZAYZ9103073645503389",
+              "start": 0,
+              "end": 0,
+              "confidence": 1,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "CREDIT_CARD",
+              "text": "CUS662275",
+              "start": 0,
+              "end": 0,
+              "confidence": 1,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "diane.abbott@uk-consulting.com",
+              "start": 13,
+              "end": 43,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "25/03/1987",
+              "start": 58,
+              "end": 68,
+              "confidence": 0.6,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "High St",
+              "start": 72,
+              "end": 79,
+              "confidence": "0.90155196",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "C",
+              "start": 81,
+              "end": 82,
+              "confidence": "0.9921673",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "rickhowell",
+              "start": 82,
+              "end": 92,
+              "confidence": "0.91906387",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "NP8 1BD",
+              "start": 93,
+              "end": 100,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "High St Crickhowell",
+              "start": 104,
+              "end": 123,
+              "confidence": "0.8500698",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "NP8 1BD",
+              "start": 124,
+              "end": 131,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_NI_NUMBER",
+              "text": "PG 45 29 37 B",
+              "start": 132,
+              "end": 145,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "22981052",
+              "start": 155,
+              "end": 163,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "IBAN_CODE",
+              "text": "GB55ZAYZ9103073645503389",
+              "start": 164,
+              "end": 188,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "4617267520467927",
+              "start": 189,
+              "end": 205,
+              "confidence": 0.85,
+              "source": "presidio"
+            }
+          ],
+          "anonymized_text": "[PERSON] [EMAIL_ADDRESS] 07702 202 319 [DATE_TIME] 19 [LOCATION], [LOCATION][LOCATION] [UK_POSTCODE] 19 [LOCATION] [UK_POSTCODE] [UK_NI_NUMBER] 23-21-58 [UK_BANK_ACCOUNT] [IBAN_CODE] [DATE_TIME] CUS662275 £16,461.00",
+          "entity_count": 19
+        }
+      }
+    },
+    {
+      "record_id": "record_2",
+      "record_index": 2,
+      "conversation_id": "",
+      "customer_id": "CUS802729",
+      "template_category": "",
+      "template_sensitivity": "",
+      "ground_truth_pii": {
+        "fields_used": [
+          "first_name",
+          "last_name",
+          "email",
+          "phone_number",
+          "date_of_birth",
+          "address",
+          "address_first_line",
+          "address_town_city",
+          "address_postcode",
+          "national_insurance_number",
+          "sort_code",
+          "account_number",
+          "iban",
+          "pan_number",
+          "customer_id",
+          "account_balance"
+        ],
+        "raw_values": [
+          "Debbie",
+          "Abrahams",
+          "debbie.abrahams@hotmail.com",
+          "0207 920 1852",
+          "19/04/1964",
+          "30A London Rd, Tetbury GL8 8JL",
+          "30A London Rd",
+          "Tetbury",
+          "GL8 8JL",
+          "BR 94 39 47 A",
+          "39-22-58",
+          "47308985",
+          "GB68LLGV5896694631831063",
+          "5133588542473968",
+          "CUS802729",
+          "£35,093.00"
+        ],
+        "count": 16
+      },
+      "fields": {
+        "source": {
+          "original_text": "Debbie Abrahams debbie.abrahams@hotmail.com 0207 920 1852 19/04/1964 30A London Rd, Tetbury GL8 8JL 30A London Rd Tetbury GL8 8JL BR 94 39 47 A 39-22-58 47308985 GB68LLGV5896694631831063 5133588542473968 CUS802729 £35,093.00",
+          "entities": [
+            {
+              "entity_type": "PERSON",
+              "text": "Debbie Abraham",
+              "start": 0,
+              "end": 14,
+              "confidence": "0.99918544",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "PERSON",
+              "text": "Debbie Abrahams",
+              "start": 0,
+              "end": 0,
+              "confidence": 1,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "debbie.abrahams@hotmail.com",
+              "start": 0,
+              "end": 0,
+              "confidence": 1,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "PHONE_NUMBER",
+              "text": "0207 920 1852",
+              "start": 0,
+              "end": 0,
+              "confidence": 1,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "19/04/1964",
+              "start": 0,
+              "end": 0,
+              "confidence": 1,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "CREDIT_CARD",
+              "text": "5133588542473968",
+              "start": 0,
+              "end": 0,
+              "confidence": 1,
+              "source": "ollama-mistral"
+            },
+            {
+              "entity_type": "EMAIL_ADDRESS",
+              "text": "debbie.abrahams@hotmail.com",
+              "start": 16,
+              "end": 43,
+              "confidence": 1.0,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "0207 920 1852",
+              "start": 44,
+              "end": 57,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "19/04/1964",
+              "start": 58,
+              "end": 68,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "London Rd",
+              "start": 73,
+              "end": 82,
+              "confidence": "0.93957436",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "GL8 8JL",
+              "start": 92,
+              "end": 99,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "LOCATION",
+              "text": "London Rd",
+              "start": 104,
+              "end": 113,
+              "confidence": "0.8536084",
+              "source": "transformer-dslim/bert-base-NER"
+            },
+            {
+              "entity_type": "UK_POSTCODE",
+              "text": "GL8 8JL",
+              "start": 122,
+              "end": 129,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "DATE_TIME",
+              "text": "94 39",
+              "start": 133,
+              "end": 138,
+              "confidence": 0.85,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "UK_BANK_ACCOUNT",
+              "text": "47308985",
+              "start": 153,
+              "end": 161,
+              "confidence": 0.7,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "IBAN_CODE",
+              "text": "GB68LLGV5896694631831063",
+              "start": 162,
+              "end": 186,
+              "confidence": 0.9,
+              "source": "presidio"
+            },
+            {
+              "entity_type": "CREDIT_CARD",
+              "text": "5133588542473968",
+              "start": 187,
+              "end": 203,
+              "confidence": 0.85,
+              "source": "pattern-matching"
+            }
+          ],
+          "anonymized_text": "[PERSON]s [EMAIL_ADDRESS] [DATE_TIME] [DATE_TIME] 30A [LOCATION], Tetbury [UK_POSTCODE] 30A [LOCATION] Tetbury [UK_POSTCODE] BR [DATE_TIME] 47 A 39-22-58 [UK_BANK_ACCOUNT] [IBAN_CODE] [CREDIT_CARD] CUS802729 £35,093.00",
+          "entity_count": 17
+        }
+      }
+    }
+  ]
+}

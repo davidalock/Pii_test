@@ -1,0 +1,87 @@
+export_format: json
+fields_to_process: []
+include_detailed_results: true
+include_summary: true
+input_file: test_datasets/unified_test_analyzer_format.csv
+interactive_examples:
+- "Jack Abbott jack.abbott@gmail.com 01256 884140 08/03/1966 174 London Rd, Southend-on-Sea\
+  \ SS1 1PH BR 85 64 14 A 21-37-39 77827638 GB02ABBY09271092852291 5288962393866745\
+  \ CUS671412 \xA355,087.00"
+- My name is David Lock and I live at 21 Jubilee Drive, Norwich NR7 0AA. My email
+  is david.lock@example.co.uk and my phone is 01263 733344.
+- Please update my card 5444 4412 3456 1234 exp 08/27, name D LOCK.
+- Contact Sarah O'Neill at sarah.oneill@acme.co.uk or +44 20 7946 0958 regarding invoice
+  INV-100234.
+- NI number is QQ 12 34 56 C and my card number is 5444441234561234.
+- Sort code 20-45-67, account 12345678, IBAN GB29 NWBK 6016 1331 9268 19.
+- I was born on 15/08/1990 and moved to 221B Baker Street, London NW1 6XE last year.
+- 'Call me on 07700 900123 or 01632 960123; '
+- My name is Kier Starmer and I live at 10 Downing Street EC1A 1BB.
+- Meeting with John Smith at Barclays PLC in Canary Wharf at 10:30am tomorrow.
+- Customer ID CUS0002345 reports card ending 1234 and email cust.2345+alerts@example.com.
+interactive_mode: true
+max_records: 1000
+num_threads: 4
+ollama_extractor_config:
+  entity_types:
+  - PERSON
+  - EMAIL_ADDRESS
+  - PHONE_NUMBER
+  - LOCATION
+  - ORGANIZATION
+  model_name: mistral:7b-instruct
+  prompt_template: 'You are a PII detection system. Extract all personally identifiable
+    information from the provided text.
+
+
+    Text to analyze: {text}
+
+
+    Find entities of these types: PERSON, ORGANIZATION, EMAIL_ADDRESS, PHONE_NUMBER,
+    LOCATION
+
+
+    For each entity found in the text above, return ONLY a JSON array with the actual
+    entities from the text.
+
+    Do not include examples. Analyze the actual text provided.
+
+
+    Format: [{{"entity_type": "ENTITY_TYPE", "value": "actual_text_from_input", "start":
+    start_pos, "end": end_pos, "confidence": 0.9}}]
+
+
+    Return only the JSON array, nothing else:
+
+    '
+  temperature: 0.1
+output_file: pii_analysis_results.json
+perform_anonymization: true
+pii_entities:
+- PERSON
+- EMAIL_ADDRESS
+- PHONE_NUMBER
+- CREDIT_CARD
+- IBAN_CODE
+- DATE_TIME
+- LOCATION
+- URL
+- UK_POSTCODE
+- UK_SORT_CODE
+- UK_NI_NUMBER
+- UK_NHS_NUMBER
+- UK_BANK_ACCOUNT
+- UK_MONETARY_VALUE
+- UK_PHONE_NUMBER
+- CUSTOMER_ID
+- ENHANCED_EMAIL
+- ENHANCED_CREDIT_CARD
+- ENHANCED_IBAN
+single_type_anonymization: true
+target_field: source
+use_ollama: false
+use_presidio: true
+use_threading: true
+use_transformers: true
+use_uk_patterns: true
+verify_anonymization: true
