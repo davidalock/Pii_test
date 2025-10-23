@@ -20,6 +20,7 @@ import re
 from typing import Dict, List, Any, Optional
 from datetime import datetime
 import logging
+import time
 
 # Setup logging
 logging.basicConfig(
@@ -216,6 +217,14 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
     results['missed_findings'] = []
     results['ollama_findings'] = []
     
+    # Track execution time for each analyzer component
+    timings: Dict[str, float] = {
+        'ollama': 0.0,
+        'core_analyzer': 0.0,
+        'uk_patterns': 0.0,
+        'missed_patterns': 0.0,
+    }
+
     # Determine which engines to use based on configuration
     use_presidio = config.get('use_presidio', True)  # Default to True if not specified
     use_transformers = config.get('use_transformers', False)
@@ -235,12 +244,13 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
     if use_ollama:
         try:
             from ollama_integration import analyze_text_with_ollama
-            
+
             ollama_config = config.get('ollama_extractor_config', {})
-            
+
             # Enable UI debug mode if we're in interactive mode
             ui_debug = config.get('__interactive_mode__', False)
-            
+
+            _t0 = time.perf_counter()
             ollama_findings = analyze_text_with_ollama(
                 text=text,
                 model_name=ollama_config.get('model_name', 'mistral'),
@@ -248,20 +258,23 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
                 entity_types=ollama_config.get('entity_types', None),
                 _ui_debug=ui_debug
             )
-            
+            timings['ollama'] = time.perf_counter() - _t0
+
             results['ollama_findings'] = ollama_findings
-            
+
             # If only Ollama is requested, return just Ollama results
             if not use_presidio and not use_transformers and not use_uk_patterns:
+                results['timings'] = timings
                 results['all_findings'] = ollama_findings
                 return results
-            
+
         except Exception as e:
             logger.error(f"Failed to use Ollama for entity extraction: {e}")
             if not use_presidio and not use_transformers:
                 # If only Ollama was requested and it failed, return empty results
                 logger.warning("Only Ollama was requested but it failed. Returning empty results.")
                 results['all_findings'] = []
+                results['timings'] = timings
                 return results
             logger.warning("Ollama failed, continuing with other enabled engines")
 
@@ -277,6 +290,7 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
             allow_list = None
 
         try:
+            _t0 = time.perf_counter()
             analyzer_results = analyzer.analyze(
                 text=text,
                 language='en',
@@ -284,9 +298,11 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
                 allow_list=allow_list,
                 score_threshold=getattr(analyzer, '_sensitivity', 0.35)  # Use stored sensitivity or default
             )
+            timings['core_analyzer'] = time.perf_counter() - _t0
         except Exception as e:
             logger.warning(f"Analyzer analyze() failed: {e}")
             analyzer_results = []
+            timings['core_analyzer'] = 0.0
         
         # Post-process to filter out allow_listed terms if Presidio's allow_list didn't work
         if allow_list and analyzer_results:
@@ -316,22 +332,33 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
         # Try to extract recognizer name and pattern details when available
         recognizer_name = None
         pattern_name = None
+        
+        # Determine the recognizer name based on the NLP provider
+        nlp_provider = getattr(analyzer, 'nlp_provider', 'spacy')
+        recognizer_name = 'SpacyRecognizer' if nlp_provider == 'spacy' else nlp_provider
+            
         try:
             ex = getattr(finding, 'analysis_explanation', None)
             if ex:
                 # Attempt direct attributes first
-                recognizer_name = getattr(ex, 'recognizer', None) or getattr(ex, 'recognizer_name', None)
+                recognizer_name_from_ex = getattr(ex, 'recognizer', None) or getattr(ex, 'recognizer_name', None)
+                if recognizer_name_from_ex:
+                    recognizer_name = recognizer_name_from_ex
                 pattern_name = getattr(ex, 'pattern_name', None)
                 # If explanation can be converted to dict, try that
                 if hasattr(ex, 'to_dict'):
                     try:
                         exd = ex.to_dict()
-                        recognizer_name = recognizer_name or exd.get('recognizer') or exd.get('recognizer_name')
+                        recognizer_name_from_ex = exd.get('recognizer') or exd.get('recognizer_name')
+                        if recognizer_name_from_ex:
+                            recognizer_name = recognizer_name_from_ex
                         pattern_name = pattern_name or exd.get('pattern_name')
                     except Exception:
                         pass
                 elif isinstance(ex, dict):
-                    recognizer_name = recognizer_name or ex.get('recognizer') or ex.get('recognizer_name')
+                    recognizer_name_from_ex = ex.get('recognizer') or ex.get('recognizer_name')
+                    if recognizer_name_from_ex:
+                        recognizer_name = recognizer_name_from_ex
                     pattern_name = pattern_name or ex.get('pattern_name')
         except Exception:
             pass
@@ -368,11 +395,15 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
     
     # UK-specific PII detection (only if enabled)
     if use_uk_patterns:
+        _t0 = time.perf_counter()
         results['uk_pattern_findings'] = detect_uk_specific_pii(text)
+        timings['uk_patterns'] = time.perf_counter() - _t0
     
     # Potentially missed PII detection (only if enabled)
     if use_uk_patterns:  # Group with UK patterns for now
+        _t0 = time.perf_counter()
         results['missed_findings'] = detect_potentially_missed_pii(text)
+        timings['missed_patterns'] = time.perf_counter() - _t0
     
     # Combine findings from enabled engines only
     all_findings = []
@@ -397,6 +428,8 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
         'total_ollama': len(results['ollama_findings']),
         'total_all': len(results['all_findings'])
     }
+
+    results['timings'] = timings
     
     return results
 
@@ -507,49 +540,104 @@ def load_config(config_path: str) -> Dict[str, Any]:
         logger.error(f"Error loading configuration: {e}")
         return {}
 
-def load_presidio_engines(config=None):
-    """Initialize Presidio engines"""
+def load_presidio_engines(config: Optional[Dict[str, Any]] = None):
+    """Initialize Presidio engines, prioritizing UI/session config over YAML."""
     if not PRESIDIO_AVAILABLE:
         logger.error("Microsoft Presidio is not installed. Please install with: pip install presidio-analyzer presidio-anonymizer")
         return None, None
 
-    # Respect explicit disable flag before heavy initialization
+    if config and config.get('use_presidio') is False:
+        logger.info("use_presidio=False -> Skipping Presidio engine initialization")
+        return None, None
+
     try:
-        if config is not None and config.get('use_presidio') is False:
-            logger.info("use_presidio=False -> Skipping Presidio engine initialization")
-            return None, None
-    except Exception:
-        pass
-    
-    try:
-        # Load analyzer configuration from analyzers_config.yaml if it exists
-        analyzer_config = {}
-        if os.path.exists('analyzers_config.yaml'):
-            try:
-                with open('analyzers_config.yaml', 'r') as f:
-                    import yaml
-                    full_config = yaml.safe_load(f)
-                    analyzer_config = full_config.get('analyzers', {}).get('presidio', {})
-                    logger.info(f"Loaded analyzer configuration from analyzers_config.yaml")
-            except Exception as e:
-                logger.warning(f"Could not load analyzers_config.yaml: {e}")
+        # Determine NLP engine configuration, with clear priority.
+        # Priority 1: Direct command from UI/session config.
+        # Priority 2: Fallback to analyzers_config.yaml.
+        # Priority 3: Default to spaCy.
         
-        # Create NLP configuration
-        configuration = {
-            "nlp_engine_name": "spacy",
-            "models": [{"lang_code": "en", "model_name": "en_core_web_sm"}]
+        nlp_settings: Dict[str, Any] = {
+            'auto_download': True,
+            'spacy_model': 'en_core_web_sm',
+            'spacy_lang_code': 'en',
         }
-        
+
+        # 1. Check for UI/session config first
+        if config:
+            requested_provider = str(config.get('__presidio_nlp_provider__', 'spacy')).lower()
+            if requested_provider != 'spacy':
+                logger.info(f"UI requested unsupported NLP provider '{requested_provider}'. Using spaCy instead.")
+            nlp_settings['auto_download'] = bool(config.get('__presidio_nlp_auto_download__', nlp_settings['auto_download']))
+            nlp_settings['spacy_model'] = str(config.get('__presidio_spacy_model__', nlp_settings['spacy_model']))
+            nlp_settings['spacy_lang_code'] = str(config.get('__presidio_spacy_lang__', nlp_settings['spacy_lang_code']))
+        else:
+            # 2. Fallback to YAML configuration
+            if os.path.exists('analyzers_config.yaml'):
+                try:
+                    with open('analyzers_config.yaml', 'r') as f:
+                        full_config = yaml.safe_load(f)
+                        analyzer_config = full_config.get('analyzers', {}).get('presidio', {})
+                        if isinstance(analyzer_config.get('nlp_engine'), dict):
+                            yaml_engine = analyzer_config['nlp_engine']
+                            requested_provider = str(yaml_engine.get('provider') or yaml_engine.get('nlp_engine_name') or 'spacy').lower()
+                            if requested_provider != 'spacy':
+                                logger.info(f"Ignoring unsupported NLP provider '{requested_provider}' from analyzers_config.yaml. Using spaCy.")
+                            nlp_settings['auto_download'] = bool(yaml_engine.get('auto_download', nlp_settings['auto_download']))
+                            if 'spacy_model' in yaml_engine:
+                                nlp_settings['spacy_model'] = str(yaml_engine.get('spacy_model') or nlp_settings['spacy_model'])
+                            if 'spacy_lang_code' in yaml_engine:
+                                nlp_settings['spacy_lang_code'] = str(yaml_engine.get('spacy_lang_code') or nlp_settings['spacy_lang_code'])
+                            yaml_models = yaml_engine.get('models')
+                            if isinstance(yaml_models, list) and yaml_models:
+                                first_model = yaml_models[0]
+                                if isinstance(first_model, dict):
+                                    nlp_settings['spacy_model'] = str(first_model.get('model_name') or nlp_settings['spacy_model'])
+                                    nlp_settings['spacy_lang_code'] = str(first_model.get('lang_code') or nlp_settings['spacy_lang_code'])
+                except Exception as e:
+                    logger.warning(f"Could not load or parse analyzers_config.yaml, will use defaults. Error: {e}")
+            else:
+                logger.info("No UI config or YAML file found. Using default spaCy NLP engine.")
+
+        auto_download = bool(nlp_settings.get('auto_download', True))
+        spacy_model = nlp_settings.get('spacy_model', 'en_core_web_sm')
+        spacy_lang_code = nlp_settings.get('spacy_lang_code', 'en')
+
+        if auto_download:
+            try:
+                import spacy
+                try:
+                    spacy.load(spacy_model)
+                except OSError:
+                    from spacy.cli import download as spacy_download
+                    logger.info(f"Downloading spaCy model '{spacy_model}'...")
+                    spacy_download(spacy_model)
+            except Exception as e:
+                logger.warning(f"Failed to ensure spaCy model '{spacy_model}' is available: {e}")
+
+        configuration: Dict[str, Any] = {
+            "nlp_engine_name": "spacy",
+            "models": [{"lang_code": spacy_lang_code, "model_name": spacy_model}]
+        }
+
         # Create NLP engine provider
         provider = NlpEngineProvider(nlp_configuration=configuration)
         nlp_engine = provider.create_engine()
         
-        # Create analyzer and anonymizer engines
-        analyzer = AnalyzerEngine(
-            nlp_engine=nlp_engine,
-            supported_languages=["en"]
-        )
+        analyzer = AnalyzerEngine(nlp_engine=nlp_engine, supported_languages=["en"])
+        analyzer.nlp_provider = 'spacy'  # Store the provider name for downstream logic
         
+        # --- The rest of the function for loading recognizers, etc. ---
+        
+        # Load general analyzer settings from YAML if available
+        analyzer_config = {}
+        if os.path.exists('analyzers_config.yaml'):
+            try:
+                with open('analyzers_config.yaml', 'r') as f:
+                    full_config = yaml.safe_load(f)
+                    analyzer_config = full_config.get('analyzers', {}).get('presidio', {})
+            except Exception:
+                pass # Ignore errors, just won't have the config
+
         # Store sensitivity and allow_list for later use
         sensitivity = analyzer_config.get('sensitivity_threshold', 0.35)
         if config and 'sensitivity' in config:
@@ -566,24 +654,10 @@ def load_presidio_engines(config=None):
             allow_list = analyzer_config['allow_list']
         elif config and config.get('allow_list'):
             allow_list = config['allow_list']
-        else:
-            # Check in the full config structure for allow_list
-            if os.path.exists('analyzers_config.yaml'):
-                try:
-                    with open('analyzers_config.yaml', 'r') as f:
-                        full_config = yaml.safe_load(f)
-                        # Check ollama_extractor_config.presidio.allow_list
-                        if (full_config.get('ollama_extractor_config', {}).get('presidio', {}).get('allow_list')):
-                            allow_list = full_config['ollama_extractor_config']['presidio']['allow_list']
-                        # Also check analyzers.presidio.allow_list
-                        elif (full_config.get('analyzers', {}).get('presidio', {}).get('allow_list')):
-                            allow_list = full_config['analyzers']['presidio']['allow_list']
-                except Exception as e:
-                    logger.warning(f"Could not load allow_list from config: {e}")
         
         if allow_list:
             analyzer._config['allow_list'] = allow_list
-            logger.info(f"Loaded allow_list with {len(allow_list)} terms: {allow_list[:5]}...")
+            logger.info(f"Loaded allow_list with {len(allow_list)} terms.")
         else:
             logger.warning("No allow_list found in configuration")
         
@@ -718,7 +792,7 @@ def load_presidio_engines(config=None):
         
         return analyzer, anonymizer
     except Exception as e:
-        logger.error(f"Error initializing Presidio engines: {e}")
+        logger.error(f"Error initializing Presidio engines: {e}", exc_info=True)
         return None, None
 
 def parse_arguments():
@@ -889,7 +963,6 @@ def main():
     # Setup Ollama integration if enabled
         elif config.get('use_ollama', False):
             try:
-                from ollama_integration import analyze_text_with_ollama
                 
                 ollama_model = config.get('ollama_model', 'mistral')
                 ollama_url = config.get('ollama_url', 'http://localhost:11434/api/generate')
