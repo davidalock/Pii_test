@@ -1293,7 +1293,13 @@ class PIIControlCenter:
                 try:
                     t = res.get('timings', {}) if isinstance(res, dict) else {}
                     if t:
-                        agg = row_timings.setdefault(r_index, {'presidio': 0.0, 'transformer': 0.0, 'patterns': 0.0, 'ollama': 0.0})
+                        # Use actual timing keys from enhanced_pii_analysis: core_analyzer, ollama, uk_patterns, missed_patterns
+                        agg = row_timings.setdefault(r_index, {
+                            'core_analyzer': 0.0,
+                            'ollama': 0.0,
+                            'uk_patterns': 0.0,
+                            'missed_patterns': 0.0
+                        })
                         for k, v in t.items():
                             try:
                                 agg[k] = agg.get(k, 0.0) + float(v)
@@ -1434,10 +1440,10 @@ class PIIControlCenter:
                 timings_rows = [
                     {
                         'row_index': int(idx),
-                        'presidio': float(t.get('presidio', 0.0)),
-                        'transformer': float(t.get('transformer', 0.0)),
-                        'patterns': float(t.get('patterns', 0.0)),
+                        'core_analyzer': float(t.get('core_analyzer', 0.0)),
                         'ollama': float(t.get('ollama', 0.0)),
+                        'uk_patterns': float(t.get('uk_patterns', 0.0)),
+                        'missed_patterns': float(t.get('missed_patterns', 0.0)),
                     }
                     for idx, t in sorted(row_timings.items(), key=lambda kv: kv[0])
                 ]
@@ -1449,7 +1455,7 @@ class PIIControlCenter:
                 import pandas as _pd
                 df_timings = _pd.DataFrame(timings_rows)
                 # Add total column for quick sorting
-                df_timings['total'] = df_timings[['presidio', 'transformer', 'patterns', 'ollama']].sum(axis=1)
+                df_timings['total'] = df_timings[['core_analyzer', 'ollama', 'uk_patterns', 'missed_patterns']].sum(axis=1)
                 # Controls
                 cta, ctb = st.columns([2,1])
                 with cta:
