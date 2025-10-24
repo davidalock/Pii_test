@@ -327,9 +327,11 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
         recognizer_name = None
         pattern_name = None
         
-        # Determine the recognizer name based on the NLP provider
+        # First check if this is a transformer detection - DON'T set default yet
+        # Determine the recognizer name based on the NLP provider only as a fallback
+        default_recognizer_name = None
         nlp_provider = getattr(analyzer, 'nlp_provider', 'spacy')
-        recognizer_name = 'SpacyRecognizer' if nlp_provider == 'spacy' else nlp_provider
+        default_recognizer_name = 'SpacyRecognizer' if nlp_provider == 'spacy' else nlp_provider
             
         try:
             ex = getattr(finding, 'analysis_explanation', None)
@@ -356,18 +358,22 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
                     pattern_name = pattern_name or ex.get('pattern_name')
         except Exception:
             pass
-        # Fallbacks
+        
+        # Fallbacks - check for transformer FIRST before using default
         if not recognizer_name:
             # Use recognition source if it's a transformer hit
             if recognition_source and 'transformer' in recognition_source:
                 recognizer_name = recognition_source
             else:
-                # Last resort: infer from metadata if available
+                # Check metadata for recognizer info
                 try:
                     if hasattr(finding, 'recognition_metadata') and finding.recognition_metadata:
                         recognizer_name = finding.recognition_metadata.get('recognizer_name') or finding.recognition_metadata.get('recognizer')
                 except Exception:
                     pass
+                # Final fallback to default
+                if not recognizer_name:
+                    recognizer_name = default_recognizer_name
                 
         result_dict = {
             'entity_type': finding.entity_type,

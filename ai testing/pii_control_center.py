@@ -1389,6 +1389,7 @@ class PIIControlCenter:
                         'end': f.get('end'),
                         'confidence': f.get('confidence'),
                         'recognizer': f.get('recognizer') or f.get('source') or '',
+                        'detection_source': f.get('source', ''),  # Shows if detected by Presidio/transformer/Ollama
                         # Per-text analyzer timings (seconds) from the current analysis call
                         'analyzer_timings': res.get('timings', {}),
                         'pii_fields_used': fields_used,
