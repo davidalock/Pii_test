@@ -1399,6 +1399,46 @@ class PIIControlCenter:
             with st.expander("🧾 Preview JSON output", expanded=False):
                 st.json(json_data)
 
+            # Compact per-record analyzer timings preview
+            try:
+                timings_rows = [
+                    {
+                        'row_index': int(idx),
+                        'presidio': float(t.get('presidio', 0.0)),
+                        'transformer': float(t.get('transformer', 0.0)),
+                        'patterns': float(t.get('patterns', 0.0)),
+                        'ollama': float(t.get('ollama', 0.0)),
+                    }
+                    for idx, t in sorted(row_timings.items(), key=lambda kv: kv[0])
+                ]
+            except Exception:
+                timings_rows = []
+
+            if timings_rows:
+                st.subheader("⏱ Per-record analyzer timings")
+                import pandas as _pd
+                df_timings = _pd.DataFrame(timings_rows)
+                # Add total column for quick sorting
+                df_timings['total'] = df_timings[['presidio', 'transformer', 'patterns', 'ollama']].sum(axis=1)
+                # Controls
+                cta, ctb = st.columns([2,1])
+                with cta:
+                    st.dataframe(df_timings, use_container_width=True)
+                with ctb:
+                    st.metric("Rows timed", len(df_timings))
+                    st.metric("Mean total (s)", f"{df_timings['total'].mean():.3f}")
+                    st.metric("Max total (s)", f"{df_timings['total'].max():.3f}")
+                with st.expander("Download timings as CSV", expanded=False):
+                    from io import StringIO as _SIO
+                    _buf = _SIO()
+                    df_timings.to_csv(_buf, index=False)
+                    st.download_button(
+                        "💾 Download timings CSV",
+                        data=_buf.getvalue(),
+                        file_name=f"interactive_batch_timings_{datetime.now().strftime('%Y%m%d_%H%M%S')}.csv",
+                        mime="text/csv",
+                    )
+
             # Optionally persist to results/ so it shows up in the inline viewer immediately
             if save_to_results:
                 try:
@@ -1915,6 +1955,42 @@ class PIIControlCenter:
                                 self.render_results_overview(results)
                             except Exception:
                                 st.write("Overview unavailable for this file structure.")
+
+                        # If per-record timings are present in this JSON, render a compact preview
+                        try:
+                            rec_timings = results.get('record_timings') if isinstance(results, dict) else None
+                        except Exception:
+                            rec_timings = None
+                        if isinstance(rec_timings, list) and rec_timings:
+                            try:
+                                import pandas as _pd
+                                # Normalize into flat columns
+                                flat = []
+                                for item in rec_timings:
+                                    if not isinstance(item, dict):
+                                        continue
+                                    idx = item.get('row_index')
+                                    t = item.get('timings', {}) if isinstance(item.get('timings'), dict) else {}
+                                    flat.append({
+                                        'row_index': idx,
+                                        'presidio': float(t.get('presidio', 0.0)),
+                                        'transformer': float(t.get('transformer', 0.0)),
+                                        'patterns': float(t.get('patterns', 0.0)),
+                                        'ollama': float(t.get('ollama', 0.0)),
+                                    })
+                                if flat:
+                                    st.subheader("⏱ Per-record analyzer timings (from file)")
+                                    df_rt = _pd.DataFrame(flat)
+                                    df_rt['total'] = df_rt[['presidio','transformer','patterns','ollama']].sum(axis=1)
+                                    c_a, c_b = st.columns([2,1])
+                                    with c_a:
+                                        st.dataframe(df_rt, use_container_width=True)
+                                    with c_b:
+                                        st.metric("Rows timed", len(df_rt))
+                                        st.metric("Mean total (s)", f"{df_rt['total'].mean():.3f}")
+                                        st.metric("Max total (s)", f"{df_rt['total'].max():.3f}")
+                            except Exception:
+                                pass
 
                         with st.expander("🧾 Raw JSON data", expanded=False):
                             st.json(results)
