@@ -1188,6 +1188,15 @@ class PIIControlCenter:
         config['sensitivity'] = sensitivity
         config['use_transformers'] = use_transformers
         config['use_ollama'] = use_ollama
+        
+        # Add Ollama configuration if enabled
+        if use_ollama:
+            config['ollama_extractor_config'] = {
+                'model_name': 'mistral:7b-instruct',
+                'entity_types': entities,  # Pass selected entities to Ollama
+                'api_url': 'http://localhost:11434/api/generate'
+            }
+        
         disable_presidio = bool(st.session_state.get('__disable_presidio__', False))
         config['use_presidio'] = not disable_presidio
         built_in_only = bool(st.session_state.get('__built_in_only__', False))
@@ -1220,6 +1229,31 @@ class PIIControlCenter:
             analyzer = None
             anonymizer = None
             st.warning(f"Proceeding without Presidio anonymizer due to init error: {e}")
+
+        # If transformers are enabled, replace analyzer with transformer-enhanced version
+        if use_transformers and analyzer is not None:
+            try:
+                from transformer_integration import get_analyzer_with_transformers
+                # Check if UK recognizers should be added
+                add_custom = None
+                if not built_in_only:
+                    try:
+                        from uk_recognizers import register_uk_recognizers
+                        add_custom = register_uk_recognizers
+                    except Exception:
+                        pass
+                # Use default transformer model
+                analyzer = get_analyzer_with_transformers(
+                    sensitivity=sensitivity,
+                    uk_specific=True,
+                    transformer_model="dslim/bert-base-NER",
+                    transformer_models=["dslim/bert-base-NER"],
+                    add_custom_recognizers=add_custom,
+                    use_custom_datetime=True
+                )
+                st.info("🤖 Transformer-based entity recognition enabled")
+            except Exception as e:
+                st.warning(f"⚠️ Transformer analyzer could not be initialized: {e}")
 
         # Load data
         try:
