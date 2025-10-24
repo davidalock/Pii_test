@@ -1451,7 +1451,7 @@ class PIIControlCenter:
                 },
                 'results': rows_out,
                 'record_timings': [
-                    {'row_index': int(idx), 'timings': timings}
+                    {'row_index': int(idx), 'timings': {k: float(v) for k, v in timings.items()}}
                     for idx, timings in sorted(row_timings.items(), key=lambda kv: kv[0])
                 ],
             }
