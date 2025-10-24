@@ -28,8 +28,17 @@ import ast
 import importlib
 from textwrap import dedent
 
+
 # Import PII Exposure Analysis
 from analyze_pii_exposure import PIIExposureAnalyzer
+
+# Import the PII Exposure Report UI
+try:
+    from report_generator import display_exposure_report
+    REPORT_GENERATOR_AVAILABLE = True
+except ImportError:
+    REPORT_GENERATOR_AVAILABLE = False
+    display_exposure_report = None
 
 # Import Simple Presidio Anonymizer
 try:
@@ -495,17 +504,39 @@ class PIIControlCenter:
         """Render sidebar navigation"""
         st.sidebar.title("🔍 PII Control Center")
         
+
+        # Add the PII Exposure Report page to the sidebar
+        pages = [
+            "🔍 Interactive Search",
+            "🖼️ Slides",
+            "📊 PII Exposure Report",
+            "📋 System Status",
+            "📖 Documentation",
+        ]
+
+        # Respect current page from session to allow programmatic navigation
+        current = st.session_state.get('__current_page__', pages[0])
+        try:
+            default_index = pages.index(current)
+        except ValueError:
+            default_index = 0
+
         page = st.sidebar.selectbox(
             "Choose Function",
-            [
-                "🔍 Interactive Search",
-                "🖼️ Slides",
-                "📋 System Status",
-                "📖 Documentation"
-            ]
+            options=pages,
+            index=default_index,
+            key='__page_select__'
         )
-        
+        st.session_state['__current_page__'] = page
         return page
+
+    def render_exposure_report_page(self):
+        """Render the PII Exposure Report page"""
+        if not REPORT_GENERATOR_AVAILABLE:
+            st.error("The PII Exposure Report module could not be imported. Please ensure report_generator.py is present.")
+            return
+        # Use the results_path for batch results
+        display_exposure_report(self.results_path)
     
     def render_analysis_page(self):
         """Render the analysis execution page"""
@@ -536,9 +567,21 @@ class PIIControlCenter:
             # File selection - look in test_datasets folder
             csv_files = list(self.datasets_path.glob("*.csv"))
             if csv_files:
+                file_names = [f.name for f in csv_files]
+                options = [""] + file_names
+                # Prefer the cleaned dataset if available
+                preferred = "unified_test_analyzer_format_clean.csv"
+                fallback = "unified_test_analyzer_format.csv"
+                default_index = 0
+                if preferred in file_names:
+                    default_index = options.index(preferred)
+                elif fallback in file_names:
+                    default_index = options.index(fallback)
+
                 input_file = st.selectbox(
                     "Input Dataset",
-                    options=[""] + [f.name for f in csv_files],
+                    options=options,
+                    index=default_index,
                     help="Choose CSV file to analyze from test_datasets folder"
                 )
             else:
@@ -704,6 +747,14 @@ class PIIControlCenter:
         """Render interactive PII search page"""
         st.title("🔍 Interactive PII Search")
         st.markdown("Enter text to search for PII entities using your current configuration.")
+
+        # Quick access to the PII Exposure Report
+        with st.container():
+            c1, c2 = st.columns([5, 1])
+            with c2:
+                if st.button("📊 Open PII Exposure Report", help="View report generated from batch results"):
+                    st.session_state['__current_page__'] = "📊 PII Exposure Report"
+                    _st_rerun()
         
         # Load example snippets from config.yaml
         examples: List[str] = []
@@ -4791,6 +4842,8 @@ class PIIControlCenter:
                 self.render_interactive_search_page()
             elif page == "🖼️ Slides":
                 self.render_slides_page()
+            elif page == "📊 PII Exposure Report":
+                self.render_exposure_report_page()
             elif page == "📋 System Status":
                 self.render_status_page()
             elif page == "📖 Documentation":
