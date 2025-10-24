@@ -1126,7 +1126,7 @@ class PIIControlCenter:
             selected_entities = st.multiselect(
                 "Entities to detect",
                 options=entity_options,
-                default=["PERSON","EMAIL_ADDRESS","PHONE_NUMBER","CREDIT_CARD","UK_POSTCODE"],
+                default=["PERSON","EMAIL_ADDRESS","PHONE_NUMBER","CREDIT_CARD","UK_POSTCODE","DATE_TIME","LOCATION","IBAN_CODE","UK_NI_NUMBER","UK_BANK_ACCOUNT","UK_MONETARY_VALUE"],
                 help="Only these entity types will be kept in the batch results"
             )
         with c3:
