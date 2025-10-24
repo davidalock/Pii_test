@@ -231,14 +231,8 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
     use_ollama = config.get('use_ollama', False)
     use_uk_patterns = config.get('use_uk_patterns', True)  # Default to True if not specified
     
-    # Special case: if we're in interactive mode and only Ollama is selected
-    # we need to check if transformers is explicitly disabled
-    if (isinstance(config, dict) and config.get('__interactive_mode__')) or (use_ollama and not use_transformers):
-        # In interactive mode, we should only use the explicitly enabled engines
-        # If Ollama is the only one enabled, only use Ollama
-        if use_ollama and not use_transformers:
-            use_presidio = False  # Disable Presidio when only Ollama is requested
-            use_uk_patterns = False  # Disable UK patterns when only Ollama is requested
+    # Note: Each engine (Presidio, Transformers, Ollama, UK patterns) can be independently enabled/disabled
+    # They are additive - enabling one doesn't disable others unless explicitly configured
     
     # Use Ollama for entity extraction if enabled
     if use_ollama:
