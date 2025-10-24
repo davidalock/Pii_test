@@ -1058,7 +1058,23 @@ class PIIControlCenter:
         with sel_col:
             if csv_files:
                 file_labels = [p.name for p in csv_files]
-                sel_idx = st.selectbox("Data source (CSV)", options=list(range(len(csv_files))), format_func=lambda i: file_labels[i])
+                # Prefer the cleaned dataset if available, else the original unified file
+                preferred = "unified_test_analyzer_format_clean.csv"
+                fallback = "unified_test_analyzer_format.csv"
+                try:
+                    default_index = file_labels.index(preferred)
+                except ValueError:
+                    try:
+                        default_index = file_labels.index(fallback)
+                    except ValueError:
+                        default_index = 0
+
+                sel_idx = st.selectbox(
+                    "Data source (CSV)",
+                    options=list(range(len(csv_files))),
+                    index=default_index,
+                    format_func=lambda i: file_labels[i]
+                )
                 selected_csv = csv_files[sel_idx]
             else:
                 selected_csv = None
@@ -1080,10 +1096,14 @@ class PIIControlCenter:
 
         c1, c2, c3 = st.columns([2, 2, 1])
         with c1:
+            # Default to 'source' column when present
+            default_text_cols = ["source"] if "source" in all_columns else (
+                text_like_cols[:3] if len(text_like_cols) >= 3 else text_like_cols
+            )
             selected_columns = st.multiselect(
                 "Text columns to analyze",
                 options=all_columns,
-                default=text_like_cols[:3] if len(text_like_cols) >= 3 else text_like_cols,
+                default=default_text_cols,
                 help="These columns' text will be scanned for PII"
             )
         with c2:
