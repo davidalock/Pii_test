@@ -69,6 +69,16 @@ except ImportError:
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
+# JSON serializer helper for numpy types
+def json_serializer(obj):
+    """Handle numpy types in JSON serialization"""
+    import numpy as np
+    if isinstance(obj, (np.integer, np.floating)):
+        return float(obj)
+    elif isinstance(obj, np.ndarray):
+        return obj.tolist()
+    raise TypeError(f"Object of type {type(obj)} is not JSON serializable")
+
 # Page configuration
 st.set_page_config(
     page_title="PII Detection Control Center",
@@ -1456,15 +1466,6 @@ class PIIControlCenter:
                 ],
             }
             
-            # Helper function to handle numpy types in JSON serialization
-            def json_serializer(obj):
-                import numpy as np
-                if isinstance(obj, (np.integer, np.floating)):
-                    return float(obj)
-                elif isinstance(obj, np.ndarray):
-                    return obj.tolist()
-                raise TypeError(f"Object of type {type(obj)} is not JSON serializable")
-            
             st.download_button(
                 "💾 Download JSON",
                 data=json.dumps(json_data, indent=2, default=json_serializer),
@@ -1530,7 +1531,7 @@ class PIIControlCenter:
                     csv_path = self.results_path / csv_name
                     df_csv.to_csv(csv_path, index=False)
                     with open(json_path, 'w') as f:
-                        json.dump(json_data, f, indent=2)
+                        json.dump(json_data, f, indent=2, default=json_serializer)
                     st.success(f"Saved to results/: {csv_name}, {json_name}")
                     # Remember JSON file as the last-selected results file
                     st.session_state['__last_results_filename__'] = json_name
