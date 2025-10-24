@@ -1455,9 +1455,19 @@ class PIIControlCenter:
                     for idx, timings in sorted(row_timings.items(), key=lambda kv: kv[0])
                 ],
             }
+            
+            # Helper function to handle numpy types in JSON serialization
+            def json_serializer(obj):
+                import numpy as np
+                if isinstance(obj, (np.integer, np.floating)):
+                    return float(obj)
+                elif isinstance(obj, np.ndarray):
+                    return obj.tolist()
+                raise TypeError(f"Object of type {type(obj)} is not JSON serializable")
+            
             st.download_button(
                 "💾 Download JSON",
-                data=json.dumps(json_data, indent=2),
+                data=json.dumps(json_data, indent=2, default=json_serializer),
                 file_name=f"interactive_batch_{datetime.now().strftime('%Y%m%d_%H%M%S')}.json",
                 mime="application/json",
             )
