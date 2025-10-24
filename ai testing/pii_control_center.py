@@ -1213,6 +1213,8 @@ class PIIControlCenter:
         entity_counts: Dict[str, int] = {}
         # Track aggregated PII context per row for downstream exposure tooling
         row_pii_summary: Dict[int, Dict[str, Any]] = {}
+        # Track per-record analyzer timings aggregated across all analyzed columns
+        row_timings: Dict[int, Dict[str, float]] = {}
         dataset_name = os.path.basename(str(csv_path))
         start_time = time.time()
 
@@ -1256,6 +1258,19 @@ class PIIControlCenter:
                     'tokenized': tokenized_text,
                     'entities': findings,
                 }
+
+                # Accumulate per-analyzer timings at the record level
+                try:
+                    t = res.get('timings', {}) if isinstance(res, dict) else {}
+                    if t:
+                        agg = row_timings.setdefault(r_index, {'presidio': 0.0, 'transformer': 0.0, 'patterns': 0.0, 'ollama': 0.0})
+                        for k, v in t.items():
+                            try:
+                                agg[k] = agg.get(k, 0.0) + float(v)
+                            except Exception:
+                                pass
+                except Exception:
+                    pass
 
                 if findings:
                     summary = row_pii_summary.setdefault(r_index, {
@@ -1365,6 +1380,10 @@ class PIIControlCenter:
                     'generated_at': datetime.now().isoformat(),
                 },
                 'results': rows_out,
+                'record_timings': [
+                    {'row_index': int(idx), 'timings': timings}
+                    for idx, timings in sorted(row_timings.items(), key=lambda kv: kv[0])
+                ],
             }
             st.download_button(
                 "💾 Download JSON",
