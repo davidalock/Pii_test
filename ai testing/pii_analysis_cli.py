@@ -220,10 +220,14 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
     # Track execution time for each analyzer component
     timings: Dict[str, float] = {
         'ollama': 0.0,
-        'core_analyzer': 0.0,
+        'presidio': 0.0,
+        'transformers': 0.0,
         'uk_patterns': 0.0,
         'missed_patterns': 0.0,
     }
+    
+    # Store ollama interaction details for debugging/auditing
+    ollama_interactions: List[Dict[str, Any]] = []
 
     # Determine which engines to use based on configuration
     use_presidio = config.get('use_presidio', True)  # Default to True if not specified
@@ -252,13 +256,25 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
                 entity_types=ollama_config.get('entity_types', None),
                 _ui_debug=ui_debug
             )
-            timings['ollama'] = time.perf_counter() - _t0
+            ollama_time = time.perf_counter() - _t0
+            timings['ollama'] = ollama_time
+
+            # Store ollama interaction for auditing
+            ollama_interactions.append({
+                'input_text': text[:500] if len(text) > 500 else text,  # Truncate long text
+                'model': ollama_config.get('model_name', 'mistral'),
+                'entity_types_requested': ollama_config.get('entity_types', None),
+                'entities_found': len(ollama_findings),
+                'execution_time_seconds': ollama_time,
+                'findings': ollama_findings
+            })
 
             results['ollama_findings'] = ollama_findings
 
             # If only Ollama is requested, return just Ollama results
             if not use_presidio and not use_transformers and not use_uk_patterns:
                 results['timings'] = timings
+                results['ollama_interactions'] = ollama_interactions
                 results['all_findings'] = ollama_findings
                 return results
 
@@ -269,6 +285,7 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
                 logger.warning("Only Ollama was requested but it failed. Returning empty results.")
                 results['all_findings'] = []
                 results['timings'] = timings
+                results['ollama_interactions'] = ollama_interactions
                 return results
             logger.warning("Ollama failed, continuing with other enabled engines")
 
@@ -292,11 +309,33 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
                 allow_list=allow_list,
                 score_threshold=getattr(analyzer, '_sensitivity', 0.35)  # Use stored sensitivity or default
             )
-            timings['core_analyzer'] = time.perf_counter() - _t0
+            analyzer_time = time.perf_counter() - _t0
+            
+            # Split timing between transformers and presidio based on recognizer types
+            transformer_time = 0.0
+            presidio_time = 0.0
+            for result in analyzer_results:
+                # Check if this result came from a transformer recognizer
+                is_transformer = False
+                if hasattr(result, 'recognition_metadata') and result.recognition_metadata:
+                    source = result.recognition_metadata.get('source', '')
+                    if source and 'transformer' in source.lower():
+                        is_transformer = True
+                
+                # Estimate time proportionally (this is approximate)
+                if is_transformer:
+                    transformer_time += analyzer_time / max(len(analyzer_results), 1)
+                else:
+                    presidio_time += analyzer_time / max(len(analyzer_results), 1)
+            
+            timings['transformers'] = transformer_time
+            timings['presidio'] = presidio_time
+            
         except Exception as e:
             logger.warning(f"Analyzer analyze() failed: {e}")
             analyzer_results = []
-            timings['core_analyzer'] = 0.0
+            timings['transformers'] = 0.0
+            timings['presidio'] = 0.0
         
         # Post-process to filter out allow_listed terms if Presidio's allow_list didn't work
         if allow_list and analyzer_results:
@@ -430,6 +469,7 @@ def enhanced_pii_analysis(text: str, analyzer, config=None, selected_entities=No
     }
 
     results['timings'] = timings
+    results['ollama_interactions'] = ollama_interactions  # Add ollama request/response data
     
     return results
 

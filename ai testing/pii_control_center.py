@@ -1289,6 +1289,8 @@ class PIIControlCenter:
         row_pii_summary: Dict[int, Dict[str, Any]] = {}
         # Track per-record analyzer timings aggregated across all analyzed columns
         row_timings: Dict[int, Dict[str, float]] = {}
+        # Collect all Ollama interactions for auditing
+        all_ollama_interactions: List[Dict[str, Any]] = []
         dataset_name = os.path.basename(str(csv_path))
         start_time = time.time()
 
@@ -1305,6 +1307,15 @@ class PIIControlCenter:
                 # Run analysis limited to selected entities
                 res = enhanced_pii_analysis(text, analyzer, config=config, selected_entities=entities)
                 findings = [f for f in (res.get('all_findings') or []) if f.get('entity_type') in set(entities)]
+                
+                # Collect Ollama interactions if present
+                ollama_interactions = res.get('ollama_interactions', [])
+                if ollama_interactions:
+                    for interaction in ollama_interactions:
+                        # Add context about which row/column this interaction belongs to
+                        interaction['row_index'] = i - 1
+                        interaction['column'] = col
+                        all_ollama_interactions.append(interaction)
 
                 # Anonymize only if there are findings, else keep original text
                 if findings:
@@ -1337,9 +1348,10 @@ class PIIControlCenter:
                 try:
                     t = res.get('timings', {}) if isinstance(res, dict) else {}
                     if t:
-                        # Use actual timing keys from enhanced_pii_analysis: core_analyzer, ollama, uk_patterns, missed_patterns
+                        # Use actual timing keys from enhanced_pii_analysis: presidio, transformers, ollama, uk_patterns, missed_patterns
                         agg = row_timings.setdefault(r_index, {
-                            'core_analyzer': 0.0,
+                            'presidio': 0.0,
+                            'transformers': 0.0,
                             'ollama': 0.0,
                             'uk_patterns': 0.0,
                             'missed_patterns': 0.0
@@ -1457,6 +1469,8 @@ class PIIControlCenter:
                     'extra_columns': list(extra_columns) if extra_columns else [],
                     'sensitivity': float(sensitivity),
                     'use_presidio': bool(config.get('use_presidio', True)),
+                    'use_transformers': bool(use_transformers),
+                    'use_ollama': bool(use_ollama),
                     'built_in_only': bool(st.session_state.get('__built_in_only__', False)),
                     'generated_at': datetime.now().isoformat(),
                 },
@@ -1465,6 +1479,7 @@ class PIIControlCenter:
                     {'row_index': int(idx), 'timings': {k: float(v) for k, v in timings.items()}}
                     for idx, timings in sorted(row_timings.items(), key=lambda kv: kv[0])
                 ],
+                'ollama_interactions': all_ollama_interactions if use_ollama else [],
             }
             
             st.download_button(
@@ -1486,7 +1501,8 @@ class PIIControlCenter:
                 timings_rows = [
                     {
                         'row_index': int(idx),
-                        'core_analyzer': float(t.get('core_analyzer', 0.0)),
+                        'presidio': float(t.get('presidio', 0.0)),
+                        'transformers': float(t.get('transformers', 0.0)),
                         'ollama': float(t.get('ollama', 0.0)),
                         'uk_patterns': float(t.get('uk_patterns', 0.0)),
                         'missed_patterns': float(t.get('missed_patterns', 0.0)),
@@ -1501,7 +1517,7 @@ class PIIControlCenter:
                 import pandas as _pd
                 df_timings = _pd.DataFrame(timings_rows)
                 # Add total column for quick sorting
-                df_timings['total'] = df_timings[['core_analyzer', 'ollama', 'uk_patterns', 'missed_patterns']].sum(axis=1)
+                df_timings['total'] = df_timings[['presidio', 'transformers', 'ollama', 'uk_patterns', 'missed_patterns']].sum(axis=1)
                 # Controls
                 cta, ctb = st.columns([2,1])
                 with cta:
