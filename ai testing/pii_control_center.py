@@ -1123,6 +1123,32 @@ class PIIControlCenter:
             max_records = st.number_input("Max rows", min_value=1, max_value=200000, value=min(1000, len(df_head)), step=50)
             sensitivity = st.slider("Sensitivity", 0.0, 1.0, 0.35, 0.05, help="Lower detects more")
 
+        # Analyzer toggles for batch
+        col_tf, col_ol = st.columns(2)
+        with col_tf:
+            use_transformers_batch = st.checkbox(
+                "Use Transformers",
+                value=True,
+                key="batch_use_transformers",
+                help="Enable transformer-based entity recognition in batch processing"
+            )
+        with col_ol:
+            # Read default from analyzers_config if available
+            _ollama_default_batch = False
+            try:
+                if self.analyzer_config_path.exists():
+                    with open(self.analyzer_config_path, 'r') as f:
+                        ac = yaml.safe_load(f) or {}
+                    _ollama_default_batch = ac.get('ollama', {}).get('enabled', False)
+            except Exception:
+                pass
+            use_ollama_batch = st.checkbox(
+                "Use Ollama",
+                value=_ollama_default_batch,
+                key="batch_use_ollama",
+                help="Enable local LLM (Ollama) entity extraction in batch processing"
+            )
+
         # Extra fields to include in export (non-analyzed columns)
         extra_cols = st.multiselect(
             "Extra columns to include in output (optional)",
@@ -1147,9 +1173,11 @@ class PIIControlCenter:
                 max_rows=int(max_records),
                 sensitivity=float(sensitivity),
                 save_to_results=bool(save_to_results),
+                use_transformers=use_transformers_batch,
+                use_ollama=use_ollama_batch,
             )
 
-    def _run_interactive_batch(self, csv_path, columns, entities, extra_columns, max_rows, sensitivity: float, save_to_results: bool = False):
+    def _run_interactive_batch(self, csv_path, columns, entities, extra_columns, max_rows, sensitivity: float, save_to_results: bool = False, use_transformers: bool = False, use_ollama: bool = False):
         """Execute batch analysis with current engine configuration and render results & exports."""
         import pandas as pd
         from pii_analysis_cli import load_presidio_engines, enhanced_pii_analysis
@@ -1158,6 +1186,8 @@ class PIIControlCenter:
         # Build config from current session settings to mirror Interactive Search
         config: Dict[str, Any] = {}
         config['sensitivity'] = sensitivity
+        config['use_transformers'] = use_transformers
+        config['use_ollama'] = use_ollama
         disable_presidio = bool(st.session_state.get('__disable_presidio__', False))
         config['use_presidio'] = not disable_presidio
         built_in_only = bool(st.session_state.get('__built_in_only__', False))
