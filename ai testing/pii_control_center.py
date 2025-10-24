@@ -1294,6 +1294,8 @@ class PIIControlCenter:
                         'end': f.get('end'),
                         'confidence': f.get('confidence'),
                         'recognizer': f.get('recognizer') or f.get('source') or '',
+                        # Per-text analyzer timings (seconds) from the current analysis call
+                        'analyzer_timings': res.get('timings', {}),
                         'pii_fields_used': fields_used,
                         'pii_raw_values': raw_values,
                         # Include full field variants for exposure checks

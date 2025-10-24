@@ -371,33 +371,45 @@ def analyze_text_comprehensive(text, analyzers, resolve_overlaps=True, prioritiz
         prioritize_person: Whether to prioritize PERSON entities in overlap resolution (default: True)
     
     Returns:
-        List of detected entities
+        Tuple[List[Dict], Dict[str, float]] where the dict contains per-analyzer timings in seconds
     """
     # Check if this is built-in only mode
     if analyzers.get('builtin_only', False):
         logger.debug("Using Presidio-only analysis (built-in only mode)")
-        return analyze_text_presidio_only(text, analyzers, resolve_overlaps, prioritize_person)
+        t0 = time.perf_counter()
+        ents = analyze_text_presidio_only(text, analyzers, resolve_overlaps, prioritize_person)
+        timings = {'presidio': time.perf_counter() - t0, 'transformer': 0.0, 'patterns': 0.0, 'ollama': 0.0}
+        return ents, timings
     
     all_entities = []
+    timings = {'presidio': 0.0, 'transformer': 0.0, 'patterns': 0.0, 'ollama': 0.0}
     
     # Use pre-initialized Presidio analyzer
     if analyzers.get('presidio'):
+        _t0 = time.perf_counter()
         presidio_entities = analyze_text_with_presidio(text, analyzers['presidio'])
+        timings['presidio'] = time.perf_counter() - _t0
         all_entities.extend(presidio_entities)
     
     # Use pre-initialized transformer analyzer
     if analyzers.get('transformer'):
+        _t0 = time.perf_counter()
         transformer_entities = analyze_text_with_presidio(text, analyzers['transformer'])
+        timings['transformer'] = time.perf_counter() - _t0
         all_entities.extend(transformer_entities)
     
     # Add pattern-based entities
+    _t0 = time.perf_counter()
     pattern_entities = analyze_text_with_patterns(text)
+    timings['patterns'] = time.perf_counter() - _t0
     all_entities.extend(pattern_entities)
     
     # Add Ollama-based entities (if available)
     try:
         if analyzers.get('ollama'):
+            _t0 = time.perf_counter()
             ollama_entities = analyze_text_with_ollama(text, analyzers['ollama'])
+            timings['ollama'] = time.perf_counter() - _t0
             all_entities.extend(ollama_entities)
         else:
             logger.debug("Ollama analyzer not available - skipping")
@@ -418,7 +430,7 @@ def analyze_text_comprehensive(text, analyzers, resolve_overlaps=True, prioritiz
     if resolve_overlaps:
         entities_list = resolve_overlapping_entities(entities_list, prioritize_person=prioritize_person)
     
-    return entities_list
+    return entities_list, timings
 
 def analyze_text_presidio_only(text, analyzers, resolve_overlaps=True, prioritize_person=True):
     """
@@ -787,6 +799,8 @@ def process_record_thread_safe(record_data, analyzers, resolve_overlaps=True, mi
     }
     
     record_entities = 0
+    # Aggregate timings per analyzer at record level
+    record_timings = {'presidio': 0.0, 'transformer': 0.0, 'patterns': 0.0, 'ollama': 0.0}
     record_entity_sources = {}
     
     # Process each field in the record
@@ -796,7 +810,7 @@ def process_record_thread_safe(record_data, analyzers, resolve_overlaps=True, mi
             
             # Process with all recognizers (using pre-initialized analyzers)
             logger.info(f"Processing record {idx}, field '{field}'...")
-            entities = analyze_text_comprehensive(field_text, analyzers, resolve_overlaps=resolve_overlaps, prioritize_person=prioritize_person)
+            entities, timings = analyze_text_comprehensive(field_text, analyzers, resolve_overlaps=resolve_overlaps, prioritize_person=prioritize_person)
             
             # Filter by configuration if specified
             if config:
@@ -820,10 +834,19 @@ def process_record_thread_safe(record_data, analyzers, resolve_overlaps=True, mi
                 'original_text': field_text,
                 'entities': entities,
                 'anonymized_text': anonymized_text,
-                'entity_count': len(entities)
+                'entity_count': len(entities),
+                'timings': timings
             }
-            
+
             record_entities += len(entities)
+            # Accumulate timings
+            try:
+                record_timings['presidio'] += float(timings.get('presidio', 0.0))
+                record_timings['transformer'] += float(timings.get('transformer', 0.0))
+                record_timings['patterns'] += float(timings.get('patterns', 0.0))
+                record_timings['ollama'] += float(timings.get('ollama', 0.0))
+            except Exception:
+                pass
     
     # Log completion
     logger.info(f"Processed record {idx}: found {record_entities} entities")
@@ -835,6 +858,8 @@ def process_record_thread_safe(record_data, analyzers, resolve_overlaps=True, mi
         logger.info(f"Ground truth PII fields: {pii_fields_used}")
         logger.info(f"Ground truth PII values: {pii_raw_values}")
     
+    # Attach per-record aggregated timings
+    record_result['timings'] = record_timings
     return record_result, record_entities, record_entity_sources
 
 def process_records_multithreaded(df, analyzers, resolve_overlaps=True, min_confidence=0.0, max_workers=4, target_field="source", config=None, prioritize_person=True):
@@ -932,7 +957,7 @@ def process_records_sequential(df, analyzers, resolve_overlaps=True, min_confide
                 
                 # Process with all recognizers (using pre-initialized analyzers)
                 logger.info(f"Processing record {idx}, field '{field}'...")
-                entities = analyze_text_comprehensive(field_text, analyzers, resolve_overlaps=resolve_overlaps, prioritize_person=prioritize_person)
+                entities, timings = analyze_text_comprehensive(field_text, analyzers, resolve_overlaps=resolve_overlaps, prioritize_person=prioritize_person)
                 
                 # Filter by confidence if specified
                 if min_confidence > 0:
@@ -952,7 +977,8 @@ def process_records_sequential(df, analyzers, resolve_overlaps=True, min_confide
                     'original_text': field_text,
                     'entities': entities,
                     'anonymized_text': anonymized_text,
-                    'entity_count': len(entities)
+                    'entity_count': len(entities),
+                    'timings': timings
                 }
                 
                 record_entities += len(entities)
